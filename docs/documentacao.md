@@ -1,8 +1,8 @@
 # Documentação
 
-## Requisitos
+## Problema
 
-## Texto
+## Solução
 
 ### 1. Cadastro de paciente
 
@@ -29,19 +29,23 @@ Caso haja necessidade, é perfeitamente possível que um paciente realize mais d
 
 Durante uma sessão avaliativa, o avaliador poderá escrever observações acerca do paciente, que ficarão permanentemente associadas a ele.
 
-Ao final de cada sessão, o avaliador deve encerrá-la no sistema, o que tornará as observações feitas até então indisponíveis para edição. No caso de uma avaliação terapêutica onde ocorreu uma indicação, o sistema deve ser capaz de informar a recepção de que tal processo já foi realizado.
+Ao final de cada sessão, o avaliador deve encerrá-la no sistema, o que tornará as observações feitas até então indisponíveis para edição.
+
+Caso seja feita uma indicação terapêutica, ela deve ser registrada no sistema de tal forma que a recepção tome conhecimento de que tal processo já foi realizado, o que irá possibilitar uma contratação posteriormente.
 
 ### 4. Pagamento
 
-Encerrada uma avaliação, o representante irá realizar o pagamento na recepção. Em alguns casos, o pagamento de um "pacote de sessões" pode ser feito de antemão, mas o comum é que cada avaliação seja paga individualmente.
+Encerrada uma avaliação, o representante irá realizar o pagamento na recepção. Em alguns casos onde é feito um "pacote de sessões", o pagamento pode ser feito de antemão, mas o comum é que cada avaliação seja paga individualmente.
 
 ### 5a. Contratação
 
-Tendo sido feita a indicação terapêutica do paciente às terapias recomendadas, o representante que desejar contratar os serviços terapêuticos da clínica irá até a recepção, onde as recepcionistas, já informadas da finalização do processo, irão imprimir os documentos de contrato e auxiliá-lo na assinatura dos mesmos.
+Tendo sido feita uma indicação terapêutica para o paciente, o representante que desejar contratar os serviços terapêuticos da clínica irá até a recepção, onde as recepcionistas, já informadas da finalização do processo, irão imprimir os documentos de contrato e auxiliá-lo na assinatura dos mesmos.
 
 ### 5b. Não-contratação
 
-Finalizadas e pagas todas as consultas agendadas, caso o representante não queira contratar os serviços terapêuticos da clínica, todo o fluxo será encerrado. Nesse cenário, conforme já sugerido anteriormente, os dados relacionados ao paciente continuarão a ser mantidos no sistema apenas por um tempo delimitado.
+Finalizadas e pagas todas as consultas agendadas, caso o representante não queira contratar os serviços terapêuticos da clínica, todo o fluxo será encerrado. Nesse cenário, conforme já sugerido anteriormente, os dados relacionados ao paciente permanecerão armazenados no sistema apenas por um certo período de tempo.
+
+## Requisitos
 
 ## Entidades
 
