@@ -20,7 +20,7 @@ A avaliação em si continuará ocorrendo off system, visto que ela é única pa
 
 1. Paciente é cadastrado no sistema (Elysium);
 2. Avaliações são agendadas;
-3. Recepcionista entra em contato com avaliadores;
+3. Recepcionista entra em contato com avaliadores para informá-los sobre os agendamentos;
 4. Avaliação ocorre;
     - Observações e documentos ficam fora do sistema;
 6. Representante realiza o pagamento pela avaliação (Elysium);
