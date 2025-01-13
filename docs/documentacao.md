@@ -2,7 +2,43 @@
 
 ## Problema
 
-## Solução
+Atualmente, no processo que vai desde a entrada de um novo paciente até o término de suas avaliações, que pode ou não ser seguido por uma contratação dos serviços terapêuticos da clínica, apenas os serviços de cadastramento e contratação são realizados por software. Todo o processo avaliativo ocorre "off system" (i.e., fora do sistema), o que dificulta a integração das informações geradas pelos avaliadores na base de dados da clínica.
+
+## Proposta de solução
+
+Como solução ao problema apresentado acima, propõe-se a criação de uma aplicação Web para uso dos avaliadores que se comunique com a atual base de dados Firebird. A aplicação irá rodar numa Intranet e utilizará o framework React.
+
+Os principais objetivos do sistema serão:
+
+1. Possibilitar que os avaliadores saibam, a qualquer momento, quais as sessões avaliativas agendadas com eles, permitindo que confirmem ou não a disponibilidade para um atendimento;
+2. Facilitar o processo de inclusão de observações feitas pelos avaliadores e anexação de documentos relacionados ao paciente na base de dados; 
+3. Garantir o acesso, por parte dos avaliadores, às informações dos pacientes vinculados a eles.
+
+A avaliação em si continuará ocorrendo off system, visto que ela é única para cada avaliador.
+
+## Processo atual
+
+1. Paciente é cadastrado no sistema (Elysium);
+2. Avaliações são agendadas;
+3. Recepcionista entra em contato com avaliadores;
+4. Avaliação ocorre;
+    - Observações e documentos ficam fora do sistema;
+6. Representante realiza o pagamento pela avaliação (Elysium);
+7. Se ocorrer uma indicação terapêutica, o representante irá levar para a recepção um documento, entregue pelo avaliador terapêutico, com as terapias indicadas para o paciente;
+8. Se o representante quiser, a recepção irá imprimir os documentos de contrato por meio do sistema (Elysium) para que ele possa assiná-los.
+
+## Processo proposto
+
+1. Paciente é cadastrado no sistema (Elysium);
+2. Avaliações são agendadas (Elysium);
+3. Avaliador confirma disponibilidade (ESTE SISTEMA);
+4. Avaliação ocorre;
+    - Observações e documentos são incluídos no sistema (ESTE SISTEMA);
+6. Representante realiza o pagamento pela avaliação (Elysium);
+7. Se ocorrer uma indicação terapêutica, essa informação será transmitida para a recepção, por meio do sistema (ESTE), juntamente com as terapias indicadas para o paciente;
+8. Se o representante quiser, a recepção irá imprimir os documentos de contrato por meio do sistema (Elysium) para que ele possa assiná-los.
+
+## ???
 
 ### 1. Cadastro de paciente
 
@@ -31,11 +67,11 @@ Durante uma sessão avaliativa, o avaliador poderá escrever observações acerc
 
 Ao final de cada sessão, o avaliador deve encerrá-la no sistema, o que tornará as observações feitas até então indisponíveis para edição.
 
-Caso seja feita uma indicação terapêutica, ela deve ser registrada no sistema de tal forma que a recepção tome conhecimento de que tal processo já foi realizado, o que irá possibilitar uma contratação posteriormente.
+Caso seja feita uma indicação terapêutica, ela deve ser registrada no sistema para que, sabendo de sua realização, a recepção seja capaz de iniciar o processo de contratação.
 
 ### 4. Pagamento
 
-Encerrada uma avaliação, o representante irá realizar o pagamento na recepção. Em alguns casos onde é feito um "pacote de sessões", o pagamento pode ser feito de antemão, mas o comum é que cada avaliação seja paga individualmente.
+Encerrada uma avaliação, o representante irá realizar o pagamento na recepção. Em casos onde é feito um "pacote de sessões", o pagamento pode ser feito de antemão, mas o comum é que cada avaliação seja paga individualmente.
 
 ### 5a. Contratação
 
