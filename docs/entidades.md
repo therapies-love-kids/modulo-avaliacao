@@ -43,3 +43,14 @@
 
 - Agendamento
 - Pagamento
+
+## Média
+
+- Paciente (Dados do pai e da mãe estão dentro da entidade, existe um atributo para definir se o contratante é o pai, mãe ou outros)
+- Contratante (Criado apenas se o contratante não forem nem o pai ou mãe)
+- Autorizado(Inclui parentesco e a Id do paciente)
+- Funcionário(Definidos por tipo)
+- Avaliação(inclui datahora início e fim, vinculado ao avaliador e ao paciente)
+- Documento ( registro de documentos, fichas, contratos e diagnósticos(exames))
+- Agendamento(possui dois ids de funcionários, um para o avaliador e outro para o responsável do agendamento, possui status)
+- Pagamento(vinculado ao id do funcionário e ao CPF do pagante)
