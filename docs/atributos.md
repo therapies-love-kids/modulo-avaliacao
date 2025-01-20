@@ -93,7 +93,6 @@
 - valor NUMERIC(10, 2)
 - tipo VARCHAR(64)
 - descricao VARCHAR(256)
-- unidade_codigo VARCHAR(8)
 
 ## RESPONSAVEL
 - id SERIAL PRIMARY KEY
