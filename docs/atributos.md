@@ -20,7 +20,7 @@
 - data_hora_fim TIMESTAMP
 - status VARCHAR(32)
 - anotacoes VARCHAR(1024)
- 
+
 ## COLABORADOR
 - id SERIAL PRIMARY KEY
 - ativo BOOLEAN
