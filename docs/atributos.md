@@ -1,114 +1,112 @@
 ## Agendamento
- - id (int autoincrement) 
- - unidade (char(8))
- - tipo (char(64))
- - status (char(16))
- - data_hora_inicio (time_stamp)
- - data_hora_fim (time_stamp)
- - observacao (char(128))
- - paciente_codigo (int)
- - responsável_codigo (int)
- - colaborador_codigo (int)
- - recepcionista_codigo (int)
- - sala (small int)
+ - id SERIAL PRIMARY KEY
+ - unidade VARCHAR(8)
+ - tipo VARCHAR(64)
+ - status VARCHAR(16)
+ - data_hora_inicio TIMESTAMP
+ - data_hora_fim TIMESTAMP
+ - observacao VARCHAR(128)
+ - paciente_codigo INTEGER
+ - responsável_codigo INTEGER
+ - colaborador_codigo INTEGER
+ - recepcionista_codigo INTEGER
+ - sala SMALLINT
 
 ## Avaliação
- - id (int autoincrement) 
- - paciente_codigo (int)
- - colaborador_codigo (int)
- - data_hora_inicio (time_stamp)
- - data_hora_fim (time_stamp)
- - status (boolean)
- - anotacoes (char(1024))
+ - id SERIAL PRIMARY KEY
+ - paciente_codigo INTEGER
+ - colaborador_codigo INTEGER
+ - data_hora_inicio TIMESTAMP
+ - data_hora_fim TIMESTAMP
+ - status VARCHAR(32)
+ - anotacoes VARCHAR(1024)
 
 ## Contrato
- - id (int autoincrement)
- - data_hora_criacao (time_stamp)
- - ativo (boolean) 
- - responsavel_codigo (int)
- - paciente_codigo (int)
- - convenio (boolean)
- - documento_id (int)
- - cep (int)
- - uf (char(2))
- - cidade (char (64))
- - bairro (char (64))
- - logadouro (char (128))
- - numero (int(16))
- - complemento (char(256))
- - unidade
+ - id SERIAL PRIMARY KEY
+ - data_hora_criacao TIMESTAMP
+ - ativo BOOLEAN
+ - responsavel_codigo INTEGER
+ - paciente_codigo INTEGER
+ - convenio BOOLEAN
+ - documento_id INTEGER
+ - cep VARCHAR(8)
+ - uf CHAR(2)
+ - cidade VARCHAR(64)
+ - bairro VARCHAR(64)
+ - logradouro VARCHAR(128)
+ - numero INTEGER
+ - complemento VARCHAR(256)
+ - unidade VARCHAR(8)
 
 ## Documento
- - id (int autoincrement)
- - data_hora_criacao (time_stamp)
- - ativo (boolean)
- - tipo (char(64))
- - caminho (char(256))
- - paciente_codigo (int)
- - colaborador_codigo (int)
+ - id SERIAL PRIMARY KEY
+ - data_hora_criacao TIMESTAMP
+ - ativo BOOLEAN
+ - tipo VARCHAR(64)
+ - caminho VARCHAR(256)
+ - paciente_codigo INTEGER
+ - colaborador_codigo INTEGER
 
 ## Paciente
- - id (int autoincrement)
- - ativo (boolean)
- - unidade (char(8))
- - codigo (char(64))
- - nome (char(256))
- - nome_curto (char(64))
- - sexo (char(1))
- - data_nascimento (data_hour)
- - local_nascimento (char(64))
- - certidao_nascimento (int)
- - cpf (unique type int)
- - convenio (char(64))
- - numero_convenio (char(16))
- - observacoes (char(256))
+ - id SERIAL PRIMARY KEY
+ - ativo BOOLEAN
+ - unidade VARCHAR(8)
+ - codigo VARCHAR(64)
+ - nome VARCHAR(256)
+ - nome_curto VARCHAR(64)
+ - sexo CHAR(1)
+ - data_nascimento TIMESTAMP
+ - local_nascimento VARCHAR(64)
+ - certidao_nascimento INTEGER
+ - cpf VARCHAR(11) UNIQUE
+ - convenio VARCHAR(64)
+ - numero_convenio VARCHAR(16)
+ - observacoes VARCHAR(256)
 
 ## Pagamento
- - id (int autoincrement)
- - data_hora_criacao (data_stamp)
- - responsavel_codigo (int)
- - valor (float)
- - tipo (char(64))
- - descricao (char(256))
- - unidade (char(8))
+ - id SERIAL PRIMARY KEY
+ - data_hora_criacao TIMESTAMP
+ - responsavel_codigo INTEGER
+ - valor NUMERIC(10, 2)
+ - tipo VARCHAR(64)
+ - descricao VARCHAR(256)
+ - unidade VARCHAR(8)
 
 ## Colaborador
- - id (int autoincrement)
- - ativo (boolean)
- - modo_trabalho (char(64))
- - formacao (char(64))
- - unidade (char(8))
- - codigo (char(32))
- - registro_profissioal (int)
- - nome (char(128))
- - cpf (unique type)
- - tipo (char(64))
- - funcao (char(64))
- - especialidade (char(64))
- - perfil (char(64))
- - codigo_computador (char(64))
- - email (unique type)
- - usuario (char(64))
- - senha (char(128))
+ - id SERIAL PRIMARY KEY
+ - ativo BOOLEAN
+ - modo_trabalho VARCHAR(64)
+ - formacao VARCHAR(64)
+ - unidade VARCHAR(8)
+ - codigo VARCHAR(32)
+ - registro_profissional INTEGER
+ - nome VARCHAR(128)
+ - cpf VARCHAR(11) UNIQUE
+ - tipo VARCHAR(64)
+ - funcao VARCHAR(64)
+ - especialidade VARCHAR(64)
+ - perfil VARCHAR(64)
+ - codigo_computador VARCHAR(64)
+ - email VARCHAR(128) UNIQUE
+ - usuario VARCHAR(64)
+ - senha VARCHAR(128)
 
 ## Responsável
- - id (int autoincrement)
- - codigo (char(64))
- - ativo (boolean)
- - nome (char(128))
- - estado_civil (char(64))
- - profissao (char(64))
- - cpf (unique type int)
- - rg (unique type int)
- - celular (unique type int)
- - email (char(64))
- - contatos_extras (char(128))
+ - id SERIAL PRIMARY KEY
+ - codigo VARCHAR(64)
+ - ativo BOOLEAN
+ - nome VARCHAR(128)
+ - estado_civil VARCHAR(64)
+ - profissao VARCHAR(64)
+ - cpf VARCHAR(11) UNIQUE
+ - rg VARCHAR(20) UNIQUE
+ - celular VARCHAR(15) UNIQUE
+ - email VARCHAR(64)
+ - contatos_extras VARCHAR(128)
 
 ## Vínculo
- - id (int autoincrement)
- - data_hora_criacao (time_stamp)
- - paciente_codigo (char(64))
- - responsavel_codigo (char(64))
- - tipo (char(16))
-
-
+ - id SERIAL PRIMARY KEY
+ - data_hora_criacao TIMESTAMP
+ - paciente_codigo VARCHAR(64)
+ - responsavel_codigo VARCHAR(64)
+ - tipo VARCHAR(16)
