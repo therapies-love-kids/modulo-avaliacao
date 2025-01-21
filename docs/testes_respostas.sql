@@ -85,7 +85,7 @@ SELECT
     c.uf,
     c.cep
 FROM 
-    vinculo v JOIN responsavel r
+    vinculo v JOIN responsavel r 
 ON 
     v.responsavel_codigo = r.codigo JOIN contrato c
 ON 

@@ -145,7 +145,7 @@ CREATE TABLE AGENDAMENTO (
     responsavel_codigo VARCHAR REFERENCES RESPONSAVEL(codigo),
     especialista_colaborador_codigo VARCHAR REFERENCES COLABORADOR(codigo),
     recepcionista_colaborador_codigo VARCHAR REFERENCES COLABORADOR(codigo),
-    sala SMALLINT
+    sala VARCHAR(16)
 );
 
 -- Tabela AVALIACAO

@@ -99,11 +99,11 @@ VALUES
 -- Preenchendo a tabela AGENDAMENTO
 INSERT INTO AGENDAMENTO (unidade_codigo, tipo, status, data_hora_inicio, data_hora_fim, observacao, paciente_codigo, responsavel_codigo, especialista_colaborador_codigo, recepcionista_colaborador_codigo, sala)
 VALUES
-('001', 'Consulta', 'Agendado', NOW() + INTERVAL '1 DAY', NOW() + INTERVAL '1 DAY' + INTERVAL '1 HOUR', 'Consulta de Lucas Mendes', 'PAC001', 'RESP001', 'COL001', 'COL002', 101),
-('002', 'Consulta', 'Agendado', NOW() + INTERVAL '2 DAYS', NOW() + INTERVAL '2 DAYS' + INTERVAL '1 HOUR', 'Consulta de Fernanda Rocha', 'PAC002', 'RESP002', 'COL002', 'COL003', 102),
-('003', 'Consulta', 'Concluído', NOW() - INTERVAL '1 DAY', NOW() - INTERVAL '1 DAY' + INTERVAL '1 HOUR', 'Consulta de Rafael Costa', 'PAC003', 'RESP003', 'COL003', 'COL004', 103),
-('004', 'Consulta', 'Cancelado', NOW() + INTERVAL '3 DAYS', NOW() + INTERVAL '3 DAYS' + INTERVAL '1 HOUR', 'Consulta de Mariana Souza', 'PAC004', 'RESP004', 'COL004', 'COL005', 104),
-('005', 'Consulta', 'Agendado', NOW() + INTERVAL '4 DAYS', NOW() + INTERVAL '4 DAYS' + INTERVAL '1 HOUR', 'Consulta de Beatriz Almeida', 'PAC005', 'RESP005', 'COL005', 'COL001', 105);
+('001', 'Consulta', 'Agendado', NOW() + INTERVAL '1 DAY', NOW() + INTERVAL '1 DAY' + INTERVAL '1 HOUR', 'Consulta de Lucas Mendes', 'PAC001', 'RESP001', 'COL001', 'COL002', 'consultorio1'),
+('002', 'Consulta', 'Agendado', NOW() + INTERVAL '2 DAYS', NOW() + INTERVAL '2 DAYS' + INTERVAL '1 HOUR', 'Consulta de Fernanda Rocha', 'PAC002', 'RESP002', 'COL002', 'COL003', 'consultorio2'),
+('003', 'Consulta', 'Concluído', NOW() - INTERVAL '1 DAY', NOW() - INTERVAL '1 DAY' + INTERVAL '1 HOUR', 'Consulta de Rafael Costa', 'PAC003', 'RESP003', 'COL003', 'COL004', 'consultorio3'),
+('004', 'Consulta', 'Cancelado', NOW() + INTERVAL '3 DAYS', NOW() + INTERVAL '3 DAYS' + INTERVAL '1 HOUR', 'Consulta de Mariana Souza', 'PAC004', 'RESP004', 'COL004', 'COL005', 'consultorio4'),
+('005', 'Consulta', 'Agendado', NOW() + INTERVAL '4 DAYS', NOW() + INTERVAL '4 DAYS' + INTERVAL '1 HOUR', 'Consulta de Beatriz Almeida', 'PAC005', 'RESP005', 'COL005', 'COL001', 'consultorio5');
 
 -- Preenchendo a tabela AVALIACAO
 INSERT INTO AVALIACAO (paciente_codigo, colaborador_codigo, data_hora_inicio, data_hora_fim, status, anotacoes)
