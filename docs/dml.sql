@@ -45,19 +45,29 @@ VALUES
 INSERT INTO RESPONSAVEL (codigo, ativo, nome, estado_civil, profissao, cpf, rg, celular, email, contatos_extras)
 VALUES
 ('RESP001', TRUE, 'Cláudia Mendes', 'Casada', 'Engenheira', '67867867867', 'MG1234567', '11988887777', 'claudia@familia.com', 'Tia: 11999998888'),
+('RESP006', TRUE, 'Carlos Mendes', 'Casado', 'Administrador', '11122233344', 'MG7654321', '11922223333', 'carlos@familia.com', 'Primo: 11911112222'),
 ('RESP002', TRUE, 'Roberto Rocha', 'Divorciado', 'Médico', '78978978978', 'SP7654321', '11977776666', 'roberto@familia.com', 'Avó: 11966665555'),
+('RESP007', TRUE, 'Sofia Rocha', 'Divorciada', 'Arquiteta', '22233344455', 'SP1234567', '11933334454', 'sofia@familia.com', 'Amiga: 11944445555'),
 ('RESP003', TRUE, 'Juliana Costa', 'Solteira', 'Professora', '89089089089', 'RJ2345678', '11966664444', 'juliana@familia.com', 'Amigo: 11955554444'),
+('RESP008', TRUE, 'Daniel Costa', 'Solteiro', 'Engenheiro', '33344455566', 'RJ8765432', '11955556666', 'daniel@familia.com', 'Colega: 11966667777'),
 ('RESP004', TRUE, 'Paulo Souza', 'Casado', 'Advogado', '90190190190', 'PR8765432', '11955553333', 'paulo@familia.com', 'Irmã: 11944443333'),
-('RESP005', TRUE, 'Renata Almeida', 'Viúva', 'Designer', '12312312312', 'BA3456789', '11944442222', 'renata@familia.com', 'Vizinho: 11933332222');
+('RESP009', TRUE, 'Helena Souza', 'Casada', 'Nutricionista', '44455566677', 'PR1234567', '11944445555', 'helena@familia.com', 'Cunhado: 11933332222'),
+('RESP005', TRUE, 'Renata Almeida', 'Viúva', 'Designer', '12312312312', 'BA3456789', '11944442222', 'renata@familia.com', 'Vizinho: 11933332222'),
+('RESP010', TRUE, 'Marcelo Almeida', 'Viúvo', 'Contador', '55566677788', 'BA9876543', '11933334444', 'marcelo@familia.com', 'Sobrinho: 11922221111');
 
 -- Preenchendo a tabela VINCULO
 INSERT INTO VINCULO (data_hora_criacao, paciente_codigo, responsavel_codigo, tipo)
 VALUES
 (NOW(), 'PAC001', 'RESP001', 'Mãe'),
+(NOW(), 'PAC001', 'RESP006', 'Pai'),
 (NOW(), 'PAC002', 'RESP002', 'Pai'),
+(NOW(), 'PAC002', 'RESP007', 'Mãe'),
 (NOW(), 'PAC003', 'RESP003', 'Mãe'),
+(NOW(), 'PAC003', 'RESP008', 'Pai'),
 (NOW(), 'PAC004', 'RESP004', 'Pai'),
-(NOW(), 'PAC005', 'RESP005', 'Mãe');
+(NOW(), 'PAC004', 'RESP009', 'Mãe'),
+(NOW(), 'PAC005', 'RESP005', 'Mãe'),
+(NOW(), 'PAC005', 'RESP010', 'Pai');
 
 -- Preenchendo a tabela PAGAMENTO
 INSERT INTO PAGAMENTO (data_hora_criacao, responsavel_codigo, valor, tipo, descricao)
