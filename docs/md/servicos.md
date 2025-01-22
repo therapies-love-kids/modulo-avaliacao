@@ -1,7 +1,7 @@
 ## Recepcionista
 ### Serviços
 #### Registrar Agendamento
-Neste serviço o(a) recepcionista cadastra o agendamento colocando informações de 
+Neste serviço o(a) recepcionista registra o agendamento colocando as informações de tipo, data_hora_fim, paciente_codigo, responsavel_codigo, especialista_colaborador_codigo (Médico ou Avaliador que realizará a consulta/exame), caso seja necessário o(a) recepcionista pode preencher o campo de observação.
 #### Verificar Agendamento
 #### Alterar Agendamento
 #### Escrever Observação
