@@ -11,7 +11,7 @@
 - responsavel_codigo VARCHAR REFERENCES RESPONSAVEL(codigo)
 - especialista_colaborador_codigo VARCHAR REFERENCES COLABORADOR(codigo)
 - recepcionista_colaborador_codigo VARCHAR REFERENCES COLABORADOR(codigo)
-- sala SMALLINT
+- sala VARCHAR(16)
 
 ## AVALIACAO
 
@@ -76,6 +76,24 @@
 - paciente_codigo VARCHAR REFERENCES PACIENTE(codigo)
 - colaborador_codigo VARCHAR REFERENCES COLABORADOR(codigo)
 
+## EMPRESA
+
+- id SERIAL PRIMARY KEY
+- unidade_codigo VARCHAR(3)
+- unidade_nome VARCHAR(64)
+- nome_fantasia VARCHAR(64)
+- razao_social VARCHAR(128)
+- status BOOLEAN
+- cep VARCHAR(8)
+- uf CHAR(2)
+- cidade VARCHAR(64)
+- bairro VARCHAR(64)
+- logradouro VARCHAR(128)
+- cnpj VARCHAR(14) UNIQUE
+- fone VARCHAR(15) UNIQUE
+- email VARCHAR(64)
+- diretor_colaborador_codigo VARCHAR REFERENCES COLABORADOR(codigo)
+
 ## PACIENTE
 
 - id SERIAL PRIMARY KEY
@@ -115,24 +133,6 @@
 - celular VARCHAR(15) UNIQUE
 - email VARCHAR(64) UNIQUE
 - contatos_extras TEXT
-
-## EMPRESA
-
-- id SERIAL PRIMARY KEY
-- unidade_codigo VARCHAR(3)
-- unidade_nome VARCHAR(64)
-- nome_fantasia VARCHAR(64)
-- razao_social VARCHAR(128)
-- status BOOLEAN
-- cep VARCHAR(8)
-- uf CHAR(2)
-- cidade VARCHAR(64)
-- bairro VARCHAR(64)
-- logradouro VARCHAR(128)
-- cnpj VARCHAR(14) UNIQUE
-- fone VARCHAR(15) UNIQUE
-- email VARCHAR(64)
-- diretor_colaborador_codigo VARCHAR REFERENCES COLABORADOR(codigo)
 
 ## VINCULO
 
