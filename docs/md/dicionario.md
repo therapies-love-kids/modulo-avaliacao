@@ -1,14 +1,14 @@
 ## AGENDAMENTO
 
-### id
+### pk
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### especialista_colaborador_codigo
+### especialista_colaborador_id
 
 **Tipo:** `VARCHAR`  
-**Referência:** `COLABORADOR(codigo)`  
+**Referência:** `COLABORADOR(id)`  
 **Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**, usada para identificar o especialista responsável pela condução do agendamento.
 
 ### paciente_codigo
@@ -17,32 +17,27 @@
 **Referência:** `PACIENTE(codigo)`  
 **Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
 
-### recepcionista_colaborador_codigo
+### recepcionista_colaborador_id
 
 **Tipo:** `VARCHAR`  
-**Referência:** `COLABORADOR(codigo)`  
+**Referência:** `COLABORADOR(id)`  
 **Descrição:** Código do recepcionista responsável pelo agendamento.
 
-### responsavel_codigo
+### responsavel_id
 
 **Tipo:** `VARCHAR`  
-**Referência:** `RESPONSAVEL(codigo)`  
+**Referência:** `RESPONSAVEL(id)`  
 **Descrição:** Chave estrangeira herdada da tabela **RESPONSAVEL**.
 
-### unidade_codigo
+### unidade_id
 
 **Tipo:** `VARCHAR(8)`  
 **Descrição:** Chave estrangeira, herdada da tabela **EMPRESA**.
 
-### data_hora_inicio
+### data_hora
 
 **Tipo:** `TIMESTAMPTZ`  
 **Descrição:** Data definida para o evento do agendamento pelo colaborador responsável por agendar.
-
-### data_hora_fim
-
-**Tipo:** `TIMESTAMPTZ`  
-**Descrição:** Preenchido automaticamente com o horário atual do sistema no momento de finalização.
 
 ### sala
 
@@ -52,21 +47,21 @@
 ### tipo
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Tipo de agendamento definido pelo criador do registro, podendo ser: {A SER DEFINIDO}.
+**Descrição:** Tipo de agendamento definido pelo criador do registro, podendo ser: "Consulta", "Avaliação clinica", "Avaliação terapeutica".
 
 ### status
 
 **Tipo:** `VARCHAR(16)`  
-**Descrição:** Define o estado em que se encontra o agendamento. Valor padrão: "Por confirmar". Pode ser alterado para: "Confirmado", "Em andamento", "Concluído" e "Cancelado".
+**Descrição:** Define o estado em que se encontra o agendamento. Valor padrão: "Agendado". Pode ser alterado para: "Confirmado", "Em espera", "Em andamento", "Concluído" e "Cancelado".
 
-### observacao
+### observacoes
 
 **Tipo:** `TEXT`  
-**Descrição:** Campo de texto utilizado para incluir observações acerca do agendamento. Pode conter informações como {A SER DEFINIDO}.
+**Descrição:** Campo de texto utilizado para incluir observações acerca do agendamento. Por exemplo: "Retorno".
 
 ## AVALIACAO
 
-### id
+### pk
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
@@ -77,16 +72,16 @@
 **Referência:** `PACIENTE(codigo)`  
 **Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
 
-### colaborador_codigo
+### colaborador_id
 
 **Tipo:** `VARCHAR`  
-**Referência:** `COLABORADOR(codigo)`  
+**Referência:** `COLABORADOR(id)`  
 **Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**.
 
 ### data_hora_inicio
 
 **Tipo:** `TIMESTAMPTZ`  
-**Descrição:** {A SER DEFINIDO}
+**Descrição:** É o horário de inicio da avaliação, definida pelo avaliador.
 
 ### data_hora_fim
 
@@ -96,7 +91,7 @@
 ### status
 
 **Tipo:** `VARCHAR(32)`  
-**Descrição:** Define o estado em que se encontra o agendamento. Valor padrão: {A SER DEFINIDO}.
+**Descrição:** Define o estado em que se encontra a avaliação. Valores: "Em adamento", "Finalizada".
 
 ### anotacoes
 
@@ -105,22 +100,22 @@
 
 ## COLABORADOR {REVISAR DEPOIS}
 
-### id
+### pk
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### empresa_unidade_codigo
-
-**Tipo:** `VARCHAR`  
-**Referência:** `EMPRESA(unidade_codigo)`  
-**Descrição:** Chave estrangeira herdada da tabela **EMPRESA**. Refere-se à unidade/empresa onde o colaborador foi contratado.
-
-### codigo
+### id
 
 **Tipo:** `VARCHAR(32)`  
 **Restrição:** `UNIQUE`  
-**Descrição:** Chave secundária de identificação, {A SER DEFINIDO}.
+**Descrição:** Chave secundária de identificação, é uma cópia da chave primária.
+
+### empresa_unidade_codigo
+
+**Tipo:** `VARCHAR`  
+**Referência:** `EMPRESA(unidade_id)`  
+**Descrição:** Chave estrangeira herdada da tabela **EMPRESA**. Refere-se à unidade/empresa onde o colaborador foi contratado.
 
 ### ativo
 
@@ -159,52 +154,52 @@
 **Tipo:** `VARCHAR(64)`  
 **Descrição:** Modo que o colaborador está vinculado a empresa. Pode ser: "PJ", "CLT" ou "Particular".
 
-### formacao
+### titulo_profissional
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** {A SER DEFINIDO} {NO CASO DE UM PEDIATRA, DEVE SER "MEDICINA" OU "PEDIATRIA"?}
+**Descrição:** Título profissional do colaborador, que pode diferir da função exercida. Por exemplo "Médico".
 
 ### registro_profissional
 
-**Tipo:** `VARCHAR`  
-**Descrição:** {A SER DEFINIDO}.
-
-### tipo
-
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** {A SER DEFINIDO}
+**Descrição:** Número do registro profissional para profissionais da área clinica, (por exemplo o CID).
+
+### pis
+
+**Tipo:** `VARCHAR(16)`  
+**Descrição:** Número do PIS, de acordo com carteira de trabalho.
 
 ### funcao
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** {A SER DEFINIDO}
+**Descrição:** Função a qual o colaborador foi contratado. Por exemplo: "Assistente financeiro".{TOFIX}
 
 ### especialidade
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** {A SER DEFINIDO}
+**Descrição:** {A SER DEFINIDO} (Sugestão usar uma nomenclatura "geral", como pediatria ou tecnologia da informação)**Fonoaudiólogo**
 
 ### perfil
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Perfil da conta do colaborador. {A SER DEFINIDO}
+**Descrição:** Perfil da conta do colaborador. Por exemplo 
 
 ### codigo_computador
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Código do computador que o colaborador utiliza {A SER DEFINIDO}.
+**Descrição:** Código do computador que o colaborador utiliza.
 
 ## CONTRATO
 
-### id
+### pk
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### responsavel_codigo
+### responsavel_id
 
 **Tipo:** `VARCHAR`  
-**Referência:** `RESPONSAVEL(codigo)`  
+**Referência:** `RESPONSAVEL(id)`  
 **Descrição:** Chave secundária estrangeira herdada da tabela **RESPONSAVEL**.
 
 ### paciente_codigo
@@ -216,7 +211,7 @@
 ### documento_id
 
 **Tipo:** `INTEGER`  
-**Referência:** `DOCUMENTO(id)`  
+**Referência:** `DOCUMENTO(pk)`  
 **Descrição:** Chave estrangeira herdada da tabela **DOCUMENTO**.
 
 ### ativo
@@ -266,7 +261,7 @@
 
 ## CONVENIO
 
-### id
+### pk
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
@@ -288,7 +283,7 @@
 
 ## DOCUMENTO
 
-### id
+### pk
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
@@ -299,10 +294,10 @@
 **Referência:** `PACIENTE(codigo)`  
 **Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
 
-### colaborador_codigo
+### colaborador_id
 
 **Tipo:** `VARCHAR`  
-**Referência:** `COLABORADOR(codigo)`  
+**Referência:** `COLABORADOR(id)`  
 **Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**, usada para identificar quem anexou o arquivo na base de dados.
 
 ### ativo
@@ -318,7 +313,7 @@
 ### tipo
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Tipo do documento. {A SER DEFINIDO}
+**Descrição:** Tipo do documento. Por exemplo: "CPF", "RG", "Certidão de casamento", etc.
 
 ### caminho
 
@@ -327,15 +322,25 @@
 
 ## EMPRESA
 
-### id
+### pk
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### unidade_codigo
+### id
+
+**Tipo:** `SERIAL PRIMARY KEY`  
+**Descrição:** Chave secundária, é uma cópia da chave primária.
+
+### unidade_prefixo
 
 **Tipo:** `VARCHAR(3)`  
-**Descrição:** Código único da unidade. {A SER DEFINIDO}
+**Descrição:** Prefixo da cidade em que está localizada a unidade. Por exemplo: "ANA";
+
+### unidade_nome
+
+**Tipo:** `VARCHAR(32)`  
+**Descrição:** Nome da cidade em que está localizada a unidade. Por exemplo: "Anápolis";
 
 ### ativo
 
@@ -394,21 +399,27 @@
 
 ## PACIENTE
 
-### id
+### pk
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### empresa_unidade_codigo
+### id
+
+**Tipo:** `VARCHAR(64)`  
+**Restrição:** `UNIQUE`  
+**Descrição:** Chave secundário do paciente, é uma cópia da chave primária.
+
+### empresa_unidade_id
 
 **Tipo:** `VARCHAR`  
-**Referência:** `EMPRESA(unidade_codigo)`  
+**Referência:** `EMPRESA(unidade_id)`  
 **Descrição:** Chave estrangeira herdada da tabela **EMPRESA**.
 
 ### convenio_id
 
 **Tipo:** `INTEGER`  
-**Referência:** `CONVENIO(id)`  
+**Referência:** `CONVENIO(pk)`  
 **Descrição:** Chave estrangeira herdada da tabela **CONVENIO**.
 
 ### codigo
@@ -470,15 +481,15 @@
 
 ## PAGAMENTO
 
-### id
+### pk
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### responsavel_codigo
+### responsavel_id
 
 **Tipo:** `VARCHAR`  
-**Referência:** `RESPONSAVEL(codigo)`  
+**Referência:** `RESPONSAVEL(id)`  
 **Descrição:** Chave estrangeira herdada da tabela **RESPONSAVEL**.
 
 ### data_hora_criacao
@@ -503,16 +514,16 @@
 
 ## RESPONSAVEL
 
-### id
+### pk
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### codigo
+### id
 
-**Tipo:** `VARCHAR(16)`  
+**Tipo:** `VARCHAR(32)`  
 **Restrição:** `UNIQUE`  
-**Descrição:** Código único do responsável. {A SER DEFINIDO}
+**Descrição:** Chave secundária de identificação, é uma cópia da chave primária.
 
 ### ativo
 
@@ -565,7 +576,7 @@
 
 ## LACO
 
-### id
+### pk
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
@@ -576,10 +587,10 @@
 **Referência:** `PACIENTE(codigo)`  
 **Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
 
-### responsavel_codigo
+### responsavel_id
 
 **Tipo:** `VARCHAR`  
-**Referência:** `RESPONSAVEL(codigo)`  
+**Referência:** `RESPONSAVEL(id)`  
 **Descrição:** Chave estrangeira herdada da tabela **RESPONSAVEL**.
 
 ### data_hora_criacao
@@ -590,4 +601,4 @@
 ### tipo
 
 **Tipo:** `VARCHAR(16)`  
-**Descrição:** Tipo de laço entre o paciente e o responsável. Valores possíveis: {A SER DEFINIDO} "Pai", "Mãe", "Guardião", "Tutor", "Responsável Legal", "Outro".
+**Descrição:** Tipo de laço entre o paciente e o responsável. Valores possíveis: {A SER DEFINIDO} "Pai", "Mãe", "Guardião", "Tutor", "Responsável Legal", "Autorizado". (Sugiro adicionar apenas Autorizado e fechar a lista)
