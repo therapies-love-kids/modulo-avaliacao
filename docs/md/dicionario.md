@@ -5,23 +5,17 @@
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### paciente_codigo
-
-**Tipo:** `VARCHAR`  
-**Referência:** `PACIENTE(codigo)`  
-**Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
-
-### responsavel_codigo
-
-**Tipo:** `VARCHAR`  
-**Referência:** `RESPONSAVEL(codigo)`  
-**Descrição:** Chave estrangeira herdada da tabela **RESPONSAVEL**.
-
 ### especialista_colaborador_codigo
 
 **Tipo:** `VARCHAR`  
 **Referência:** `COLABORADOR(codigo)`  
 **Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**, usada para identificar o especialista responsável pela condução do agendamento.
+
+### paciente_codigo
+
+**Tipo:** `VARCHAR`  
+**Referência:** `PACIENTE(codigo)`  
+**Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
 
 ### recepcionista_colaborador_codigo
 
@@ -29,20 +23,16 @@
 **Referência:** `COLABORADOR(codigo)`  
 **Descrição:** Código do recepcionista responsável pelo agendamento.
 
+### responsavel_codigo
+
+**Tipo:** `VARCHAR`  
+**Referência:** `RESPONSAVEL(codigo)`  
+**Descrição:** Chave estrangeira herdada da tabela **RESPONSAVEL**.
+
 ### unidade_codigo
 
 **Tipo:** `VARCHAR(8)`  
 **Descrição:** Chave estrangeira, herdada da tabela **EMPRESA**.
-
-### tipo
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Tipo de agendamento definido pelo criador do registro, podendo ser: {A SER DEFINIDO}.
-
-### status
-
-**Tipo:** `VARCHAR(16)`  
-**Descrição:** Define o estado em que se encontra o agendamento. Valor padrão: "Por confirmar". Pode ser alterado para: "Confirmado", "Em andamento", "Concluído" e "Cancelado".
 
 ### data_hora_inicio
 
@@ -54,16 +44,25 @@
 **Tipo:** `TIMESTAMPTZ`  
 **Descrição:** Preenchido automaticamente com o horário atual do sistema no momento de finalização.
 
-### observacao
-
-**Tipo:** `TEXT`  
-**Descrição:** Campo de texto utilizado para incluir observações acerca do agendamento. Pode conter informações como {A SER DEFINIDO}.
-
 ### sala
 
 **Tipo:** `VARCHAR(16)`  
 **Descrição:** Número ou código da sala onde ocorrerá o evento do agendamento.
 
+### tipo
+
+**Tipo:** `VARCHAR(64)`  
+**Descrição:** Tipo de agendamento definido pelo criador do registro, podendo ser: {A SER DEFINIDO}.
+
+### status
+
+**Tipo:** `VARCHAR(16)`  
+**Descrição:** Define o estado em que se encontra o agendamento. Valor padrão: "Por confirmar". Pode ser alterado para: "Confirmado", "Em andamento", "Concluído" e "Cancelado".
+
+### observacao
+
+**Tipo:** `TEXT`  
+**Descrição:** Campo de texto utilizado para incluir observações acerca do agendamento. Pode conter informações como {A SER DEFINIDO}.
 
 ## AVALIACAO
 
@@ -72,13 +71,13 @@
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### paciente_codigo  
+### paciente_codigo
 
 **Tipo:** `VARCHAR`  
 **Referência:** `PACIENTE(codigo)`  
 **Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
 
-### colaborador_codigo  
+### colaborador_codigo
 
 **Tipo:** `VARCHAR`  
 **Referência:** `COLABORADOR(codigo)`  
@@ -94,12 +93,12 @@
 **Tipo:** `TIMESTAMPTZ`  
 **Descrição:** Preenchido automaticamente com o horário atual do sistema no momento de finalização.
 
-### status  
+### status
 
 **Tipo:** `VARCHAR(32)`  
 **Descrição:** Define o estado em que se encontra o agendamento. Valor padrão: {A SER DEFINIDO}.
 
-### anotacoes  
+### anotacoes
 
 **Tipo:** `TEXT`  
 **Descrição:** Campo para preencher com anotações ao decorrer da avaliação, caso seja necessário.
@@ -115,22 +114,7 @@
 
 **Tipo:** `VARCHAR`  
 **Referência:** `EMPRESA(unidade_codigo)`  
-**Descrição:** Chave secundária estrangeira herdada da tabela **EMPRESA**. Refere-se à unidade/empresa onde o colaborador foi contratado.
-
-### ativo
-
-**Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o colaborador está ou não ativo. Pode ser TRUE (ativo) ou FALSE (inativo).
-
-### modo_trabalho
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Modo que o colaborador está vinculado a empresa. Pode ser: "PJ", "CLT" ou "Particular".
-
-### formacao
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** {A SER DEFINIDO} {NO CASO DE UM PEDIATRA, DEVE SER "MEDICINA" OU "PEDIATRIA"?}
+**Descrição:** Chave estrangeira herdada da tabela **EMPRESA**. Refere-se à unidade/empresa onde o colaborador foi contratado.
 
 ### codigo
 
@@ -138,10 +122,10 @@
 **Restrição:** `UNIQUE`  
 **Descrição:** Chave secundária de identificação, {A SER DEFINIDO}.
 
-### registro_profissional
+### ativo
 
-**Tipo:** `VARCHAR`  
-**Descrição:** {A SER DEFINIDO}.
+**Tipo:** `BOOLEAN`  
+**Descrição:** Campo para indicar se o colaborador está ou não ativo. Pode ser TRUE (ativo) ou FALSE (inativo).
 
 ### nome
 
@@ -153,6 +137,37 @@
 **Tipo:** `VARCHAR(11)`  
 **Restrição:** `UNIQUE`  
 **Descrição:** CPF completo de acordo com documento, apenas números. Exemplo: 12345678932.
+
+### email
+
+**Tipo:** `VARCHAR(128)`  
+**Restrição:** `UNIQUE`  
+**Descrição:** E-mail do colaborador.
+
+### usuario
+
+**Tipo:** `VARCHAR(64)`  
+**Descrição:** Nome de usuário do colaborador, utilizado para autenticação.
+
+### senha
+
+**Tipo:** `VARCHAR(128)`  
+**Descrição:** Senha do colaborador, utilizado para autenticação.
+
+### modo_trabalho
+
+**Tipo:** `VARCHAR(64)`  
+**Descrição:** Modo que o colaborador está vinculado a empresa. Pode ser: "PJ", "CLT" ou "Particular".
+
+### formacao
+
+**Tipo:** `VARCHAR(64)`  
+**Descrição:** {A SER DEFINIDO} {NO CASO DE UM PEDIATRA, DEVE SER "MEDICINA" OU "PEDIATRIA"?}
+
+### registro_profissional
+
+**Tipo:** `VARCHAR`  
+**Descrição:** {A SER DEFINIDO}.
 
 ### tipo
 
@@ -174,63 +189,47 @@
 **Tipo:** `VARCHAR(64)`  
 **Descrição:** Perfil da conta do colaborador. {A SER DEFINIDO}
 
-### codigo_computador  
+### codigo_computador
 
 **Tipo:** `VARCHAR(64)`  
 **Descrição:** Código do computador que o colaborador utiliza {A SER DEFINIDO}.
 
-### email
-
-**Tipo:** `VARCHAR(128)`  
-**Restrição:** `UNIQUE`  
-**Descrição:** E-mail do colaborador.
-
-### usuario
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Nome de usuário do colaborador, utilizado para autenticação.
-
-### senha
-
-**Tipo:** `VARCHAR(128)`  
-**Descrição:** Senha do colaborador, utilizado para autenticação.
-
 ## CONTRATO
 
-### id  
+### id
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### responsavel_codigo  
+### responsavel_codigo
 
 **Tipo:** `VARCHAR`  
 **Referência:** `RESPONSAVEL(codigo)`  
 **Descrição:** Chave secundária estrangeira herdada da tabela **RESPONSAVEL**.
 
-### paciente_codigo  
+### paciente_codigo
 
 **Tipo:** `VARCHAR`  
 **Referência:** `PACIENTE(codigo)`  
 **Descrição:** Chave secundária estrangeira herdada da tabela **PACIENTE**.
 
-### documento_id  
+### documento_id
 
 **Tipo:** `INTEGER`  
 **Referência:** `DOCUMENTO(id)`  
 **Descrição:** Chave estrangeira herdada da tabela **DOCUMENTO**.
+
+### ativo
+
+**Tipo:** `BOOLEAN`  
+**Descrição:** Campo para indicar se o contrato está ou não ativo. Pode ser TRUE (ativo) ou FALSE (inativo).
 
 ### data_hora_criacao
 
 **Tipo:** `TIMESTAMPTZ`  
 **Descrição:** Preenchido automaticamente com o horário atual do sistema no momento de criação.
 
-### ativo
-
-**Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o colaborador está ou não ativo. Pode ser TRUE (ativo) ou FALSE (inativo).
-
-### cep  
+### cep
 
 **Tipo:** `VARCHAR(8)`  
 **Descrição:** CEP do contratante (apenas os números) de acordo com comprovante de endereço. Exemplo: "12312332".
@@ -240,56 +239,57 @@
 **Tipo:** `CHAR(2)`  
 **Descrição:** Estado do contratante em dois caracteres. Exemplos: "GO" e "DF".
 
-### cidade  
+### cidade
 
 **Tipo:** `VARCHAR(64)`  
 **Descrição:** Cidade do contratante de acordo com comprovante de endereço. Exemplo: Anápolis.
 
-### bairro  
+### bairro
 
 **Tipo:** `VARCHAR(64)`  
 **Descrição:** Bairro do contratante de acordo com comprovante de endereço. Exemplo: São João.
 
-### logradouro  
+### logradouro
 
 **Tipo:** `VARCHAR(128)`  
 **Descrição:** Rua/Avenida do contratante de acordo com comprovante de endereço. Exemplo: Avenida Fernando Costa.
 
-### numero  
+### numero
 
 **Tipo:** `INTEGER`  
 **Descrição:** Número do endereço do contratante de acordo com comprovante. Exemplo: 544.
 
-### complemento  
+### complemento
 
 **Tipo:** `VARCHAR(256)`  
 **Descrição:** Complemento para o endereço, caso necessário. Exemplo: "Ao lado de um pé de mexerica".
 
 ## CONVENIO
 
-### id  
+### id
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### nome  
+### ativo
+
+**Tipo:** `BOOLEAN`  
+**Descrição:** Campo para indicar se o convênio está ativo ou inativo. Pode ser TRUE (ativo) ou FALSE (inativo).
+
+### nome
 
 **Tipo:** `VARCHAR(64)`  
 **Descrição:** Nome completo do convênio. Exemplo: "Confederação Nacional das Cooperativas Médicas".
 
-### nome_curto  
+### nome_curto
 
 **Tipo:** `VARCHAR(16)`  
-**Descrição:** Nome curto para identificação do convênio. Exemplo: "UNIMED".
-
-### ativo
-
-**Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o colaborador está ou não ativo. Pode ser TRUE (ativo) ou FALSE (inativo).
+**Descrição:** Nome curto ou sigla para identificação do convênio. Exemplo: "UNIMED".
 
 ## DOCUMENTO
 
-### id  
+### id
+
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
@@ -297,28 +297,28 @@
 
 **Tipo:** `VARCHAR`  
 **Referência:** `PACIENTE(codigo)`  
-**Descrição:** Chave secundária estrangeira herdada da tabela **PACIENTE**.
+**Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
 
 ### colaborador_codigo
 
 **Tipo:** `VARCHAR`  
 **Referência:** `COLABORADOR(codigo)`  
-**Descrição:** Chave secundária estrangeira herdada da tabela **COLABORADOR**, usada para identificar quem anexou o arquivo na base de dados.
-
-### data_hora_criacao
-
-**Tipo:** `TIMESTAMPTZ`  
-**Descrição:** Preenchido automaticamente com o horário atual do sistema no momento de criação.
+**Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**, usada para identificar quem anexou o arquivo na base de dados.
 
 ### ativo
 
 **Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o colaborador está ou não ativo. Pode ser TRUE (ativo) ou FALSE (inativo).
+**Descrição:** Campo para indicar se o documento está ativo ou inativo. Pode ser TRUE (ativo) ou FALSE (inativo).
+
+### data_hora_criacao
+
+**Tipo:** `TIMESTAMPTZ`  
+**Descrição:** Preenchido automaticamente com o horário atual do sistema no momento de criação do documento.
 
 ### tipo
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** {A SER DEFINIDO}
+**Descrição:** Tipo do documento. {A SER DEFINIDO}
 
 ### caminho
 
@@ -332,65 +332,65 @@
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### unidade_codigo  
+### unidade_codigo
 
 **Tipo:** `VARCHAR(3)`  
-**Descrição:** Chave secundária {A SER DEFINIDO}
-
-### unidade_nome  
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Campo para o nome da unidade. Exemplo: "Therapies Love Kids - Centro".
-
-### nome_fantasia  
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Campo para o nome curto da unidade. Exemplo: "TLK - Centro".
-
-### razao_social  
-
-**Tipo:** `VARCHAR(128)`  
-**Descrição:** Campo para cadastrar o nome completo da unidade, assim como no CNPJ. Exemplo: "OliveiraLac Clinica de Reabilitação Neurológica LTDA".
+**Descrição:** Código único da unidade. {A SER DEFINIDO}
 
 ### ativo
 
 **Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o colaborador está ou não ativo. Pode ser TRUE (ativo) ou FALSE (inativo).
+**Descrição:** Campo para indicar se a unidade está ativa ou inativa. Pode ser TRUE (ativa) ou FALSE (inativa).
 
-### cep  
+### razao_social
+
+**Tipo:** `VARCHAR(128)`  
+**Descrição:** Razão social da empresa/unidade, conforme consta no CNPJ. Exemplo: "OliveiraLac Clinica de Reabilitação Neurológica LTDA".
+
+### nome_fantasia
+
+**Tipo:** `VARCHAR(64)`  
+**Descrição:** Nome fantasia ou nome curto da unidade. Exemplo: "TLK - Centro".
+
+### unidade_nome
+
+**Tipo:** `VARCHAR(64)`  
+**Descrição:** Nome da unidade. Exemplo: "Therapies Love Kids - Centro".
+
+### cep
 
 **Tipo:** `VARCHAR(8)`  
-**Descrição:** CEP da empresa/unidade (apenas os números) de acordo com comprovante de endereço. Exemplo: "12312332".
+**Descrição:** CEP da empresa/unidade (apenas os números). Exemplo: "12312332".
 
 ### uf
 
 **Tipo:** `CHAR(2)`  
-**Descrição:** Estado da empresa/unidade em dois caracteres. Exemplos: "GO" e "DF".
+**Descrição:** Estado da empresa/unidade (sigla com dois caracteres). Exemplos: "GO" e "DF".
 
-### cidade  
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Cidade da empresa/unidade de acordo com comprovante de endereço. Exemplo: Anápolis.
-
-### bairro  
+### cidade
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Bairro da empresa/unidade de acordo com comprovante de endereço. Exemplo: São João.
+**Descrição:** Cidade da empresa/unidade. Exemplo: Anápolis.
 
-### logradouro  
+### bairro
+
+**Tipo:** `VARCHAR(64)`  
+**Descrição:** Bairro da empresa/unidade. Exemplo: São João.
+
+### logradouro
 
 **Tipo:** `VARCHAR(128)`  
-**Descrição:** Rua/Avenida da empresa/unidade de acordo com comprovante de endereço. Exemplo: Avenida Fernando Costa.
+**Descrição:** Rua/Avenida da empresa/unidade. Exemplo: Avenida Fernando Costa.
 
-### numero  
+### numero
 
 **Tipo:** `INTEGER`  
-**Descrição:** Número do endereço da empresa/unidade de acordo com comprovante. Exemplo: 544.
+**Descrição:** Número do endereço da empresa/unidade. Exemplo: 544.
 
-### complemento  
+### complemento
 
 **Tipo:** `VARCHAR(256)`  
-**Descrição:** Complemento para o endereço, caso necessário. Exemplo: "Ao lado de um pé de mexerica".
+**Descrição:** Complemento do endereço, se necessário. Exemplo: "Ao lado de um pé de mexerica".
 
 ## PACIENTE
 
@@ -403,70 +403,70 @@
 
 **Tipo:** `VARCHAR`  
 **Referência:** `EMPRESA(unidade_codigo)`  
-**Descrição:** Chave secundária estrangeira herdada da tabela **EMPRESA**.
+**Descrição:** Chave estrangeira herdada da tabela **EMPRESA**.
 
 ### convenio_id
 
-**Tipo:** `VARCHAR`  
+**Tipo:** `INTEGER`  
 **Referência:** `CONVENIO(id)`  
-**Descrição:** Chave secundária estrangeira herdada da tabela **CONVENIO**.
-
-### ativo
-
-**Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o colaborador está ou não ativo. Pode ser TRUE (ativo) ou FALSE (inativo).
+**Descrição:** Chave estrangeira herdada da tabela **CONVENIO**.
 
 ### codigo
 
 **Tipo:** `VARCHAR(64)`  
 **Restrição:** `UNIQUE`  
-**Descrição:** Chave secundária padrão código da unidade seguido do ano, mês, dia, hora, minuto, segundo e o dígito mais a esquerda dos milissegundos. Exemplo: **ANA**25**02**03**15**10**06**11
+**Descrição:** Código único do paciente, gerado automaticamente no formato: código da unidade + ano + mês + dia + hora + minuto + segundo + dígito mais à esquerda dos milissegundos. Exemplo: ANA2502031510061.
+
+### ativo
+
+**Tipo:** `BOOLEAN`  
+**Descrição:** Indica se o paciente está ativo ou inativo.
 
 ### nome
 
 **Tipo:** `VARCHAR(256)`  
-**Descrição:** Campo para nome completo do paciente, **assim como consta no documento**. Exemplo: Henrique Manoel Jonas da Silva.
+**Descrição:** Nome completo do paciente, conforme consta no documento. Exemplo: Henrique Manoel Jonas da Silva.
 
 ### nome_curto
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Campo para um nome curto definido na hora do cadastro. Exemplo: Henrique Silva.
+**Descrição:** Nome curto do paciente, definido no cadastro. Exemplo: Henrique Silva.
 
 ### sexo
 
 **Tipo:** `CHAR(1)`  
-**Descrição:** Campo para cadastrar o sexo da criança, sendo **M** para **Masculino** e **F** para **Feminino**, de acordo com a certidão de nascimento, RG e CPF.
+**Descrição:** Sexo do paciente: 'M' para Masculino e 'F' para Feminino, conforme certidão de nascimento, RG e CPF.
 
 ### data_nascimento
 
 **Tipo:** `DATE`  
-**Descrição:** Data de nascimento, de acordo com o RG.
+**Descrição:** Data de nascimento, conforme RG.
 
 ### local_nascimento
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Nome da cidade de nascimento. Exemplo: Anápolis-GO.
+**Descrição:** Cidade de nascimento. Exemplo: Anápolis-GO.
 
 ### certidao_nascimento
 
 **Tipo:** `VARCHAR`  
-**Descrição:** Código da certidão de nascimento, de acordo com o documento devido.
+**Descrição:** Número da certidão de nascimento.
 
 ### cpf
 
 **Tipo:** `VARCHAR(11)`  
 **Restrição:** `UNIQUE`  
-**Descrição:** Código  do CPF de acordo com o documento correspondente, somente números. Exemplo: 12345678932.
+**Descrição:** CPF do paciente (apenas números). Exemplo: 12345678932.
 
 ### numero_convenio
 
 **Tipo:** `VARCHAR(32)`  
-**Descrição:** Campo para cadastramento do convênio do paciente.
+**Descrição:** Número da carteira ou registro do paciente no convênio.
 
 ### observacoes
 
 **Tipo:** `TEXT`  
-**Descrição:** Campo para cadastrar observações do paciente, caso seja necessário.
+**Descrição:** Observações sobre o paciente, se necessário.
 
 ## PAGAMENTO
 
@@ -479,27 +479,27 @@
 
 **Tipo:** `VARCHAR`  
 **Referência:** `RESPONSAVEL(codigo)`  
-**Descrição:** Chave secundária estrangeira herdada da tabela **Responsável**.
+**Descrição:** Chave estrangeira herdada da tabela **RESPONSAVEL**.
 
 ### data_hora_criacao
 
 **Tipo:** `TIMESTAMPTZ`  
-**Descrição:** Preenchido automaticamente com o horário atual do sistema no momento de criação.
+**Descrição:** Preenchido automaticamente com a data e hora atuais do sistema no momento da criação do pagamento.
 
 ### valor
 
 **Tipo:** `NUMERIC(10, 2)`  
-**Descrição:** Campo para preencher o valor somente em números. Exemplo: 104,50.
+**Descrição:** Valor do pagamento, em formato numérico com duas casas decimais. Exemplo: 104.50.
 
 ### tipo
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Campo para indicar o tipo de pagamento. Exemplo: débito, crédito, pix.
+**Descrição:** Tipo de pagamento. Exemplo: "Débito", "Crédito", "PIX", "Boleto".
 
 ### descricao
 
 **Tipo:** `TEXT`  
-**Descrição:** Campo de texto para colocar a Descrição: do pagamento. Exemplo: "Mensalidade paciente XXXXX".
+**Descrição:** Descrição do pagamento. Exemplo: "Mensalidade paciente XXXXX", "Consulta Dr. YYYYY".
 
 ## RESPONSAVEL
 
@@ -508,70 +508,75 @@
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### codigo  
+### codigo
 
-**Tipo:** `VARCHAR(16) UNIQUE`  
-**Descrição:** Chave secundária {A SER DEFINIDO}.
+**Tipo:** `VARCHAR(16)`  
+**Restrição:** `UNIQUE`  
+**Descrição:** Código único do responsável. {A SER DEFINIDO}
 
 ### ativo
 
 **Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o colaborador está ou não ativo. Pode ser TRUE (ativo) ou FALSE (inativo).
+**Descrição:** Indica se o responsável está ativo ou inativo.
 
-### nome  
+### nome
 
 **Tipo:** `VARCHAR(128)`  
-**Descrição:** Campo para cadastrar o nome do responsável. Exemplo: "Isaque Brenner de Lucas Mathias".
+**Descrição:** Nome completo do responsável. Exemplo: "Isaque Brenner de Lucas Mathias".
 
-### estado_civil  
+### cpf
+
+**Tipo:** `VARCHAR(11)`  
+**Restrição:** `UNIQUE`  
+**Descrição:** CPF do responsável (apenas números). Exemplo: "12345678932".
+
+### rg
+
+**Tipo:** `VARCHAR(20)`  
+**Restrição:** `UNIQUE`  
+**Descrição:** RG do responsável (apenas números). Exemplo: "1234567890".
+
+### estado_civil
 
 **Tipo:** `VARCHAR(16)`  
-**Descrição:** Campo para cadastrar o estado civil do responsável. Pode ser: "Solteiro", "Casado", "Divorciado" ou "Viuvo".
+**Descrição:** Estado civil do responsável. Valores possíveis: "Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viúvo(a)", "União Estável".
 
-### profissao  
+### profissao
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Campo para cadastrar a profissão do responsável. Exemplo: "Engenheiro civil".
+**Descrição:** Profissão do responsável. Exemplo: "Engenheiro civil".
 
-### cpf  
+### celular
 
-**Tipo:** `VARCHAR(11) UNIQUE`  
-**Descrição:** Campo para cadastrar o cpf do responsável com apenas números. Exemplo: "12345678932".
+**Tipo:** `VARCHAR(16)`  
+**Restrição:** `UNIQUE`  
+**Descrição:** Celular do responsável (apenas números). Exemplo: "64912344321".
 
-### rg  
+### email
 
-**Tipo:** `VARCHAR(20) UNIQUE`  
-**Descrição:** Campo para cadastrar o rg do responsável com apenas números. Exemplo: "12345678901234567890".
+**Tipo:** `VARCHAR(64)`  
+**Restrição:** `UNIQUE`  
+**Descrição:** E-mail do responsável.
 
-### celular  
-
-**Tipo:** `VARCHAR(16) UNIQUE`  
-**Descrição:** Campo para cadastrar o celular do responsável com apenas números. Exemplo: "64912344321".
-
-### email  
-
-**Tipo:** `VARCHAR(64) UNIQUE`  
-**Descrição:** Campo de E-mail, cada E-mail é único na base de dados.
-
-### contatos_extras  
+### contatos_extras
 
 **Tipo:** `TEXT`  
-**Descrição:** Campo de contatos extras caso seja necessário.
+**Descrição:** Outros contatos do responsável, se necessário.
 
 ## LACO
 
-### id  
+### id
 
 **Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
-### paciente_codigo  
+### paciente_codigo
 
 **Tipo:** `VARCHAR`  
 **Referência:** `PACIENTE(codigo)`  
 **Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
 
-### responsavel_codigo  
+### responsavel_codigo
 
 **Tipo:** `VARCHAR`  
 **Referência:** `RESPONSAVEL(codigo)`  
@@ -580,9 +585,9 @@
 ### data_hora_criacao
 
 **Tipo:** `TIMESTAMPTZ`  
-**Descrição:** Preenchido automaticamente com o horário atual do sistema no momento de criação.
+**Descrição:** Data e hora de criação do laço, preenchido automaticamente pelo sistema.
 
-### tipo  
+### tipo
 
 **Tipo:** `VARCHAR(16)`  
-**Descrição:** Tipo do laço. Pode ser: "Pai", "Mãe", "Guardião" ou "Autorizado".
+**Descrição:** Tipo de laço entre o paciente e o responsável. Valores possíveis: {A SER DEFINIDO} "Pai", "Mãe", "Guardião", "Tutor", "Responsável Legal", "Outro".
