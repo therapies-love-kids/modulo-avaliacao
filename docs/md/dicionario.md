@@ -8,25 +8,25 @@
 ### paciente_codigo
 
 **Tipo:** `VARCHAR`  
-**Referência:** `PACIENTE(codigo)`
+**Referência:** `PACIENTE(codigo)`  
 **Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
 
 ### responsavel_codigo
 
-**Tipo:** `VARCHAR`
-**Referência:** `RESPONSAVEL(codigo)`
+**Tipo:** `VARCHAR`  
+**Referência:** `RESPONSAVEL(codigo)`  
 **Descrição:** Chave estrangeira herdada da tabela **RESPONSAVEL**.
 
 ### especialista_colaborador_codigo
 
-**Tipo:** `VARCHAR`
-**Referência:** `COLABORADOR(codigo)`
+**Tipo:** `VARCHAR`  
+**Referência:** `COLABORADOR(codigo)`  
 **Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**, usada para identificar o especialista responsável pela condução do agendamento.
 
 ### recepcionista_colaborador_codigo
 
-**Tipo:** `VARCHAR`
-**Referência:** `COLABORADOR(codigo)`
+**Tipo:** `VARCHAR`  
+**Referência:** `COLABORADOR(codigo)`  
 **Descrição:** Código do recepcionista responsável pelo agendamento.
 
 ### unidade_codigo
@@ -56,12 +56,12 @@
 
 ### observacao
 
-**Tipo:** `TEXT`
+**Tipo:** `TEXT`  
 **Descrição:** Campo de texto utilizado para incluir observações acerca do agendamento. Pode conter informações como {A SER DEFINIDO}.
 
 ### sala
 
-**Tipo:** `VARCHAR(16)`
+**Tipo:** `VARCHAR(16)`  
 **Descrição:** Número ou código da sala onde ocorrerá o evento do agendamento.
 
 
@@ -69,7 +69,7 @@
 
 ### id
 
-**Tipo:** `SERIAL PRIMARY KEY`
+**Tipo:** `SERIAL PRIMARY KEY`  
 **Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
 
 ### paciente_codigo  
@@ -455,7 +455,7 @@
 ### cpf
 
 **Tipo:** `VARCHAR(11)`  
-**Restrição:** `UNIQUE`
+**Restrição:** `UNIQUE`  
 **Descrição:** Código  do CPF de acordo com o documento correspondente, somente números. Exemplo: 12345678932.
 
 ### numero_convenio
@@ -493,12 +493,12 @@
 
 ### tipo
 
-**Tipo:** `VARCHAR(64)`
+**Tipo:** `VARCHAR(64)`  
 **Descrição:** Campo para indicar o tipo de pagamento. Exemplo: débito, crédito, pix.
 
 ### descricao
 
-**Tipo:** `TEXT`
+**Tipo:** `TEXT`  
 **Descrição:** Campo de texto para colocar a Descrição: do pagamento. Exemplo: "Mensalidade paciente XXXXX".
 
 ## RESPONSAVEL
