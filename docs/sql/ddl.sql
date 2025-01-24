@@ -1,49 +1,52 @@
 -- Tabela EMPRESA
 CREATE TABLE EMPRESA (
-    id SERIAL PRIMARY KEY,
-    unidade_codigo VARCHAR(3) NOT NULL UNIQUE, -- Adicionado o constraint UNIQUE aqui
-    unidade_nome VARCHAR(64),
-    nome_fantasia VARCHAR(64),
-    razao_social VARCHAR(128),
-    status BOOLEAN,
-    cep VARCHAR(8),
-    uf CHAR(2),
-    cidade VARCHAR(64),
-    bairro VARCHAR(64),
-    logradouro VARCHAR(128),
-    cnpj VARCHAR(14) UNIQUE,
-    fone VARCHAR(15) UNIQUE,
-    email VARCHAR(64),
-    diretor_colaborador_codigo VARCHAR
+    pk SERIAL PRIMARY KEY, -- Chave primária, gerada automaticamente pelo banco de dados
+
+    unidade_prefixo VARCHAR(3) NOT NULL UNIQUE, -- Prefixo da unidade
+    unidade_nome VARCHAR(64), -- Nome da unidade
+
+    ativo BOOLEAN, -- Indica se a unidade está ativa (TRUE) ou inativa (FALSE)
+    razao_social VARCHAR(128), -- Razão social da empresa/unidade
+    nome_fantasia VARCHAR(64), -- Nome fantasia da unidade
+
+    cep VARCHAR(8), -- CEP da unidade
+    uf CHAR(2), -- Estado da unidade
+    cidade VARCHAR(64), -- Cidade da unidade
+    bairro VARCHAR(64), -- Bairro da unidade
+    logradouro VARCHAR(128), -- Logradouro da unidade
+    numero INTEGER, -- Número do endereço
+    complemento VARCHAR(256) -- Complemento do endereço, se necessário
 );
 
 -- Tabela CONVENIO
 CREATE TABLE CONVENIO (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(64) NOT NULL,
-    nome_curto VARCHAR(16),
-    ativo BOOLEAN
+    pk SERIAL PRIMARY KEY, -- Chave primária, gerada automaticamente pelo banco de dados
+
+    ativo BOOLEAN, -- Indica se o convênio está ativo (TRUE) ou inativo (FALSE)
+    nome VARCHAR(64) NOT NULL, -- Nome completo do convênio
+    nome_curto VARCHAR(16) -- Nome curto ou sigla para identificação do convênio
 );
 
 -- Tabela COLABORADOR
 CREATE TABLE COLABORADOR (
-    id SERIAL PRIMARY KEY,
-    ativo BOOLEAN,
-    modo_trabalho VARCHAR(64),
-    formacao VARCHAR(64),
-    empresa_unidade_codigo VARCHAR REFERENCES EMPRESA(unidade_codigo),
-    codigo VARCHAR(32) UNIQUE NOT NULL,
-    registro_profissional VARCHAR,
-    nome VARCHAR(128) NOT NULL,
-    cpf VARCHAR(11) UNIQUE,
-    tipo VARCHAR(64),
-    funcao VARCHAR(64),
-    especialidade VARCHAR(64),
-    perfil VARCHAR(64),
-    codigo_computador VARCHAR(64),
-    email VARCHAR(128) UNIQUE,
-    usuario VARCHAR(64),
-    senha VARCHAR(128)
+    pk SERIAL PRIMARY KEY, -- Chave primária, gerada automaticamente pelo banco de dados
+
+    id VARCHAR(32) UNIQUE NOT NULL, -- Chave secundária de identificação, cópia da chave primária
+    empresa_unidade_codigo VARCHAR REFERENCES EMPRESA(unidade_id), -- Chave estrangeira da tabela EMPRESA
+
+    ativo BOOLEAN, -- Indica se o colaborador está ativo (TRUE) ou inativo (FALSE)
+    nome VARCHAR(128) NOT NULL, -- Nome completo do colaborador
+    cpf VARCHAR(11) UNIQUE, -- CPF do colaborador, apenas números
+    email VARCHAR(128) UNIQUE, -- E-mail do colaborador
+
+    modo_trabalho VARCHAR(64), -- Forma de vínculo do colaborador com a empresa (PJ, CLT, Particular)
+    titulo_profissional VARCHAR(64), -- Título profissional do colaborador
+    registro_profissional VARCHAR(64), -- Número do registro profissional (se aplicável)
+    pis VARCHAR(16), -- Número do PIS do colaborador
+
+    setor VARCHAR(64), -- Setor onde o colaborador trabalha
+    funcao VARCHAR(64), -- Função contratada do colaborador
+    especialidade VARCHAR(64) -- Especialidade do colaborador
 );
 
 -- Adiciona a constraint de chave estrangeira para diretor_colaborador_codigo após a criação da tabela COLABORADOR
@@ -54,99 +57,120 @@ REFERENCES COLABORADOR (codigo);
 
 -- Tabela PACIENTE
 CREATE TABLE PACIENTE (
-    id SERIAL PRIMARY KEY,
-    ativo BOOLEAN,
-    empresa_unidade_codigo VARCHAR REFERENCES EMPRESA(unidade_codigo),
-    codigo VARCHAR(64) UNIQUE NOT NULL,
-    nome VARCHAR(256) NOT NULL,
-    nome_curto VARCHAR(64),
-    sexo CHAR(1),
-    data_nascimento DATE,
-    local_nascimento VARCHAR(64),
-    certidao_nascimento VARCHAR,
-    cpf VARCHAR(11) UNIQUE,
-    convenio_id INTEGER REFERENCES CONVENIO(id),
-    numero_convenio VARCHAR(16),
-    observacoes TEXT
+    pk SERIAL PRIMARY KEY, -- Chave primária, gerada automaticamente pelo banco de dados
+    
+    id VARCHAR(64) UNIQUE NOT NULL, -- Chave secundária do paciente, cópia da chave primária
+    empresa_unidade_id VARCHAR REFERENCES EMPRESA(unidade_id), -- Chave estrangeira herdada da tabela EMPRESA
+    convenio_id INTEGER REFERENCES CONVENIO(pk), -- Chave estrangeira herdada da tabela CONVENIO
+    codigo VARCHAR(64) UNIQUE NOT NULL, -- Código único do paciente gerado automaticamente
+
+    ativo BOOLEAN, -- Indica se o paciente está ativo ou inativo
+
+    nome VARCHAR(256) NOT NULL, -- Nome completo do paciente
+    nome_curto VARCHAR(64), -- Nome curto do paciente
+    sexo CHAR(1), -- Sexo do paciente
+    data_nascimento DATE, -- Data de nascimento do paciente
+    local_nascimento VARCHAR(64), -- Cidade de nascimento
+    certidao_nascimento VARCHAR, -- Número da certidão de nascimento
+    cpf VARCHAR(11) UNIQUE, -- CPF do paciente
+    numero_convenio VARCHAR(32), -- Número do convênio
+    observacoes TEXT -- Observações sobre o paciente
 );
 
 -- Tabela RESPONSAVEL
 CREATE TABLE RESPONSAVEL (
-    id SERIAL PRIMARY KEY,
-    codigo VARCHAR(64) UNIQUE NOT NULL,
-    ativo BOOLEAN,
-    nome VARCHAR(128) NOT NULL,
-    estado_civil VARCHAR(64),
-    profissao VARCHAR(64),
-    cpf VARCHAR(11) UNIQUE,
-    rg VARCHAR(20) UNIQUE,
-    celular VARCHAR(15) UNIQUE,
-    email VARCHAR(64) UNIQUE,
-    contatos_extras TEXT
+    pk SERIAL PRIMARY KEY, -- Chave primária, gerada automaticamente pelo banco de dados
+
+    id VARCHAR(32) UNIQUE NOT NULL, -- Chave secundária de identificação, cópia da chave primária
+    ativo BOOLEAN, -- Indica se o responsável está ativo ou inativo
+
+    nome VARCHAR(128) NOT NULL, -- Nome completo do responsável
+    estado_civil VARCHAR(16), -- Estado civil do responsável
+    profissao VARCHAR(64), -- Profissão do responsável
+    cpf VARCHAR(11) UNIQUE, -- CPF do responsável
+    rg VARCHAR(20) UNIQUE, -- RG do responsável
+    celular VARCHAR(16) UNIQUE, -- Celular do responsável
+    email VARCHAR(64) UNIQUE, -- E-mail do responsável
+    contatos_extras TEXT -- Outros contatos do responsável, se necessário
 );
 
--- Tabela VINCULO
-CREATE TABLE VINCULO (
-    id SERIAL PRIMARY KEY,
-    data_hora_criacao TIMESTAMPTZ NOT NULL,
-    paciente_codigo VARCHAR REFERENCES PACIENTE(codigo) NOT NULL,
-    responsavel_codigo VARCHAR REFERENCES RESPONSAVEL(codigo) NOT NULL,
-    tipo VARCHAR(16)
+
+-- Tabela LACO
+CREATE TABLE LACO (
+    pk SERIAL PRIMARY KEY, -- Chave primária, gerada automaticamente pelo banco de dados
+
+    paciente_codigo VARCHAR REFERENCES PACIENTE(codigo) NOT NULL, -- Chave estrangeira da tabela PACIENTE
+    responsavel_id VARCHAR REFERENCES RESPONSAVEL(id) NOT NULL, -- Chave estrangeira da tabela RESPONSAVEL
+
+    data_hora_criacao TIMESTAMPTZ NOT NULL, -- Data e hora de criação do laço
+    tipo VARCHAR(16) -- Tipo de laço (Pai, Mãe, Guardião, etc.)
 );
 
 -- Tabela PAGAMENTO
 CREATE TABLE PAGAMENTO (
-    id SERIAL PRIMARY KEY,
-    data_hora_criacao TIMESTAMPTZ NOT NULL,
-    responsavel_codigo VARCHAR REFERENCES RESPONSAVEL(codigo),
-    valor NUMERIC(10, 2),
-    tipo VARCHAR(64),
-    descricao TEXT
+    pk SERIAL PRIMARY KEY, -- Chave primária, gerada automaticamente pelo banco de dados
+
+    responsavel_id VARCHAR REFERENCES RESPONSAVEL(id), -- Chave estrangeira herdada da tabela RESPONSAVEL
+    data_hora_criacao TIMESTAMPTZ NOT NULL, -- Preenchido automaticamente com a data e hora atuais do sistema
+    valor NUMERIC(10, 2), -- Valor do pagamento, com duas casas decimais
+    tipo VARCHAR(64), -- Tipo de pagamento (Débito, Crédito, PIX, Boleto)
+    descricao TEXT -- Descrição do pagamento (ex.: "Mensalidade paciente XXXXX")
 );
+
 
 -- Tabela DOCUMENTO
 CREATE TABLE DOCUMENTO (
-    id SERIAL PRIMARY KEY,
-    data_hora_criacao TIMESTAMPTZ NOT NULL,
-    ativo BOOLEAN,
-    tipo VARCHAR(64),
-    caminho VARCHAR(256),
-    paciente_codigo VARCHAR REFERENCES PACIENTE(codigo),
-    colaborador_codigo VARCHAR REFERENCES COLABORADOR(codigo)
+    pk SERIAL PRIMARY KEY, -- Chave primária, gerada automaticamente pelo banco de dados
+
+    paciente_codigo VARCHAR REFERENCES PACIENTE(codigo), -- Chave estrangeira herdada da tabela PACIENTE
+    colaborador_id VARCHAR REFERENCES COLABORADOR(id), -- Chave estrangeira herdada da tabela COLABORADOR
+
+    ativo BOOLEAN, -- Indica se o documento está ativo (TRUE) ou inativo (FALSE)
+    data_hora_criacao TIMESTAMPTZ NOT NULL, -- Data e hora de criação do documento
+
+    tipo VARCHAR(64), -- Tipo do documento (ex: CPF, RG, etc.)
+    caminho VARCHAR(256) -- Caminho do arquivo no sistema
 );
 
 -- Tabela CONTRATO
 CREATE TABLE CONTRATO (
-    id SERIAL PRIMARY KEY,
-    data_hora_criacao TIMESTAMPTZ NOT NULL,
-    ativo BOOLEAN,
-    responsavel_codigo VARCHAR REFERENCES RESPONSAVEL(codigo),
-    paciente_codigo VARCHAR REFERENCES PACIENTE(codigo),
-    documento_id INTEGER REFERENCES DOCUMENTO(id),
-    cep VARCHAR(8),
-    uf CHAR(2),
-    cidade VARCHAR(64),
-    bairro VARCHAR(64),
-    logradouro VARCHAR(128),
-    numero INTEGER,
-    complemento VARCHAR(256)
+    pk SERIAL PRIMARY KEY, -- Chave primária, gerada automaticamente pelo banco de dados
+
+    responsavel_id VARCHAR REFERENCES RESPONSAVEL(id), -- Chave estrangeira herdada da tabela RESPONSAVEL
+    paciente_codigo VARCHAR REFERENCES PACIENTE(codigo), -- Chave estrangeira herdada da tabela PACIENTE
+    documento_id INTEGER REFERENCES DOCUMENTO(pk), -- Chave estrangeira herdada da tabela DOCUMENTO
+
+    ativo BOOLEAN, -- Indica se o contrato está ativo (TRUE) ou inativo (FALSE)
+    data_hora_criacao TIMESTAMPTZ NOT NULL, -- Data e hora de criação do contrato
+
+    cep VARCHAR(8), -- CEP do contratante
+    uf CHAR(2), -- Estado do contratante
+    cidade VARCHAR(64), -- Cidade do contratante
+    bairro VARCHAR(64), -- Bairro do contratante
+    logradouro VARCHAR(128), -- Rua/Avenida do contratante
+    numero INTEGER, -- Número do endereço do contratante
+    complemento VARCHAR(256) -- Complemento do endereço, se necessário
 );
 
 -- Tabela AGENDAMENTO
 CREATE TABLE AGENDAMENTO (
-    id SERIAL PRIMARY KEY,
-    unidade_codigo VARCHAR(8),
-    tipo VARCHAR(64),
-    status VARCHAR(16),
-    data_hora_inicio TIMESTAMPTZ NOT NULL,
-    data_hora_fim TIMESTAMPTZ NOT NULL,
-    observacao TEXT,
-    paciente_codigo VARCHAR REFERENCES PACIENTE(codigo) NOT NULL,
-    responsavel_codigo VARCHAR REFERENCES RESPONSAVEL(codigo),
-    especialista_colaborador_codigo VARCHAR REFERENCES COLABORADOR(codigo),
-    recepcionista_colaborador_codigo VARCHAR REFERENCES COLABORADOR(codigo),
-    sala VARCHAR(16)
+    pk SERIAL PRIMARY KEY, -- Chave primária, gerada automaticamente pelo banco de dados
+
+    especialista_colaborador_id VARCHAR REFERENCES COLABORADOR(id), -- Chave estrangeira da tabela COLABORADOR
+    paciente_codigo VARCHAR REFERENCES PACIENTE(codigo) NOT NULL, -- Chave estrangeira da tabela PACIENTE
+    recepcionista_colaborador_id VARCHAR REFERENCES COLABORADOR(id), -- Código do recepcionista responsável pelo agendamento
+    responsavel_id VARCHAR REFERENCES RESPONSAVEL(id), -- Chave estrangeira da tabela RESPONSAVEL
+    unidade_id VARCHAR(8), -- Chave estrangeira herdada da tabela EMPRESA
+
+    data_hora TIMESTAMPTZ NOT NULL, -- Data definida para o evento do agendamento
+    sala VARCHAR(16), -- Número ou código da sala onde ocorrerá o evento
+
+    tipo VARCHAR(64), -- Tipo de agendamento (Consulta, Avaliação clínica ou Avaliação terapêutica)
+    status VARCHAR(16) DEFAULT 'Agendado', -- Estado do agendamento (Agendado, Confirmado, etc.)
+
+    observacoes TEXT -- Campo para observações adicionais
 );
+
 
 -- Tabela AVALIACAO
 CREATE TABLE AVALIACAO (
