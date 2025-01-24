@@ -139,15 +139,7 @@
 **Restrição:** `UNIQUE`  
 **Descrição:** E-mail do colaborador.
 
-### usuario
 
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Nome de usuário do colaborador, utilizado para autenticação.
-
-### senha
-
-**Tipo:** `VARCHAR(128)`  
-**Descrição:** Senha do colaborador, utilizado para autenticação.
 
 ### modo_trabalho
 
@@ -179,15 +171,6 @@
 **Tipo:** `VARCHAR(64)`  
 **Descrição:** {A SER DEFINIDO} (Sugestão usar uma nomenclatura "geral", como pediatria ou tecnologia da informação)**Fonoaudiólogo**
 
-### perfil
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Perfil da conta do colaborador. Por exemplo 
-
-### codigo_computador
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Código do computador que o colaborador utiliza.
 
 ## CONTRATO
 
@@ -602,3 +585,36 @@
 
 **Tipo:** `TEXT`  
 **Descrição:** Outros contatos do responsável, se necessário.
+
+## USUARIO
+
+### pk
+
+**Tipo:** `SERIAL PRIMARY KEY`  
+**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
+
+### colaborador_id
+
+**Tipo:** `VARCHAR(32)`  
+**Restrição:** `UNIQUE`  
+**Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**. Refere-se ao colaborador do usuário.
+
+### nome
+
+**Tipo:** `VARCHAR(64)`  
+**Descrição:** Nome do usuário, utilizado para autenticação.
+
+### senha
+
+**Tipo:** `VARCHAR(128)`  
+**Descrição:** Senha do usuário, utilizado para autenticação.
+
+### perfil
+
+**Tipo:** `VARCHAR(64)`  
+**Descrição:** Perfil da conta do usuário. Por exemplo 
+
+### codigo_computador
+
+**Tipo:** `VARCHAR(64)`  
+**Descrição:** Código do computador que o usuário utiliza.
