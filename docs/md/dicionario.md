@@ -169,13 +169,12 @@
 ### funcao
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Função a qual o colaborador foi contratado. Por exemplo: "Assistente financeiro".{TOFIX}
+**Descrição:** Função a qual o colaborador foi contratado. Por exemplo: "Terapeuta".
 
 ### especialidade
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** {A SER DEFINIDO} (Sugestão usar uma nomenclatura "geral", como pediatria ou tecnologia da informação)**Fonoaudiólogo**
-
+**Descrição:** Especialidade do colaborador. Por exemplo: "Musicoterapia".
 
 ## CONTRATO
 
@@ -600,7 +599,8 @@
 
 ### colaborador_id
 
-**Tipo:** `VARCHAR(32)`  
+**Tipo:** `VARCHAR(32)` 
+**Referência:** `COLABORADOR(id)`   
 **Restrição:** `UNIQUE`  
 **Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**. Refere-se ao colaborador ligado ao usuário.
 
@@ -630,12 +630,12 @@
 **Tipo:** `VARCHAR(128)`  
 **Descrição:** Senha do usuário, utilizado para autenticação.
 
+### nome_computador
+
+**Tipo:** `VARCHAR(64)`  
+**Descrição:** Nome do computador que o usuário utiliza na rede.
+
 ### perfil
 
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Perfil da conta do usuário. Por exemplo 
-
-### codigo_computador
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Código do computador que o usuário utiliza.
+**Tipo:** `VARCHAR(16)`
+**Descrição:** Perfil do usuário a nivel de acesso ao sistema.
