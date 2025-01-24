@@ -342,11 +342,6 @@
 **Tipo:** `VARCHAR(64)`  
 **Descrição:** Nome fantasia ou nome curto da unidade. Exemplo: "TLK - Centro".
 
-### unidade_nome
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Nome da unidade. Exemplo: "Therapies Love Kids - Centro".
-
 ### cep
 
 **Tipo:** `VARCHAR(8)`  
