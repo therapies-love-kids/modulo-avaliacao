@@ -161,6 +161,11 @@
 **Tipo:** `VARCHAR(16)`  
 **Descrição:** Número do PIS, de acordo com carteira de trabalho.
 
+### setor
+
+**Tipo:** `VARCHAR(64)`  
+**Descrição:** Setor em que o colaborador trabalha. Por exemplo: "Administrativo".
+
 ### funcao
 
 **Tipo:** `VARCHAR(64)`  
@@ -597,7 +602,23 @@
 
 **Tipo:** `VARCHAR(32)`  
 **Restrição:** `UNIQUE`  
-**Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**. Refere-se ao colaborador do usuário.
+**Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**. Refere-se ao colaborador ligado ao usuário.
+
+### colaborador_nome
+
+**Tipo:** `VARCHAR`  
+**Referência:** `COLABORADOR(nome)`  
+**Descrição:** Atributo derivado da tabela **COLABORADOR**.
+
+### ativo
+
+**Tipo:** `BOOLEAN`  
+**Descrição:** Campo para indicar se o usuário está ou não ativo, podendo ser TRUE (ativo) ou FALSE (inativo).
+
+### online
+
+**Tipo:** `BOOLEAN`
+**Descrição:** Campo para indicar se o usuário esta ou nao online, podendo ser TRUE (online) ou FALSE (offline).
 
 ### nome
 
