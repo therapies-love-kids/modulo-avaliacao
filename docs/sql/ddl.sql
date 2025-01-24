@@ -150,19 +150,28 @@ CREATE TABLE AGENDAMENTO (
 
 -- Tabela AVALIACAO
 CREATE TABLE AVALIACAO (
-    id SERIAL PRIMARY KEY,
-    paciente_codigo VARCHAR REFERENCES PACIENTE(codigo) NOT NULL,
-    colaborador_codigo VARCHAR REFERENCES COLABORADOR(codigo) NOT NULL,
-    data_hora_inicio TIMESTAMPTZ NOT NULL,
-    data_hora_fim TIMESTAMPTZ NOT NULL,
-    status VARCHAR(32),
-    anotacoes TEXT
+    pk SERIAL PRIMARY KEY, -- Chave primária, gerada automaticamente pelo banco de dados
+
+    paciente_codigo VARCHAR REFERENCES PACIENTE(codigo) NOT NULL, -- Chave estrangeira herdada da tabela PACIENTE
+    colaborador_id VARCHAR REFERENCES COLABORADOR(id) NOT NULL, -- Chave estrangeira herdada da tabela COLABORADOR
+
+    data_hora_inicio TIMESTAMPTZ NOT NULL, -- Horário de início da avaliação
+    data_hora_fim TIMESTAMPTZ NOT NULL, -- Horário de finalização da avaliação
+
+    status VARCHAR(32), -- Estado da avaliação (Em andamento, Finalizada)
+    anotacoes TEXT -- Anotações adicionais sobre a avaliação
 );
 
--- Adicionando queries para criar os relacionamentos nomeados da imagem (caso necessário para a aplicação)
--- Estes não são estritamente necessários para a estrutura das tabelas, mas podem ser úteis para a lógica da aplicação.
+-- Tabela USUARIO
+CREATE TABLE USUARIO (
+    pk SERIAL PRIMARY KEY, -- Chave primária, gerada automaticamente pelo banco de dados
 
--- Não há tabelas explícitas para "Agenda" e "Conduz", estes são relacionamentos entre as tabelas AGENDAMENTO e COLABORADOR.
--- Os campos especialista_colaborador_codigo e recepcionista_colaborador_codigo na tabela AGENDAMENTO representam esses relacionamentos.
-
--- Pode-se criar VIEWS para facilitar consultas relacionadas a esses relacionamentos, se necessário.
+    colaborador_id VARCHAR(32) UNIQUE REFERENCES COLABORADOR(id), -- Chave estrangeira da tabela COLABORADOR
+    colaborador_nome VARCHAR REFERENCES COLABORADOR(nome), -- Atributo derivado da tabela COLABORADOR
+    ativo BOOLEAN, -- Indica se o usuário está ativo ou inativo
+    online BOOLEAN, -- Indica se o usuário está online ou offline
+    nome VARCHAR(64) NOT NULL, -- Nome do usuário utilizado para autenticação
+    senha VARCHAR(128) NOT NULL, -- Senha do usuário para autenticação
+    nome_computador VARCHAR(64), -- Nome do computador do usuário na rede
+    perfil VARCHAR(16) -- Perfil de acesso do usuário ao sistema
+);

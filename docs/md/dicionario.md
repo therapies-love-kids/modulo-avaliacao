@@ -139,8 +139,6 @@
 **Restrição:** `UNIQUE`  
 **Descrição:** E-mail do colaborador.
 
-
-
 ### modo_trabalho
 
 **Tipo:** `VARCHAR(64)`  
