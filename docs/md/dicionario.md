@@ -47,12 +47,12 @@
 ### tipo
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Tipo de agendamento definido pelo criador do registro, podendo ser: "Consulta", "Avaliação clinica", "Avaliação terapeutica".
+**Descrição:** Tipo de agendamento definido pelo criador do registro, podendo ser: "Consulta", "Avaliação clinica" ou "Avaliação terapeutica".
 
 ### status
 
 **Tipo:** `VARCHAR(16)`  
-**Descrição:** Define o estado em que se encontra o agendamento. Valor padrão: "Agendado". Pode ser alterado para: "Confirmado", "Em espera", "Em andamento", "Concluído" e "Cancelado".
+**Descrição:** Define o estado em que se encontra o agendamento, podendo ser: "Agendado" (Valor padrão), "Confirmado", "Em espera", "Em andamento", "Concluído" ou "Cancelado".
 
 ### observacoes
 
@@ -91,14 +91,14 @@
 ### status
 
 **Tipo:** `VARCHAR(32)`  
-**Descrição:** Define o estado em que se encontra a avaliação. Valores: "Em adamento", "Finalizada".
+**Descrição:** Define o estado em que se encontra a avaliação, podendo ser: "Em adamento", "Finalizada".
 
 ### anotacoes
 
 **Tipo:** `TEXT`  
 **Descrição:** Campo para preencher com anotações ao decorrer da avaliação, caso seja necessário.
 
-## COLABORADOR {REVISAR DEPOIS}
+## COLABORADOR
 
 ### pk
 
@@ -152,7 +152,7 @@
 ### modo_trabalho
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Modo que o colaborador está vinculado a empresa. Pode ser: "PJ", "CLT" ou "Particular".
+**Descrição:** Modo que o colaborador está vinculado a empresa, podendo ser: "PJ", "CLT" ou "Particular".
 
 ### titulo_profissional
 
@@ -269,7 +269,7 @@
 ### ativo
 
 **Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o convênio está ativo ou inativo. Pode ser TRUE (ativo) ou FALSE (inativo).
+**Descrição:** Campo para indicar se o convênio está ativo ou inativo, podendo ser: TRUE (ativo) ou FALSE (inativo).
 
 ### nome
 
@@ -303,7 +303,7 @@
 ### ativo
 
 **Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o documento está ativo ou inativo. Pode ser TRUE (ativo) ou FALSE (inativo).
+**Descrição:** Campo para indicar se o documento está ativo ou inativo, podendo ser: TRUE (ativo) ou FALSE (inativo).
 
 ### data_hora_criacao
 
@@ -396,6 +396,35 @@
 
 **Tipo:** `VARCHAR(256)`  
 **Descrição:** Complemento do endereço, se necessário. Exemplo: "Ao lado de um pé de mexerica".
+
+## LACO
+
+### pk
+
+**Tipo:** `SERIAL PRIMARY KEY`  
+**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
+
+### paciente_codigo
+
+**Tipo:** `VARCHAR`  
+**Referência:** `PACIENTE(codigo)`  
+**Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
+
+### responsavel_id
+
+**Tipo:** `VARCHAR`  
+**Referência:** `RESPONSAVEL(id)`  
+**Descrição:** Chave estrangeira herdada da tabela **RESPONSAVEL**.
+
+### data_hora_criacao
+
+**Tipo:** `TIMESTAMPTZ`  
+**Descrição:** Data e hora de criação do laço, preenchido automaticamente pelo sistema.
+
+### tipo
+
+**Tipo:** `VARCHAR(16)`  
+**Descrição:** Tipo de laço entre o paciente e o responsável, podendo ser: "Pai", "Mãe", "Guardião", "Tutor" ou "Autorizado".
 
 ## PACIENTE
 
@@ -550,7 +579,7 @@
 ### estado_civil
 
 **Tipo:** `VARCHAR(16)`  
-**Descrição:** Estado civil do responsável. Valores possíveis: "Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viúvo(a)", "União Estável".
+**Descrição:** Estado civil do responsável, podendo ser: "Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viúvo(a)", "União Estável".
 
 ### profissao
 
@@ -573,32 +602,3 @@
 
 **Tipo:** `TEXT`  
 **Descrição:** Outros contatos do responsável, se necessário.
-
-## LACO
-
-### pk
-
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
-
-### paciente_codigo
-
-**Tipo:** `VARCHAR`  
-**Referência:** `PACIENTE(codigo)`  
-**Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
-
-### responsavel_id
-
-**Tipo:** `VARCHAR`  
-**Referência:** `RESPONSAVEL(id)`  
-**Descrição:** Chave estrangeira herdada da tabela **RESPONSAVEL**.
-
-### data_hora_criacao
-
-**Tipo:** `TIMESTAMPTZ`  
-**Descrição:** Data e hora de criação do laço, preenchido automaticamente pelo sistema.
-
-### tipo
-
-**Tipo:** `VARCHAR(16)`  
-**Descrição:** Tipo de laço entre o paciente e o responsável. Valores possíveis: {A SER DEFINIDO} "Pai", "Mãe", "Guardião", "Tutor", "Responsável Legal", "Autorizado". (Sugiro adicionar apenas Autorizado e fechar a lista)
