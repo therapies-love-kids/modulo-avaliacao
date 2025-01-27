@@ -92,7 +92,7 @@ UPDATE EMPRESA SET diretor_colaborador_id = 2 WHERE unidade_prefixo = 'NER';
 -- Preenchendo a tabela PACIENTE
 INSERT INTO PACIENTE (
     empresa_unidade_id,
-    convenio_id,
+    convenio_pk,
     codigo,
     ativo,
     nome,
