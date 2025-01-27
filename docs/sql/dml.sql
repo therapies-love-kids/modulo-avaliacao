@@ -1,115 +1,187 @@
 -- Preenchendo a tabela EMPRESA
-INSERT INTO EMPRESA (unidade_codigo, unidade_nome, nome_fantasia, razao_social, status, cep, uf, cidade, bairro, logradouro, cnpj, fone, email, diretor_colaborador_codigo)
-VALUES
-('001', 'Unidade Central', 'Clinica Central', 'Clinica Central LTDA', TRUE, '12345678', 'SP', 'São Paulo', 'Centro', 'Rua Principal, 100', '12345678000101', '11999999999', 'contato@clinicacentral.com', NULL),
-('002', 'Unidade Norte', 'Clinica Norte', 'Clinica Norte LTDA', TRUE, '87654321', 'SP', 'São Paulo', 'Norte', 'Avenida Secundária, 200', '12345678000202', '11988888888', 'contato@clinicanorte.com', NULL),
-('003', 'Unidade Sul', 'Clinica Sul', 'Clinica Sul LTDA', TRUE, '11223344', 'SP', 'São Paulo', 'Sul', 'Rua Ternária, 300', '12345678000303', '11977777777', 'contato@clinicasul.com', NULL),
-('004', 'Unidade Leste', 'Clinica Leste', 'Clinica Leste LTDA', TRUE, '44332211', 'SP', 'São Paulo', 'Leste', 'Avenida Quaternária, 400', '12345678000404', '11966666666', 'contato@clinicaleste.com', NULL),
-('005', 'Unidade Oeste', 'Clinica Oeste', 'Clinica Oeste LTDA', TRUE, '55667788', 'SP', 'São Paulo', 'Oeste', 'Rua Quinternária, 500', '12345678000505', '11955555555', 'contato@clinicaoeste.com', NULL);
+INSERT INTO EMPRESA (
+    ativo,
+    cnpj,
+    razao_social,
+    nome_fantasia,
+    cep,
+    uf,
+    cidade,
+    bairro,
+    logradouro,
+    numero,
+    complemento,
+    unidade_prefixo,
+    unidade_nome
+) VALUES (
+    TRUE,
+    '46480183000190',
+    'Rede Tlk Anapolis de Clinicas LTDA',
+    'Therapies Love Kids',
+    '75020030',
+    'GO',
+    'Anápolis',
+    'Centro',
+    'Rua Manoel D''abadia',
+    '116',
+    '',
+    'ANA',
+    'Anápolis'
+), (
+    TRUE,
+    '41903933000176',
+    'Rede Tlk Neropolis de Clinicas LTDA',
+    'Therapies Love Kids',
+    '75460000',
+    'GO',
+    'Nerópolis',
+    'Centro',
+    'Rua Aderbal Antunes de Oliveira',
+    '00',
+    'Quadra 14 Lote 04',
+    'NER',
+    'Nerópolis'
+);
 
 -- Preenchendo a tabela CONVENIO
-INSERT INTO CONVENIO (nome, nome_curto, ativo)
+INSERT INTO CONVENIO (ativo, nome, nome_curto)
 VALUES
-('Convenio Saúde Total', 'Saúde Total', TRUE),
-('Plano Familiar Plus', 'Familiar Plus', TRUE),
-('Seguro Saúde Vida', 'Saúde Vida', TRUE),
-('Plano VIP Saúde', 'VIP Saúde', TRUE),
-('Convenio Básico', 'Básico', TRUE);
+(TRUE, 'Confederação Nacional das Cooperativas Médicas ', 'Unimed'),
+(TRUE, 'Particular', 'Particular');
 
 -- Preenchendo a tabela COLABORADOR
-INSERT INTO COLABORADOR (ativo, modo_trabalho, formacao, empresa_unidade_codigo, codigo, registro_profissional, nome, cpf, tipo, funcao, especialidade, perfil, codigo_computador, email, usuario, senha)
-VALUES
-(TRUE, 'Presencial', 'Psicologia', '001', 'COL001', '12345', 'João da Silva', '12345678901', 'Especialista', 'Psicólogo', 'Infantil', 'Especialista', 'PC001', 'joao@clinica.com', 'joao.silva', 'senha123'),
-(TRUE, 'Presencial', 'Fonoaudiologia', '002', 'COL002', '67890', 'Maria de Souza', '23456789012', 'Especialista', 'Fonoaudióloga', 'Audição', 'Especialista', 'PC002', 'maria@clinica.com', 'maria.souza', 'senha456'),
-(TRUE, 'Remoto', 'Terapia Ocupacional', '003', 'COL003', '54321', 'Pedro Almeida', '34567890123', 'Especialista', 'Terapeuta', 'Motora', 'Especialista', 'PC003', 'pedro@clinica.com', 'pedro.almeida', 'senha789'),
-(TRUE, 'Presencial', 'Fisioterapia', '004', 'COL004', '98765', 'Ana Costa', '45678901234', 'Especialista', 'Fisioterapeuta', 'Postura', 'Especialista', 'PC004', 'ana@clinica.com', 'ana.costa', 'senha321'),
-(TRUE, 'Presencial', 'Psicologia', '005', 'COL005', '19283', 'Carlos Pereira', '56789012345', 'Especialista', 'Psicólogo', 'Infantil', 'Especialista', 'PC005', 'carlos@clinica.com', 'carlos.pereira', 'senha654');
+INSERT INTO COLABORADOR (
+    empresa_unidade_prefixo,
+    ativo,
+    nome,
+    sexo,
+    data_nascimento,
+    cpf,
+    rg,
+    cnh,
+    numero_reservista,
+    celular,
+    email,
+    modo_trabalho,
+    cep,
+    uf,
+    cidade,
+    bairro,
+    logradouro,
+    numero,
+    complemento,
+    titulo_profissional,
+    registro_profissional,
+    pis,
+    setor,
+    funcao,
+    especialidade
+) VALUES
+('ANA', TRUE, 'Carlos Eduardo Silva', 'M', '1975-08-12', '12345678901', 'MG1234567', '123456789', '1234567', '62999990001', 'carlos.silva@email.com', 'CLT', '75020030', 'GO', 'Anápolis', 'Centro', 'Rua das Flores', '100', 'Sala 101', 'Diretor Administrativo', NULL, '12345678901', 'Administrativo', 'Diretor', NULL),
+('NER', TRUE, 'Ana Paula Oliveira', 'F', '1980-02-25', '98765432109', 'SP9876543', '987654321', NULL, '62999990002', 'ana.oliveira@email.com', 'CLT', '75460000', 'GO', 'Nerópolis', 'Centro', 'Rua dos Lírios', '200', 'Casa', 'Diretora Administrativa', NULL, '98765432109', 'Administrativo', 'Diretor', NULL),
+('ANA', TRUE, 'Maria Souza Santos', 'F', '1995-11-03', '11122233344', 'RJ1112223', '111222333', NULL, '62999990003', 'maria.santos@email.com', 'CLT', '75020030', 'GO', 'Anápolis', 'Centro', 'Av. Goiás', '300', 'Recepção', 'Recepcionista', NULL, '11122233344', 'Recepção', 'Recepcionista', NULL),
+('NER', TRUE, 'João Pedro Almeida', 'M', '1998-06-15', '44455566677', 'BA4445556', '444555666', '7654321', '62999990004', 'joao.almeida@email.com', 'CLT', '75460000', 'GO', 'Nerópolis', 'Centro', 'Rua das Acácias', '400', NULL, 'Recepcionista', NULL, '44455566677', 'Recepção', 'Recepcionista', NULL),
+('ANA', TRUE, 'Fernanda Costa Rocha', 'F', '1988-09-22', '77788899900', 'PR7778889', '777888999', NULL, '62999990005', 'fernanda.rocha@email.com', 'PJ', '75020030', 'GO', 'Anápolis', 'Setor Sul', 'Rua Jequitibás', '500', 'Consultório 1', 'Avaliadora', NULL, '77788899900', 'Terapêutico', 'Avaliador', 'Terapêutico'),
+('NER', TRUE, 'Lucas Mendes Pereira', 'M', '1992-04-10', '22233344455', 'SC2223334', '222333444', '2345678', '62999990006', 'lucas.pereira@email.com', 'PJ', '75460000', 'GO', 'Nerópolis', 'Setor Central', 'Rua Ipês', '600', NULL, 'Avaliador', NULL, '22233344455', 'Terapêutico', 'Avaliador', 'Terapêutico'),
+('ANA', TRUE, 'Ricardo Oliveira Gomes', 'M', '1970-12-01', '55566677788', 'RS5556667', '555666777', '3456789', '62999990007', 'ricardo.gomes@email.com', 'CLT', '75020030', 'GO', 'Anápolis', 'Jundiaí', 'Rua dos Pinheiros', '700', 'Consultório Médico', 'Médico Clínico Geral', 'GO12345', '45678901234', 'Médico', 'Médico', 'Clínico Geral'),
+('ANA', TRUE, 'Patrícia Almeida Rangel', 'F', '1978-07-18', '88899900011', 'ES8889990', '888999000', NULL, '62999990008', 'patricia.rangel@email.com', 'CLT', '75020030', 'GO', 'Anápolis', 'Vila Formosa', 'Rua das Orquídeas', '800', NULL, 'Médica Pediatra', 'GO54321', '56789012345', 'Médico', 'Médico', 'Pediatra'),
+('NER', TRUE, 'Gustavo Henrique Lima', 'M', '1985-03-05', '33344455566', 'CE3334445', '333444555', '5678901', '62999990009', 'gustavo.lima@email.com', 'PJ', '75460000', 'GO', 'Nerópolis', 'Vila Nova', 'Rua dos Cravos', '900', 'Sala 2', 'Médico Cardiologista', 'GO67890', '67890123456', 'Médico', 'Médico', 'Cardiologista'),
+('NER', TRUE, 'Camila Fernandes Braga', 'F', '1991-01-28', '66677788899', 'PE6667778', '666777888', NULL, '62999990010', 'camila.braga@email.com', 'PJ', '75460000', 'GO', 'Nerópolis', 'Jardim Primavera', 'Rua dos Girassóis', '1000', NULL, 'Médica Dermatologista', 'GO09876', '78901234567', 'Médico', 'Médico', 'Dermatologista');
+
+-- Preenchendo a tabela USUARIO
+INSERT INTO USUARIO (
+    colaborador_id,
+    ativo,
+    online,
+    nome,
+    senha,
+    nome_computador,
+    perfil
+) VALUES
+(1, TRUE, FALSE, 'Carlos Eduardo Silva', 'senha123', 'Carlos-PC', 'admin'),
+(2, TRUE, FALSE, 'Ana Paula Oliveira', 'senha123', 'Ana-PC', 'admin'),
+(3, TRUE, FALSE, 'Maria Souza Santos', 'senha123', 'Maria-PC', 'admin'),
+(4, TRUE, FALSE, 'João Pedro Almeida', 'senha123', 'Joao-PC', 'admin'),
+(5, TRUE, FALSE, 'Fernanda Costa Rocha', 'senha123', 'Fernanda-PC', 'avaliador'),
+(6, TRUE, FALSE, 'Lucas Mendes Pereira', 'senha123', 'Lucas-PC', 'avaliador'),
+(7, TRUE, FALSE, 'Ricardo Oliveira Gomes', 'senha123', 'Ricardo-PC', 'medico'),
+(8, TRUE, FALSE, 'Patrícia Almeida Rangel', 'senha123', 'Patricia-PC', 'medico'),
+(9, TRUE, FALSE, 'Gustavo Henrique Lima', 'senha123', 'Gustavo-PC', 'medico'),
+(10, TRUE, FALSE, 'Camila Fernandes Braga', 'senha123', 'Camila-PC', 'medico');
 
 -- Atualizando a tabela EMPRESA para adicionar diretores
-UPDATE EMPRESA SET diretor_colaborador_codigo = 'COL001' WHERE unidade_codigo = '001';
-UPDATE EMPRESA SET diretor_colaborador_codigo = 'COL002' WHERE unidade_codigo = '002';
-UPDATE EMPRESA SET diretor_colaborador_codigo = 'COL003' WHERE unidade_codigo = '003';
-UPDATE EMPRESA SET diretor_colaborador_codigo = 'COL004' WHERE unidade_codigo = '004';
-UPDATE EMPRESA SET diretor_colaborador_codigo = 'COL005' WHERE unidade_codigo = '005';
+UPDATE EMPRESA SET diretor_colaborador_id = 1 WHERE unidade_prefixo = 'ANA';
+UPDATE EMPRESA SET diretor_colaborador_id = 2 WHERE unidade_prefixo = 'NER';
 
 -- Preenchendo a tabela PACIENTE
-INSERT INTO PACIENTE (ativo, empresa_unidade_codigo, codigo, nome, nome_curto, sexo, data_nascimento, local_nascimento, certidao_nascimento, cpf, convenio_id, numero_convenio, observacoes)
-VALUES
-(TRUE, '001', 'PAC001', 'Lucas Mendes', 'Lucas', 'M', '2010-05-20', 'São Paulo', '123456', '12312312312', 1, '123456789012', 'Paciente ativo e com bons resultados.'),
-(TRUE, '002', 'PAC002', 'Fernanda Rocha', 'Fernanda', 'F', '2012-09-15', 'São Paulo', '654321', '23423423423', 2, '987654321098', 'Paciente frequente.'),
-(TRUE, '003', 'PAC003', 'Rafael Costa', 'Rafael', 'M', '2009-03-10', 'São Paulo', '987654', '34534534534', 3, '567890123456', 'Paciente iniciou tratamento recentemente.'),
-(TRUE, '004', 'PAC004', 'Mariana Souza', 'Mariana', 'F', '2011-11-25', 'São Paulo', '456789', '45645645645', 4, '876543210987', 'Paciente em tratamento contínuo.'),
-(TRUE, '005', 'PAC005', 'Beatriz Almeida', 'Bia', 'F', '2013-07-30', 'São Paulo', '789123', '56756756756', 5, '345678901234', 'Paciente com acompanhamento semanal.');
+INSERT INTO PACIENTE (
+    empresa_unidade_id,
+    convenio_id,
+    codigo,
+    ativo,
+    nome,
+    nome_curto,
+    sexo,
+    data_nascimento,
+    local_nascimento,
+    certidao_nascimento,
+    cpf,
+    numero_convenio,
+    observacoes
+) VALUES
+('ANA', 1, 'PAC_ANA_001', TRUE, 'Laura Maria Silva', 'Laura Silva', 'F', '2018-07-10', 'Anápolis-GO', '12345/2018-1', '12345678910', 'CONVENIO123ANA', 'Paciente alérgica a lactose'),
+('ANA', 1, 'PAC_ANA_002', TRUE, 'Enzo Gabriel Oliveira', 'Enzo Oliveira', 'M', '2019-12-20', 'Anápolis-GO', '67890/2019-2', '09876543210', 'CONVENIO456ANA', 'Paciente com acompanhamento psicológico'),
+('ANA', 2, 'PAC_ANA_003', TRUE, 'Maria Clara Santos', 'Maria Santos', 'F', '2020-05-05', 'Anápolis-GO', '24680/2020-3', '54321678901', 'CONVENIO789ANA', 'Paciente em terapia ocupacional'),
+('NER', 1, 'PAC_NER_001', TRUE, 'Arthur Miguel Souza', 'Arthur Souza', 'M', '2017-09-15', 'Nerópolis-GO', '13579/2017-4', '67890123456', 'CONVENIO123NER', 'Paciente com dificuldade de socialização'),
+('NER', 1, 'PAC_NER_002', TRUE, 'Ana Beatriz Lima', 'Ana Lima', 'F', '2021-01-30', 'Nerópolis-GO', '08642/2021-5', '21098765432', 'CONVENIO789NER', 'Paciente com atraso na fala'),
+('NER', 2, 'PAC_NER_003', TRUE, 'Davi Lucca Pereira', 'Davi Pereira', 'M', '2016-08-25', 'Nerópolis-GO', '97531/2016-6', '98765012345', 'CONVENIO101112NER', 'Paciente com hiperatividade');
 
 -- Preenchendo a tabela RESPONSAVEL
-INSERT INTO RESPONSAVEL (codigo, ativo, nome, estado_civil, profissao, cpf, rg, celular, email, contatos_extras)
-VALUES
-('RESP001', TRUE, 'Cláudia Mendes', 'Casada', 'Engenheira', '67867867867', 'MG1234567', '11988887777', 'claudia@familia.com', 'Tia: 11999998888'),
-('RESP006', TRUE, 'Carlos Mendes', 'Casado', 'Administrador', '11122233344', 'MG7654321', '11922223333', 'carlos@familia.com', 'Primo: 11911112222'),
-('RESP002', TRUE, 'Roberto Rocha', 'Divorciado', 'Médico', '78978978978', 'SP7654321', '11977776666', 'roberto@familia.com', 'Avó: 11966665555'),
-('RESP007', TRUE, 'Sofia Rocha', 'Divorciada', 'Arquiteta', '22233344455', 'SP1234567', '11933334454', 'sofia@familia.com', 'Amiga: 11944445555'),
-('RESP003', TRUE, 'Juliana Costa', 'Solteira', 'Professora', '89089089089', 'RJ2345678', '11966664444', 'juliana@familia.com', 'Amigo: 11955554444'),
-('RESP008', TRUE, 'Daniel Costa', 'Solteiro', 'Engenheiro', '33344455566', 'RJ8765432', '11955556666', 'daniel@familia.com', 'Colega: 11966667777'),
-('RESP004', TRUE, 'Paulo Souza', 'Casado', 'Advogado', '90190190190', 'PR8765432', '11955553333', 'paulo@familia.com', 'Irmã: 11944443333'),
-('RESP009', TRUE, 'Helena Souza', 'Casada', 'Nutricionista', '44455566677', 'PR1234567', '11944445555', 'helena@familia.com', 'Cunhado: 11933332222'),
-('RESP005', TRUE, 'Renata Almeida', 'Viúva', 'Designer', '12312312312', 'BA3456789', '11944442222', 'renata@familia.com', 'Vizinho: 11933332222'),
-('RESP010', TRUE, 'Marcelo Almeida', 'Viúvo', 'Contador', '55566677788', 'BA9876543', '11933334444', 'marcelo@familia.com', 'Sobrinho: 11922221111');
+INSERT INTO RESPONSAVEL (
+    id,
+    ativo,
+    nome,
+    estado_civil,
+    profissao,
+    cpf,
+    rg,
+    celular,
+    email,
+    contatos_extras
+) VALUES
+(1, TRUE, 'Carlos Silva', 'Casado', 'Engenheiro', '12345678901', 'MG1234567', '31987654321', 'carlos.silva@email.com', ''),
+(2, TRUE, 'Fernanda Silva', 'Casada', 'Professora', '10987654321', 'MG7654321', '31987654322', 'fernanda.silva@email.com', ''),
+(3, TRUE, 'Roberto Oliveira', 'Casado', 'Médico', '23456789012', 'MG2345678', '31987654323', 'roberto.oliveira@email.com', ''),
+(4, TRUE, 'Juliana Oliveira', 'Casada', 'Arquiteta', '21098765432', 'MG8765432', '31987654324', 'juliana.oliveira@email.com', ''),
+(5, TRUE, 'Marcos Santos', 'Casado', 'Advogado', '34567890123', 'MG3456789', '31987654325', 'marcos.santos@email.com', ''),
+(6, TRUE, 'Ana Santos', 'Casada', 'Enfermeira', '32109876543', 'MG9876543', '31987654326', 'ana.santos@email.com', ''),
+(7, TRUE, 'Paulo Souza', 'Casado', 'Professor', '45678901234', 'MG4567890', '31987654327', 'paulo.souza@email.com', ''),
+(8, TRUE, 'Mariana Souza', 'Casada', 'Psicóloga', '43210987654', 'MG0987654', '31987654328', 'mariana.souza@email.com', ''),
+(9, TRUE, 'Ricardo Lima', 'Casado', 'Engenheiro', '56789012345', 'MG5678901', '31987654329', 'ricardo.lima@email.com', ''),
+(10, TRUE, 'Tatiane Lima', 'Casada', 'Dentista', '54321098765', 'MG6789012', '31987654330', 'tatiane.lima@email.com', ''),
+(11, TRUE, 'Eduardo Pereira', 'Casado', 'Médico', '67890123456', 'MG7890123', '31987654331', 'eduardo.pereira@email.com', ''),
+(12, TRUE, 'Cláudia Pereira', 'Casada', 'Farmacêutica', '65432109876', 'MG8901234', '31987654332', 'claudia.pereira@email.com', '');
 
--- Preenchendo a tabela VINCULO
-INSERT INTO VINCULO (data_hora_criacao, paciente_codigo, responsavel_codigo, tipo)
-VALUES
-(NOW(), 'PAC001', 'RESP001', 'Mãe'),
-(NOW(), 'PAC001', 'RESP006', 'Pai'),
-(NOW(), 'PAC002', 'RESP002', 'Pai'),
-(NOW(), 'PAC002', 'RESP007', 'Mãe'),
-(NOW(), 'PAC003', 'RESP003', 'Mãe'),
-(NOW(), 'PAC003', 'RESP008', 'Pai'),
-(NOW(), 'PAC004', 'RESP004', 'Pai'),
-(NOW(), 'PAC004', 'RESP009', 'Mãe'),
-(NOW(), 'PAC005', 'RESP005', 'Mãe'),
-(NOW(), 'PAC005', 'RESP010', 'Pai');
+-- Preenchendo a tabela LACO
+INSERT INTO LACO (
+    paciente_id,
+    responsavel_id,
+    data_hora_criacao,
+    tipo
+) VALUES
+(1, 1, NOW(), 'Pai'),  -- Laura Maria Silva
+(1, 2, NOW(), 'Mãe'),
+(2, 3, NOW(), 'Pai'),  -- Enzo Gabriel Oliveira
+(2, 4, NOW(), 'Mãe'),
+(3, 5, NOW(), 'Pai'),  -- Maria Clara Santos
+(3, 6, NOW(), 'Mãe'),
+(4, 7, NOW(), 'Pai'),  -- Arthur Miguel Souza
+(4, 8, NOW(), 'Mãe'),
+(5, 9, NOW(), 'Pai'),  -- Ana Beatriz Lima
+(5, 10, NOW(), 'Mãe'),
+(6, 11, NOW(), 'Pai'),  -- Davi Lucca Pereira
+(6, 12, NOW(), 'Mãe');
 
--- Preenchendo a tabela PAGAMENTO
-INSERT INTO PAGAMENTO (data_hora_criacao, responsavel_codigo, valor, tipo, descricao)
-VALUES
-(NOW(), 'RESP001', 150.00, 'Cartão', 'Pagamento da consulta de Lucas Mendes'),
-(NOW(), 'RESP002', 200.00, 'Dinheiro', 'Pagamento da consulta de Fernanda Rocha'),
-(NOW(), 'RESP003', 180.00, 'Cartão', 'Pagamento da consulta de Rafael Costa'),
-(NOW(), 'RESP004', 220.00, 'PIX', 'Pagamento da consulta de Mariana Souza'),
-(NOW(), 'RESP005', 160.00, 'Cartão', 'Pagamento da consulta de Beatriz Almeida');
+-- TODO: Resto do preenchimento
 
--- Preenchendo a tabela DOCUMENTO
-INSERT INTO DOCUMENTO (data_hora_criacao, ativo, tipo, caminho, paciente_codigo, colaborador_codigo)
-VALUES
-(NOW(), TRUE, 'Relatório Médico', '/docs/lucas_relatorio.pdf', 'PAC001', 'COL001'),
-(NOW(), TRUE, 'Relatório Fono', '/docs/fernanda_relatorio.pdf', 'PAC002', 'COL002'),
-(NOW(), TRUE, 'Relatório Terapia', '/docs/rafael_relatorio.pdf', 'PAC003', 'COL003'),
-(NOW(), TRUE, 'Relatório Fisioterapia', '/docs/mariana_relatorio.pdf', 'PAC004', 'COL004'),
-(NOW(), TRUE, 'Relatório Psicológico', '/docs/beatriz_relatorio.pdf', 'PAC005', 'COL005');
-
--- Preenchendo a tabela CONTRATO
-INSERT INTO CONTRATO (data_hora_criacao, ativo, responsavel_codigo, paciente_codigo, documento_id, cep, uf, cidade, bairro, logradouro, numero, complemento)
-VALUES
-(NOW(), TRUE, 'RESP001', 'PAC001', 1, '12345678', 'SP', 'São Paulo', 'Centro', 'Rua A', 100, 'Ap 101'),
-(NOW(), TRUE, 'RESP002', 'PAC002', 2, '87654321', 'SP', 'São Paulo', 'Norte', 'Rua B', 200, 'Casa 2'),
-(NOW(), TRUE, 'RESP003', 'PAC003', 3, '11223344', 'SP', 'São Paulo', 'Sul', 'Rua C', 300, 'Bloco 3'),
-(NOW(), TRUE, 'RESP004', 'PAC004', 4, '44332211', 'SP', 'São Paulo', 'Leste', 'Rua D', 400, 'Ap 402'),
-(NOW(), TRUE, 'RESP005', 'PAC005', 5, '55667788', 'SP', 'São Paulo', 'Oeste', 'Rua E', 500, 'Casa 5');
-
--- Preenchendo a tabela AGENDAMENTO
-INSERT INTO AGENDAMENTO (unidade_codigo, tipo, status, data_hora_inicio, data_hora_fim, observacao, paciente_codigo, responsavel_codigo, especialista_colaborador_codigo, recepcionista_colaborador_codigo, sala)
-VALUES
-('001', 'Consulta', 'Agendado', NOW() + INTERVAL '1 DAY', NOW() + INTERVAL '1 DAY' + INTERVAL '1 HOUR', 'Consulta de Lucas Mendes', 'PAC001', 'RESP001', 'COL001', 'COL002', 'consultorio1'),
-('002', 'Consulta', 'Agendado', NOW() + INTERVAL '2 DAYS', NOW() + INTERVAL '2 DAYS' + INTERVAL '1 HOUR', 'Consulta de Fernanda Rocha', 'PAC002', 'RESP002', 'COL002', 'COL003', 'consultorio2'),
-('003', 'Consulta', 'Concluído', NOW() - INTERVAL '1 DAY', NOW() - INTERVAL '1 DAY' + INTERVAL '1 HOUR', 'Consulta de Rafael Costa', 'PAC003', 'RESP003', 'COL003', 'COL004', 'consultorio3'),
-('004', 'Consulta', 'Cancelado', NOW() + INTERVAL '3 DAYS', NOW() + INTERVAL '3 DAYS' + INTERVAL '1 HOUR', 'Consulta de Mariana Souza', 'PAC004', 'RESP004', 'COL004', 'COL005', 'consultorio4'),
-('005', 'Consulta', 'Agendado', NOW() + INTERVAL '4 DAYS', NOW() + INTERVAL '4 DAYS' + INTERVAL '1 HOUR', 'Consulta de Beatriz Almeida', 'PAC005', 'RESP005', 'COL005', 'COL001', 'consultorio5');
-
--- Preenchendo a tabela AVALIACAO
-INSERT INTO AVALIACAO (paciente_codigo, colaborador_codigo, data_hora_inicio, data_hora_fim, status, anotacoes)
-VALUES
-('PAC001', 'COL001', NOW() - INTERVAL '1 HOUR', NOW(), 'Finalizada', 'Lucas apresentou progresso no tratamento.'),
-('PAC002', 'COL002', NOW() - INTERVAL '2 HOURS', NOW() - INTERVAL '1 HOUR', 'Finalizada', 'Fernanda respondeu bem aos exercícios propostos.'),
-('PAC003', 'COL003', NOW() - INTERVAL '3 HOURS', NOW() - INTERVAL '2 HOURS', 'Finalizada', 'Rafael mostrou melhora na coordenação motora.'),
-('PAC004', 'COL004', NOW() - INTERVAL '4 HOURS', NOW() - INTERVAL '3 HOURS', 'Finalizada', 'Mariana precisa de ajustes no plano de tratamento.'),
-('PAC005', 'COL005', NOW() - INTERVAL '5 HOURS', NOW() - INTERVAL '4 HOURS', 'Finalizada', 'Beatriz demonstrou evolução na terapia psicológica.');
+-- Preenchendo a tabela DOCUMENTO (PRIMEIRA QUERY)
