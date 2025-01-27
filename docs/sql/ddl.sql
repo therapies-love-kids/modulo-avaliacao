@@ -5,6 +5,7 @@ CREATE TABLE EMPRESA (
     id SERIAL UNIQUE NOT NULL,
     diretor_colaborador_id INTEGER,
     ativo BOOLEAN NOT NULL,
+    cnpj VARCHAR(16) NOT NULL,
     razao_social VARCHAR(128) NOT NULL,
     nome_fantasia VARCHAR(64) NOT NULL,
     cep VARCHAR(8) NOT NULL,
@@ -14,7 +15,7 @@ CREATE TABLE EMPRESA (
     logradouro VARCHAR(128) NOT NULL,
     numero VARCHAR(8) NOT NULL,
     complemento VARCHAR(256),
-    unidade_prefixo VARCHAR(3) NOT NULL UNIQUE,
+    unidade_prefixo VARCHAR(4) NOT NULL UNIQUE,
     unidade_nome VARCHAR(32) UNIQUE NOT NULL
 );
 
@@ -31,15 +32,39 @@ CREATE TABLE COLABORADOR (
     empresa_unidade_prefixo VARCHAR NOT NULL REFERENCES EMPRESA(unidade_prefixo),
     ativo BOOLEAN NOT NULL,
     nome VARCHAR(128) NOT NULL,
-    cpf VARCHAR(11) UNIQUE NOT NULL,
+    sexo CHAR(1) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    cpf VARCHAR(16) UNIQUE NOT NULL,
+    rg VARCHAR(32) NOT NULL,
+    cnh VARCHAR(16) NOT NULL,
+    numero_reservista VARCHAR(8),
+    celular VARCHAR(16) UNIQUE NOT NULL,
     email VARCHAR(128) UNIQUE NOT NULL,
     modo_trabalho VARCHAR(64) NOT NULL,
+    cep VARCHAR(8) NOT NULL,
+    uf CHAR(2) NOT NULL,
+    cidade VARCHAR(64) NOT NULL,
+    bairro VARCHAR(64) NOT NULL,
+    logradouro VARCHAR(128) NOT NULL,
+    numero VARCHAR(8) NOT NULL,
+    complemento VARCHAR(256),
     titulo_profissional VARCHAR(64) NOT NULL,
-    registro_profissional VARCHAR(64) NOT NULL,
-    pis VARCHAR(16) NOT NULL,
+    registro_profissional VARCHAR(64),
+    pis VARCHAR(16),
     setor VARCHAR(64) NOT NULL,
     funcao VARCHAR(64) NOT NULL,
-    especialidade VARCHAR(64) NOT NULL
+    especialidade VARCHAR(64)
+);
+
+CREATE TABLE USUARIO (
+    pk SERIAL PRIMARY KEY,
+    colaborador_id INTEGER UNIQUE REFERENCES COLABORADOR(id),
+    ativo BOOLEAN NOT NULL,
+    "online" BOOLEAN NOT NULL,
+    nome VARCHAR(64) NOT NULL,
+    senha VARCHAR(128) NOT NULL,
+    nome_computador VARCHAR(64) NOT NULL,
+    perfil VARCHAR(16) NOT NULL
 );
 
 -- Adiciona a constraint de chave estrangeira para diretor_colaborador_id após a criação da tabela COLABORADOR
@@ -88,14 +113,7 @@ CREATE TABLE LACO (
     tipo VARCHAR(16) NOT NULL
 );
 
-CREATE TABLE PAGAMENTO (
-    pk SERIAL PRIMARY KEY,
-    responsavel_id INTEGER NOT NULL REFERENCES RESPONSAVEL(id),
-    data_hora_criacao TIMESTAMPTZ NOT NULL,
-    valor NUMERIC(10, 2) NOT NULL,
-    tipo VARCHAR(64) NOT NULL,
-    descricao TEXT
-);
+-- TODO: Criar tudo abaixo
 
 CREATE TABLE DOCUMENTO (
     pk SERIAL PRIMARY KEY,
@@ -105,22 +123,6 @@ CREATE TABLE DOCUMENTO (
     data_hora_criacao TIMESTAMPTZ NOT NULL,
     tipo VARCHAR(64) NOT NULL,
     caminho VARCHAR(256) NOT NULL
-);
-
-CREATE TABLE CONTRATO (
-    pk SERIAL PRIMARY KEY,
-    responsavel_id INTEGER NOT NULL REFERENCES RESPONSAVEL(id),
-    paciente_id INTEGER NOT NULL REFERENCES PACIENTE(id),
-    documento_pk INTEGER NOT NULL REFERENCES DOCUMENTO(pk),
-    ativo BOOLEAN NOT NULL,
-    data_hora_criacao TIMESTAMPTZ NOT NULL,
-    cep VARCHAR(8) NOT NULL,
-    uf CHAR(2) NOT NULL,
-    cidade VARCHAR(64) NOT NULL,
-    bairro VARCHAR(64) NOT NULL,
-    logradouro VARCHAR(128) NOT NULL,
-    numero INTEGER NOT NULL,
-    complemento VARCHAR(256)
 );
 
 CREATE TABLE AGENDAMENTO (
@@ -137,6 +139,15 @@ CREATE TABLE AGENDAMENTO (
     observacoes TEXT
 );
 
+CREATE TABLE PAGAMENTO (
+    pk SERIAL PRIMARY KEY,
+    responsavel_id INTEGER NOT NULL REFERENCES RESPONSAVEL(id),
+    data_hora_criacao TIMESTAMPTZ NOT NULL,
+    valor NUMERIC(10, 2) NOT NULL,
+    tipo VARCHAR(64) NOT NULL,
+    descricao TEXT
+);
+
 CREATE TABLE AVALIACAO (
     pk SERIAL PRIMARY KEY,
     paciente_id INTEGER NOT NULL REFERENCES PACIENTE(id),
@@ -147,13 +158,18 @@ CREATE TABLE AVALIACAO (
     anotacoes TEXT
 );
 
-CREATE TABLE USUARIO (
+CREATE TABLE CONTRATO (
     pk SERIAL PRIMARY KEY,
-    colaborador_id INTEGER UNIQUE REFERENCES COLABORADOR(id),
+    responsavel_id INTEGER NOT NULL REFERENCES RESPONSAVEL(id),
+    paciente_id INTEGER NOT NULL REFERENCES PACIENTE(id),
+    documento_pk INTEGER NOT NULL REFERENCES DOCUMENTO(pk),
     ativo BOOLEAN NOT NULL,
-    "online" BOOLEAN NOT NULL,
-    nome VARCHAR(64) NOT NULL,
-    senha VARCHAR(128) NOT NULL,
-    nome_computador VARCHAR(64) NOT NULL,
-    perfil VARCHAR(16) NOT NULL
+    data_hora_criacao TIMESTAMPTZ NOT NULL,
+    cep VARCHAR(8) NOT NULL,
+    uf CHAR(2) NOT NULL,
+    cidade VARCHAR(64) NOT NULL,
+    bairro VARCHAR(64) NOT NULL,
+    logradouro VARCHAR(128) NOT NULL,
+    numero INTEGER NOT NULL,
+    complemento VARCHAR(256)
 );

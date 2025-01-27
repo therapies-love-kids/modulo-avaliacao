@@ -152,7 +152,7 @@
 ### registro_profissional
 
 **Tipo:** `VARCHAR(64)`  
-**Descrição:** Número do registro profissional para profissionais da área clinica, (por exemplo o CID).
+**Descrição:** Número do registro profissional para profissionais da área clinica, (por exemplo o CRM).
 
 ### pis
 
