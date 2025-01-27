@@ -117,23 +117,13 @@ CREATE TABLE LACO (
 
 -- TODO: Criar tudo abaixo
 
-CREATE TABLE DOCUMENTO (
-    pk SERIAL PRIMARY KEY,
-    paciente_id INTEGER NOT NULL REFERENCES PACIENTE(id),
-    colaborador_id INTEGER NOT NULL REFERENCES COLABORADOR(id),
-    ativo BOOLEAN NOT NULL,
-    data_hora_criacao TIMESTAMPTZ NOT NULL,
-    tipo VARCHAR(64) NOT NULL,
-    caminho VARCHAR(256) NOT NULL
-);
-
 CREATE TABLE AGENDAMENTO (
     pk SERIAL PRIMARY KEY,
     especialista_colaborador_id INTEGER NOT NULL REFERENCES COLABORADOR(id),
     paciente_id INTEGER NOT NULL REFERENCES PACIENTE(id),
     recepcionista_colaborador_id INTEGER REFERENCES COLABORADOR(id),
     responsavel_id INTEGER REFERENCES RESPONSAVEL(id),
-    unidade_id INTEGER NOT NULL,
+    unidade_prefixo VARCHAR NOT NULL REFERENCES EMPRESA(unidade_prefixo),
     data_hora TIMESTAMPTZ NOT NULL,
     sala VARCHAR(16) NOT NULL,
     tipo VARCHAR(64) NOT NULL,
@@ -158,6 +148,16 @@ CREATE TABLE AVALIACAO (
     data_hora_fim TIMESTAMPTZ,
     "status" VARCHAR(32) NOT NULL,
     anotacoes TEXT
+);
+
+CREATE TABLE DOCUMENTO (
+    pk SERIAL PRIMARY KEY,
+    paciente_id INTEGER NOT NULL REFERENCES PACIENTE(id),
+    colaborador_id INTEGER NOT NULL REFERENCES COLABORADOR(id),
+    ativo BOOLEAN NOT NULL,
+    data_hora_criacao TIMESTAMPTZ NOT NULL,
+    tipo VARCHAR(64) NOT NULL,
+    caminho VARCHAR(256) NOT NULL
 );
 
 CREATE TABLE CONTRATO (

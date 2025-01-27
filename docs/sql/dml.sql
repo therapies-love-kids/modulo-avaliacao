@@ -57,12 +57,12 @@ INSERT INTO COLABORADOR (
 ('NER', TRUE, 'Ana Paula Oliveira', 'F', '1980-02-25', '98765432109', 'SP9876543', '987654321', NULL, '62999990002', 'ana.oliveira@email.com', 'CLT', '75460000', 'GO', 'Nerópolis', 'Centro', 'Rua dos Lírios', '200', 'Casa', 'Diretora Administrativa', NULL, '2020-06-01', NULL, '98765432109', 'Administrativo', 'Diretor', NULL),
 ('ANA', TRUE, 'Maria Souza Santos', 'F', '1995-11-03', '11122233344', 'RJ1112223', '111222333', NULL, '62999990003', 'maria.santos@email.com', 'CLT', '75020030', 'GO', 'Anápolis', 'Centro', 'Av. Goiás', '300', 'Recepção', 'Recepcionista', NULL, '2020-07-01', NULL, '11122233344', 'Recepção', 'Recepcionista', NULL),
 ('NER', TRUE, 'João Pedro Almeida', 'M', '1998-06-15', '44455566677', 'BA4445556', '444555666', '7654321', '62999990004', 'joao.almeida@email.com', 'CLT', '75460000', 'GO', 'Nerópolis', 'Centro', 'Rua das Acácias', '400', NULL, 'Recepcionista', NULL, '2020-08-01', NULL, '44455566677', 'Recepção', 'Recepcionista', NULL),
-('ANA', TRUE, 'Fernanda Costa Rocha', 'F', '1988-09-22', '77788899900', 'PR7778889', '777888999', NULL, '62999990005', 'fernanda.rocha@email.com', 'PJ', '75020030', 'GO', 'Anápolis', 'Setor Sul', 'Rua Jequitibás', '500', 'Consultório 1', 'Avaliadora', NULL,'2020-09-01', NULL, '77788899900', 'Terapêutico', 'Avaliador', 'Terapêutico'),
-('NER', TRUE, 'Lucas Mendes Pereira', 'M', '1992-04-10', '22233344455', 'SC2223334', '222333444', '2345678', '62999990006', 'lucas.pereira@email.com', 'PJ', '75460000', 'GO', 'Nerópolis', 'Setor Central', 'Rua Ipês', '600', NULL, 'Avaliador', NULL, '2020-10-01', NULL, '22233344455', 'Terapêutico', 'Avaliador', 'Terapêutico'),
-('ANA', TRUE, 'Ricardo Oliveira Gomes', 'M', '1970-12-01', '55566677788', 'RS5556667', '555666777', '3456789', '62999990007', 'ricardo.gomes@email.com', 'CLT', '75020030', 'GO', 'Anápolis', 'Jundiaí', 'Rua dos Pinheiros', '700', 'Consultório Médico', 'Médico Clínico Geral', 'GO12345', '2020-11-01', NULL,  '45678901234', 'Médico', 'Médico', 'Clínico Geral'),
-('ANA', TRUE, 'Patrícia Almeida Rangel', 'F', '1978-07-18', '88899900011', 'ES8889990', '888999000', NULL, '62999990008', 'patricia.rangel@email.com', 'CLT', '75020030', 'GO', 'Anápolis', 'Vila Formosa', 'Rua das Orquídeas', '800', NULL, 'Médica Pediatra', 'GO54321', '2020-12-01', NULL, '56789012345', 'Médico', 'Médico', 'Pediatra'),
-('NER', TRUE, 'Gustavo Henrique Lima', 'M', '1985-03-05', '33344455566', 'CE3334445', '333444555', '5678901', '62999990009', 'gustavo.lima@email.com', 'PJ', '75460000', 'GO', 'Nerópolis', 'Vila Nova', 'Rua dos Cravos', '900', 'Sala 2', 'Médico Cardiologista', 'GO67890', '2020-01-01', NULL, '67890123456', 'Médico', 'Médico', 'Cardiologista'),
-('NER', TRUE, 'Camila Fernandes Braga', 'F', '1991-01-28', '66677788899', 'PE6667778', '666777888', NULL, '62999990010', 'camila.braga@email.com', 'PJ', '75460000', 'GO', 'Nerópolis', 'Jardim Primavera', 'Rua dos Girassóis', '1000', NULL, 'Médica Dermatologista', 'GO09876', '2020-02-01', NULL, '78901234567', 'Médico', 'Médico', 'Dermatologista');
+('ANA', TRUE, 'Fernanda Costa Rocha', 'F', '1988-09-22', '77788899900', 'PR7778889', '777888999', NULL, '62999990005', 'fernanda.rocha@email.com', 'PJ', '75020030', 'GO', 'Anápolis', 'Setor Sul', 'Rua Jequitibás', '500', 'Consultório 1', 'Avaliadora', NULL,'2020-09-01', NULL, '77788899900', 'Avaliação', 'Avaliador Terapêutico', 'Terapêutico'),
+('NER', TRUE, 'Lucas Mendes Pereira', 'M', '1992-04-10', '22233344455', 'SC2223334', '222333444', '2345678', '62999990006', 'lucas.pereira@email.com', 'PJ', '75460000', 'GO', 'Nerópolis', 'Setor Central', 'Rua Ipês', '600', NULL, 'Avaliador', NULL, '2020-10-01', NULL, '22233344455', 'Avaliação', 'Avaliador Terapêutico', 'Terapêutico'),
+('ANA', TRUE, 'Ricardo Oliveira Gomes', 'M', '1970-12-01', '55566677788', 'RS5556667', '555666777', '3456789', '62999990007', 'ricardo.gomes@email.com', 'CLT', '75020030', 'GO', 'Anápolis', 'Jundiaí', 'Rua dos Pinheiros', '700', 'Consultório Médico', 'Médico Clínico Geral', 'GO12345', '2020-11-01', NULL,  '45678901234', 'Avaliação', 'Avaliador Diagnóstico', 'Neuro'),
+('NER', TRUE, 'Gustavo Henrique Lima', 'M', '1985-03-05', '33344455566', 'CE3334445', '333444555', '5678901', '62999990009', 'gustavo.lima@email.com', 'PJ', '75460000', 'GO', 'Nerópolis', 'Vila Nova', 'Rua dos Cravos', '900', 'Sala 2', 'Médico Cardiologista', 'GO67890', '2020-01-01', NULL, '67890123456', 'Avaliação', 'Avaliador Diagnóstico', 'Neuro'),
+('ANA', TRUE, 'Patrícia Almeida Rangel', 'F', '1978-07-18', '88899900011', 'ES8889990', '888999000', NULL, '62999990008', 'patricia.rangel@email.com', 'CLT', '75020030', 'GO', 'Anápolis', 'Vila Formosa', 'Rua das Orquídeas', '800', NULL, 'Médica Pediatra', 'GO54321', '2020-12-01', NULL, '56789012345', 'Médico', 'Médico', 'Fonoaudiologia'),
+('NER', TRUE, 'Camila Fernandes Braga', 'F', '1991-01-28', '66677788899', 'PE6667778', '666777888', NULL, '62999990010', 'camila.braga@email.com', 'PJ', '75460000', 'GO', 'Nerópolis', 'Jardim Primavera', 'Rua dos Girassóis', '1000', NULL, 'Médica Dermatologista', 'GO09876', '2020-02-01', NULL, '78901234567', 'Médico', 'Médico', 'Ortopedia');
 
 -- Preenchendo a tabela USUARIO
 INSERT INTO USUARIO (
@@ -158,81 +158,49 @@ INSERT INTO LACO (
 (6, 11, NOW(), 'Pai'),  -- Davi Lucca Pereira
 (6, 12, NOW(), 'Mãe');
 
--- Preenchendo a tabela DOCUMENTO
-INSERT INTO DOCUMENTO (
-    paciente_id,
-    colaborador_id,
-    ativo,
-    data_hora_criacao,
-    tipo,
-    caminho
-) VALUES
-(1, 7, TRUE, '2025-01-27 10:00:00', 'Relatório Médico', '/documentos/laura_silva_relatorio_medico.pdf'), -- Documento para a paciente Laura Maria Silva, criado por Ricardo Oliveira Gomes
-(2, 8, TRUE, '2025-01-27 11:00:00', 'Prescrição Médica', '/documentos/enzo_oliveira_prescricao_medica.pdf'), -- Documento para o paciente Enzo Gabriel Oliveira, criado por Patrícia Almeida Rangel
-(3, 5, TRUE, '2025-01-27 12:00:00', 'Avaliação Terapêutica', '/documentos/maria_santos_avaliacao_terapeutica.pdf'), -- Documento para a paciente Maria Clara Santos, criado por Fernanda Costa Rocha
-(4, 6, TRUE, '2025-01-27 13:00:00', 'Plano Terapêutico', '/documentos/arthur_souza_plano_terapeutico.pdf'), -- Documento para o paciente Arthur Miguel Souza, criado por Lucas Mendes Pereira
-(5, 10, TRUE, '2025-01-27 14:00:00', 'Relatório Dermatológico', '/documentos/ana_lima_relatorio_dermatologico.pdf'), -- Documento para a paciente Ana Beatriz Lima, criado por Camila Fernandes Braga
-(6, 9, TRUE, '2025-01-27 15:00:00', 'Relatório Cardiológico', '/documentos/davi_pereira_relatorio_cardiologico.pdf'); -- Documento para o paciente Davi Lucca Pereira, criado por Gustavo Henrique Lima
-
-INSERT INTO AGENDAMENTO (
-    especialista_colaborador_id,
-    paciente_id,
-    recepcionista_colaborador_id,
-    responsavel_id,
-    unidade_id,
-    data_hora,
-    sala,
-    tipo,
-    "status",
-    observacoes
-) VALUES
-(7, 1, 3, 1, 1, '2025-02-01 10:00:00', 'Consultório 1', 'Consulta Clínica', 'Agendado', 'Primeira consulta médica de Laura Maria Silva.'),
-(8, 2, 4, 3, 1, '2025-02-01 11:00:00', 'Consultório 2', 'Consulta Pediátrica', 'Acompanhamento psicológico de Enzo Gabriel Oliveira.'),
-(5, 3, 3, 5, 1, '2025-02-02 09:00:00', 'Consultório 3', 'Terapia Ocupacional', 'Sessão de terapia ocupacional para Maria Clara Santos.'),
-(9, 4, 4, 7, 2, '2025-02-02 14:00:00', 'Consultório 4', 'Consulta Cardiológica', 'Consulta inicial de Arthur Miguel Souza com o cardiologista.'),
-(10, 5, 4, 9, 2, '2025-02-03 10:30:00', 'Consultório 5', 'Consulta Dermatológica', 'Avaliação dermatológica de Ana Beatriz Lima.'),
-(6, 6, 3, 11, 2, '2025-02-03 15:00:00', 'Consultório 6', 'Terapia Ocupacional', 'Terapia ocupacional para Davi Lucca Pereira.');
-
-INSERT INTO PAGAMENTO (
-    responsavel_id,
-    data_hora_criacao,
-    valor,
-    tipo,
-    descricao
-) VALUES
-(1, '2025-02-01 09:45:00', 200.00, 'Cartão de Crédito', 'Pagamento da consulta clínica de Laura Maria Silva.'),
-(3, '2025-02-01 10:45:00', 150.00, 'Dinheiro', 'Pagamento da consulta pediátrica de Enzo Gabriel Oliveira.'),
-(5, '2025-02-02 08:45:00', 250.00, 'PIX', 'Pagamento da terapia ocupacional de Maria Clara Santos.'),
-(7, '2025-02-02 13:30:00', 300.00, 'Cartão de Débito', 'Pagamento da consulta cardiológica de Arthur Miguel Souza.'),
-(9, '2025-02-03 10:15:00', 180.00, 'Cartão de Crédito', 'Pagamento da consulta dermatológica de Ana Beatriz Lima.'),
-(11, '2025-02-03 14:30:00', 250.00, 'PIX', 'Pagamento da terapia ocupacional de Davi Lucca Pereira.');
-
-INSERT INTO AVALIACAO (
-    paciente_id,
-    colaborador_id,
-    data_hora_inicio,
-    data_hora_fim,
-    "status",
-    anotacoes
-)
+INSERT INTO AGENDAMENTO (especialista_colaborador_id, paciente_id, recepcionista_colaborador_id, responsavel_id, unidade_prefixo, data_hora, sala, tipo, status, observacoes)
 VALUES
-(5, 6, '2025-02-05 10:00:00', '2025-02-05 10:30:00', 'Concluída', 'Sessão de avaliação para terapia comportamental.'),
-(6, 6, '2025-02-05 14:00:00', NULL, 'Agendada', 'Planejamento para avaliação motora.');
+(9, 1, 3, 1, 'ANA', '2024-08-23 10:00:00-03', 'Sala 1', 'consulta', 'Concluído', NULL),
+(7, 2, 3, 3, 'ANA', '2024-08-23 11:00:00-03', 'Sala 2', 'Avaliação diagnóstica', 'Concluído', 'Convenio'),
+(5, 2, 3, 3, 'ANA', '2024-08-23 12:00:00-03', 'Sala 3', 'Avaliação terapêutica', 'Concluído', 'Convenio'),
+(5, 3, 3, 6, 'ANA', '2024-08-23 13:00:00-03', 'Sala 1', 'Avaliação terapêutica', 'Concluído', 'Particular, Diagnóstico de fora'),
+(10, 4, 4, 7, 'NER', '2024-08-24 10:00:00-03', 'Sala 2', 'consulta', 'Concluído', NULL),
+(10, 4, 4, 7, 'NER', '2024-08-24 11:00:00-03', 'Sala 3', 'consulta', 'Concluído', NULL),
+(8, 5, 4, 9, 'NER', '2024-08-24 12:00:00-03', 'Sala 1', 'Avaliação diagnóstica', 'Concluído', 'Convenio'),
+(6, 5, 4, 9, 'NER', '2024-08-24 13:00:00-03', 'Sala 2', 'Avaliação terapêutica', 'Concluído', 'Convenio'),
+(6, 6, 4, 12, 'NER', '2024-08-24 14:00:00-03', 'Sala 3', 'Avaliação terapêutica', 'Concluído', 'Particular, Diagnóstico de fora');
 
-INSERT INTO CONTRATO (
-    responsavel_id,
-    paciente_id,
-    documento_pk,
-    ativo,
-    data_hora_criacao,
-    cep,
-    uf,
-    cidade,
-    bairro,
-    logradouro,
-    numero,
-    complemento
-)
+INSERT INTO PAGAMENTO (responsavel_id, data_hora_criacao, valor, tipo, descricao)
 VALUES
-(9, 5, 101, TRUE, '2025-02-05 10:00:00', '12345678', 'SP', 'São Paulo', 'Centro', 'Rua das Flores', 123, 'Apartamento 12'),
-(11, 6, 102, TRUE, '2025-02-05 14:00:00', '87654321', 'RJ', 'Rio de Janeiro', 'Jardim Botânico', 'Avenida das Palmeiras', 456, 'Casa 3');
+(1, '2024-08-23 10:15:00-03', 100.00, 'Consulta', 'Pagamento da consulta de Laura'),
+(3, '2024-08-23 11:15:00-03', 150.00, 'Avaliação Diagnóstica', 'Pagamento da avaliação diagnóstica de Enzo'),
+(3, '2024-08-23 12:15:00-03', 120.00, 'Avaliação Terapêutica', 'Pagamento da avaliação terapêutica de Enzo'),
+(6, '2024-08-23 13:15:00-03', 120.00, 'Avaliação Terapêutica', 'Pagamento da avaliação terapêutica de Maria'),
+(7, '2024-08-24 10:15:00-03', 100.00, 'Consulta', 'Pagamento da consulta de Arthur (1ª consulta)'),
+(7, '2024-08-24 11:15:00-03', 100.00, 'Consulta', 'Pagamento da consulta de Arthur (2ª consulta)'),
+(9, '2024-08-24 12:15:00-03', 150.00, 'Avaliação Diagnóstica', 'Pagamento da avaliação diagnóstica de Ana'),
+(9, '2024-08-24 13:15:00-03', 120.00, 'Avaliação Terapêutica', 'Pagamento da avaliação terapêutica de Ana'),
+(12, '2024-08-24 14:15:00-03', 120.00, 'Avaliação Terapêutica', 'Pagamento da avaliação terapêutica de DAVI');
+
+INSERT INTO AVALIACAO (paciente_id, colaborador_id, data_hora_inicio, data_hora_fim, status, anotacoes)
+VALUES
+(2, 7, '2024-08-23 11:00:00-03', '2024-08-23 12:00:00-03', 'Concluída', NULL),
+(3, 5, '2024-08-23 13:00:00-03', '2024-08-23 14:00:00-03', 'Concluída', NULL),
+(5, 8, '2024-08-24 12:00:00-03', '2024-08-24 13:00:00-03', 'Concluída', NULL),
+(6, 6, '2024-08-24 14:00:00-03', '2024-08-24 15:00:00-03', 'Concluída', NULL);
+
+-- Inserir DOCUMENTOS
+INSERT INTO DOCUMENTO (paciente_id, colaborador_id, ativo, data_hora_criacao, tipo, caminho)
+VALUES
+(2, 3, TRUE, '2024-08-23 12:30:00-03', 'Contrato', '/contratos/contrato_paciente_2.pdf'),
+(3, 3, TRUE, '2024-08-23 13:30:00-03', 'Contrato', '/contratos/contrato_paciente_3.pdf'),
+(5, 4, TRUE, '2024-08-24 13:30:00-03', 'Contrato', '/contratos/contrato_paciente_5.pdf'),
+(6, 4, TRUE, '2024-08-24 14:30:00-03', 'Contrato', '/contratos/contrato_paciente_6.pdf');
+
+-- Inserir CONTRATOS (assuming we know the documento_pk, you might need to query this value)
+INSERT INTO CONTRATO (responsavel_id, paciente_id, documento_pk, ativo, data_hora_criacao, cep, uf, cidade, bairro, logradouro, numero, complemento)
+VALUES
+(3, 2, (SELECT pk FROM DOCUMENTO WHERE paciente_id = 2 AND tipo = 'Contrato'), TRUE, '2024-08-23 12:30:00-03', '12345678', 'SP', 'São Paulo', 'Centro', 'Rua Exemplo', 123, 'Apto 101'),
+(6, 3, (SELECT pk FROM DOCUMENTO WHERE paciente_id = 3 AND tipo = 'Contrato'), TRUE, '2024-08-23 13:30:00-03', '12345678', 'SP', 'São Paulo', 'Centro', 'Rua Exemplo', 123, 'Apto 101'),
+(9, 5, (SELECT pk FROM DOCUMENTO WHERE paciente_id = 5 AND tipo = 'Contrato'), TRUE, '2024-08-24 13:30:00-03', '12345678', 'SP', 'São Paulo', 'Centro', 'Rua Exemplo', 123, 'Apto 101'),
+(12, 6, (SELECT pk FROM DOCUMENTO WHERE paciente_id = 6 AND tipo = 'Contrato'), TRUE, '2024-08-24 14:30:00-03', '12345678', 'SP', 'São Paulo', 'Centro', 'Rua Exemplo', 123, 'Apto 101');
