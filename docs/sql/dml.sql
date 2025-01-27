@@ -14,7 +14,7 @@ INSERT INTO EMPRESA (
     unidade_prefixo,
     unidade_nome
 ) VALUES 
-(TRUE, '46480183000190', 'Rede Tlk Anapolis de Clinicas LTDA', 'Therapies Love Kids', '75020030', 'GO', 'Anápolis', 'Centro', 'Rua Manoel D''abadia', '116', '', 'ANA', 'Anápolis');
+(TRUE, '46480183000190', 'Rede Tlk Anapolis de Clinicas LTDA', 'Therapies Love Kids', '75020030', 'GO', 'Anápolis', 'Centro', 'Rua Manoel D''abadia', '116', '', 'ANA', 'Anápolis'),
 (TRUE, '41903933000176', 'Rede Tlk Neropolis de Clinicas LTDA', 'Therapies Love Kids', '75460000', 'GO', 'Nerópolis', 'Centro', 'Rua Aderbal Antunes de Oliveira', '00', 'Quadra 14 Lote 04', 'NER', 'Nerópolis');
 
 -- Preenchendo a tabela CONVENIO
