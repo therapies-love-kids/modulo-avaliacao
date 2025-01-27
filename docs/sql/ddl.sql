@@ -50,6 +50,8 @@ CREATE TABLE COLABORADOR (
     complemento VARCHAR(256),
     titulo_profissional VARCHAR(64) NOT NULL,
     registro_profissional VARCHAR(64),
+    data_admissao DATE NOT NULL,
+    data_demissao DATE,
     pis VARCHAR(16),
     setor VARCHAR(64) NOT NULL,
     funcao VARCHAR(64) NOT NULL,
