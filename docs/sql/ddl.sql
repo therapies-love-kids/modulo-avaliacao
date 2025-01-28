@@ -124,6 +124,7 @@ CREATE TABLE AGENDAMENTO (
     recepcionista_colaborador_id INTEGER REFERENCES COLABORADOR(id),
     responsavel_id INTEGER REFERENCES RESPONSAVEL(id),
     unidade_prefixo VARCHAR NOT NULL REFERENCES EMPRESA(unidade_prefixo),
+    data_hora_criacao TIMESTAMPTZ NOT NULL,
     data_hora TIMESTAMPTZ NOT NULL,
     sala VARCHAR(16) NOT NULL,
     tipo VARCHAR(64) NOT NULL,
