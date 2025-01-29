@@ -1,634 +1,859 @@
-## AGENDAMENTO
+{TODO: Substituir os exemplos pelos valores possíveis onde for conveniente}
 
-### pk
-
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
-
-### especialista_colaborador_id
-
-**Tipo:** `VARCHAR`  
-**Referência:** `COLABORADOR(id)`  
-**Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**, usada para identificar o especialista responsável pela condução do agendamento.
-
-### paciente_codigo
-
-**Tipo:** `VARCHAR`  
-**Referência:** `PACIENTE(codigo)`  
-**Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
-
-### recepcionista_colaborador_id
-
-**Tipo:** `VARCHAR`  
-**Referência:** `COLABORADOR(id)`  
-**Descrição:** Código do recepcionista responsável pelo agendamento.
-
-### responsavel_id
-
-**Tipo:** `VARCHAR`  
-**Referência:** `RESPONSAVEL(id)`  
-**Descrição:** Chave estrangeira herdada da tabela **RESPONSAVEL**.
-
-### unidade_id
-
-**Tipo:** `VARCHAR(8)`  
-**Descrição:** Chave estrangeira, herdada da tabela **EMPRESA**.
-
-### data_hora
-
-**Tipo:** `TIMESTAMPTZ`  
-**Descrição:** Data definida para o evento do agendamento pelo colaborador responsável por agendar.
-
-### sala
-
-**Tipo:** `VARCHAR(16)`  
-**Descrição:** Número ou código da sala onde ocorrerá o evento do agendamento.
-
-### tipo
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Tipo de agendamento definido pelo criador do registro, podendo ser: "Consulta", "Avaliação clinica" ou "Avaliação terapeutica".
-
-### status
-
-**Tipo:** `VARCHAR(16)`  
-**Descrição:** Define o estado em que se encontra o agendamento, podendo ser: "Agendado" (Valor padrão), "Confirmado", "Em espera", "Em andamento", "Concluído" ou "Cancelado".
-
-### observacoes
-
-**Tipo:** `TEXT`  
-**Descrição:** Campo de texto utilizado para incluir observações acerca do agendamento. Por exemplo: "Retorno".
-
-## AVALIACAO
-
-### pk
-
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
-
-### paciente_codigo
-
-**Tipo:** `VARCHAR`  
-**Referência:** `PACIENTE(codigo)`  
-**Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
-
-### colaborador_id
-
-**Tipo:** `VARCHAR`  
-**Referência:** `COLABORADOR(id)`  
-**Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**.
-
-### data_hora_inicio
-
-**Tipo:** `TIMESTAMPTZ`  
-**Descrição:** É o horário de inicio da avaliação, definida pelo avaliador.
-
-### data_hora_fim
-
-**Tipo:** `TIMESTAMPTZ`  
-**Descrição:** Preenchido automaticamente com o horário atual do sistema no momento de finalização.
-
-### status
-
-**Tipo:** `VARCHAR(32)`  
-**Descrição:** Define o estado em que se encontra a avaliação, podendo ser: "Em adamento", "Finalizada".
-
-### anotacoes
-
-**Tipo:** `TEXT`  
-**Descrição:** Campo para preencher com anotações ao decorrer da avaliação, caso seja necessário.
-
-## COLABORADOR
-
-### pk
-
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
-
-### id
-
-**Tipo:** `VARCHAR(32)`  
-**Restrição:** `UNIQUE`  
-**Descrição:** Chave secundária de identificação, é uma cópia da chave primária.
-
-### empresa_unidade_codigo
-
-**Tipo:** `VARCHAR`  
-**Referência:** `EMPRESA(unidade_id)`  
-**Descrição:** Chave estrangeira herdada da tabela **EMPRESA**. Refere-se à unidade/empresa onde o colaborador foi contratado.
-
-### ativo
-
-**Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o colaborador está ou não ativo. Pode ser TRUE (ativo) ou FALSE (inativo).
-
-### nome
-
-**Tipo:** `VARCHAR(128)`  
-**Descrição:** Nome completo do colaborador. Exemplo: "Matheus Brenner de Negreiros Brito".
-
-### cpf
-
-**Tipo:** `VARCHAR(11)`  
-**Restrição:** `UNIQUE`  
-**Descrição:** CPF completo de acordo com documento, apenas números. Exemplo: 12345678932.
-
-### email
-
-**Tipo:** `VARCHAR(128)`  
-**Restrição:** `UNIQUE`  
-**Descrição:** E-mail do colaborador.
-
-### modo_trabalho
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Modo que o colaborador está vinculado a empresa, podendo ser: "PJ", "CLT" ou "Particular".
-
-### titulo_profissional
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Título profissional do colaborador, que pode diferir da função exercida. Por exemplo "Médico".
-
-### registro_profissional
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Número do registro profissional para profissionais da área clinica, (por exemplo o CRM).
-
-### pis
-
-**Tipo:** `VARCHAR(16)`  
-**Descrição:** Número do PIS, de acordo com carteira de trabalho.
-
-### setor
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Setor em que o colaborador trabalha. Por exemplo: "Administrativo".
-
-### funcao
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Função a qual o colaborador foi contratado. Por exemplo: "Terapeuta".
-
-### especialidade
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Especialidade do colaborador. Por exemplo: "Musicoterapia".
-
-## CONTRATO
-
-### pk
-
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
-
-### responsavel_id
-
-**Tipo:** `VARCHAR`  
-**Referência:** `RESPONSAVEL(id)`  
-**Descrição:** Chave secundária estrangeira herdada da tabela **RESPONSAVEL**.
-
-### paciente_codigo
-
-**Tipo:** `VARCHAR`  
-**Referência:** `PACIENTE(codigo)`  
-**Descrição:** Chave secundária estrangeira herdada da tabela **PACIENTE**.
-
-### documento_id
-
-**Tipo:** `INTEGER`  
-**Referência:** `DOCUMENTO(pk)`  
-**Descrição:** Chave estrangeira herdada da tabela **DOCUMENTO**.
-
-### ativo
-
-**Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o contrato está ou não ativo. Pode ser TRUE (ativo) ou FALSE (inativo).
-
-### data_hora_criacao
-
-**Tipo:** `TIMESTAMPTZ`  
-**Descrição:** Preenchido automaticamente com o horário atual do sistema no momento de criação.
-
-### cep
-
-**Tipo:** `VARCHAR(8)`  
-**Descrição:** CEP do contratante (apenas os números) de acordo com comprovante de endereço. Exemplo: "12312332".
-
-### uf
-
-**Tipo:** `CHAR(2)`  
-**Descrição:** Estado do contratante em dois caracteres. Exemplos: "GO" e "DF".
-
-### cidade
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Cidade do contratante de acordo com comprovante de endereço. Exemplo: Anápolis.
-
-### bairro
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Bairro do contratante de acordo com comprovante de endereço. Exemplo: São João.
-
-### logradouro
-
-**Tipo:** `VARCHAR(128)`  
-**Descrição:** Rua/Avenida do contratante de acordo com comprovante de endereço. Exemplo: Avenida Fernando Costa.
-
-### numero
-
-**Tipo:** `INTEGER`  
-**Descrição:** Número do endereço do contratante de acordo com comprovante. Exemplo: 544.
-
-### complemento
-
-**Tipo:** `VARCHAR(256)`  
-**Descrição:** Complemento para o endereço, caso necessário. Exemplo: "Ao lado de um pé de mexerica".
-
-## CONVENIO
-
-### pk
-
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
-
-### ativo
-
-**Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o convênio está ativo ou inativo, podendo ser: TRUE (ativo) ou FALSE (inativo).
-
-### nome
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Nome completo do convênio. Exemplo: "Confederação Nacional das Cooperativas Médicas".
-
-### nome_curto
-
-**Tipo:** `VARCHAR(16)`  
-**Descrição:** Nome curto ou sigla para identificação do convênio. Exemplo: "UNIMED".
-
-## DOCUMENTO
-
-### pk
-
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
-
-### paciente_codigo
-
-**Tipo:** `VARCHAR`  
-**Referência:** `PACIENTE(codigo)`  
-**Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
-
-### colaborador_id
-
-**Tipo:** `VARCHAR`  
-**Referência:** `COLABORADOR(id)`  
-**Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**, usada para identificar quem anexou o arquivo na base de dados.
-
-### ativo
-
-**Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o documento está ativo ou inativo, podendo ser: TRUE (ativo) ou FALSE (inativo).
-
-### data_hora_criacao
-
-**Tipo:** `TIMESTAMPTZ`  
-**Descrição:** Preenchido automaticamente com o horário atual do sistema no momento de criação do documento.
-
-### tipo
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Tipo do documento. Por exemplo: "CPF", "RG", "Certidão de casamento", etc.
-
-### caminho
-
-**Tipo:** `VARCHAR(256)`  
-**Descrição:** Caminho do arquivo no sistema. Exemplo: "pacientes/Convenio1/GOY02020445678/Avaliacoes/indicacao.pdf".
+# Banco de dados
 
 ## EMPRESA
 
+Armazena informações das empresas e de suas unidades, incluindo dados de localização, identificação e vínculo com seu diretor.
+
 ### pk
 
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
+- **Descrição:** Identificador único interno
+- **Tipo:** SERIAL
+- **Restrições:** PK
+- **Exemplos:** `1`, `2`, `3`
 
 ### id
 
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave secundária, é uma cópia da chave primária.
+- **Descrição:** Identificador público interno
+- **Tipo:** SERIAL
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `1`, `2`, `3`
 
-### unidade_prefixo
+### diretor_colaborador_id
 
-**Tipo:** `VARCHAR(3)`  
-**Descrição:** Prefixo da cidade em que está localizada a unidade. Por exemplo: "ANA";
-
-### unidade_nome
-
-**Tipo:** `VARCHAR(32)`  
-**Descrição:** Nome da cidade em que está localizada a unidade. Por exemplo: "Anápolis";
+- **Descrição:** Identificador interno do diretor da empresa
+- **Tipo:** INTEGER
+- **Restrições:** FK (`COLABORADOR(id)`)
+- **Exemplos:** `1`, `2`, `3`
 
 ### ativo
 
-**Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se a unidade está ativa ou inativa. Pode ser TRUE (ativa) ou FALSE (inativa).
+- **Descrição:** Define se a empresa está ativa
+- **Tipo:** BOOLEAN
+- **Restrições:** Not Null
+- **Valores possíveis:** `true`, `false`
+
+### cnpj
+
+- **Descrição:** CNPJ da empresa
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Not Null
+- **Exemplos:** `'30467841000174'`
 
 ### razao_social
 
-**Tipo:** `VARCHAR(128)`  
-**Descrição:** Razão social da empresa/unidade, conforme consta no CNPJ. Exemplo: "OliveiraLac Clinica de Reabilitação Neurológica LTDA".
+- **Descrição:** Nome legal da empresa
+- **Tipo:** VARCHAR(128)
+- **Restrições:** Not Null
+- **Exemplos:** `Tecnologia Inovadora Ltda.`
 
 ### nome_fantasia
 
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Nome fantasia ou nome curto da unidade. Exemplo: "TLK - Centro".
+- **Descrição:** Nome comercial da empresa
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'InovaTech'`
 
 ### cep
 
-**Tipo:** `VARCHAR(8)`  
-**Descrição:** CEP da empresa/unidade (apenas os números). Exemplo: "12312332".
+- **Descrição:** CEP da unidade da empresa
+- **Tipo:** VARCHAR(8)
+- **Restrições:** Not Null
+- **Exemplos:** `'49096252'`
 
 ### uf
 
-**Tipo:** `CHAR(2)`  
-**Descrição:** Estado da empresa/unidade (sigla com dois caracteres). Exemplos: "GO" e "DF".
+- **Descrição:** Unidade Federativa onde a unidade da empresa está localizada
+- **Tipo:** CHAR(2)
+- **Restrições:** Not Null
+- **Exemplos:** `'GO'`, `'DF'`
 
 ### cidade
 
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Cidade da empresa/unidade. Exemplo: Anápolis.
+- **Descrição:** Nome da cidade onde a unidade da empresa está situada
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'Anápolis'`, `'Nerópolis'`
 
 ### bairro
 
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Bairro da empresa/unidade. Exemplo: São João.
+- **Descrição:** Nome do bairro onde a unidade da empresa está localizada
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'Centro'`, `'Jundiaí'`
 
 ### logradouro
 
-**Tipo:** `VARCHAR(128)`  
-**Descrição:** Rua/Avenida da empresa/unidade. Exemplo: Avenida Fernando Costa.
+- **Descrição:** Nome da rua ou avenida onde a unidade da empresa está situada
+- **Tipo:** VARCHAR(128)
+- **Restrições:** Not Null
+- **Exemplos:** `'Rua Manoel D'abadia'`, `'Rua José Neto Paranhos'`
 
 ### numero
 
-**Tipo:** `INTEGER`  
-**Descrição:** Número do endereço da empresa/unidade. Exemplo: 544.
+- **Descrição:** Número do endereço da unidade da empresa
+- **Tipo:** VARCHAR(8)
+- **Restrições:** Not Null
+- **Exemplos:** `'99'`, `'64'`
 
 ### complemento
 
-**Tipo:** `VARCHAR(256)`  
-**Descrição:** Complemento do endereço, se necessário. Exemplo: "Ao lado de um pé de mexerica".
+- **Descrição:** Informações adicionais sobre o endereço
+- **Tipo:** VARCHAR(256)
+- **Restrições:** -
+- **Exemplos:** `'Perto das Lojas Bazzar'`, `'Próximo ao posto Ipiranga'`
 
-## LACO
+### unidade_nome
 
-### pk
+- **Descrição:** Nome completo da unidade da empresa
+- **Tipo:** VARCHAR(32)
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `'Anápolis'`, `'Nerópolis'`
 
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
+### unidade_prefixo
 
-### paciente_codigo
+- **Descrição:** Prefixo da unidade da empresa
+- **Tipo:** VARCHAR(4)
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `'ANA'`, `'NER'`
 
-**Tipo:** `VARCHAR`  
-**Referência:** `PACIENTE(codigo)`  
-**Descrição:** Chave estrangeira herdada da tabela **PACIENTE**.
+## CONVENIO
 
-### responsavel_id
-
-**Tipo:** `VARCHAR`  
-**Referência:** `RESPONSAVEL(id)`  
-**Descrição:** Chave estrangeira herdada da tabela **RESPONSAVEL**.
-
-### data_hora_criacao
-
-**Tipo:** `TIMESTAMPTZ`  
-**Descrição:** Data e hora de criação do laço, preenchido automaticamente pelo sistema.
-
-### tipo
-
-**Tipo:** `VARCHAR(16)`  
-**Descrição:** Tipo de laço entre o paciente e o responsável, podendo ser: "Pai", "Mãe", "Guardião", "Tutor" ou "Autorizado".
-
-## PACIENTE
+Gerencia os convênios associados aos pacientes.
 
 ### pk
 
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
-
-### id
-
-**Tipo:** `VARCHAR(64)`  
-**Restrição:** `UNIQUE`  
-**Descrição:** Chave secundário do paciente, é uma cópia da chave primária.
-
-### empresa_unidade_id
-
-**Tipo:** `VARCHAR`  
-**Referência:** `EMPRESA(unidade_id)`  
-**Descrição:** Chave estrangeira herdada da tabela **EMPRESA**.
-
-### convenio_id
-
-**Tipo:** `INTEGER`  
-**Referência:** `CONVENIO(pk)`  
-**Descrição:** Chave estrangeira herdada da tabela **CONVENIO**.
-
-### codigo
-
-**Tipo:** `VARCHAR(64)`  
-**Restrição:** `UNIQUE`  
-**Descrição:** Código único do paciente, gerado automaticamente no formato: código da unidade + ano + mês + dia + hora + minuto + segundo + dígito mais à esquerda dos milissegundos. Exemplo: ANA2502031510061.
+- **Descrição:** Identificador único
+- **Tipo:** SERIAL
+- **Restrições:** PK
+- **Exemplos:** `1`, `2`, `3`
 
 ### ativo
 
-**Tipo:** `BOOLEAN`  
-**Descrição:** Indica se o paciente está ativo ou inativo.
+- **Descrição:** Define se o convênio está ativo
+- **Tipo:** BOOLEAN
+- **Restrições:** Not Null
+- **Valores possíveis:** `true`, `false`
 
 ### nome
 
-**Tipo:** `VARCHAR(256)`  
-**Descrição:** Nome completo do paciente, conforme consta no documento. Exemplo: Henrique Manoel Jonas da Silva.
+- **Descrição:** Nome completo do convênio
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'Confederação Nacional das Cooperativas Médicas'`, `'Particular'`
 
 ### nome_curto
 
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Nome curto do paciente, definido no cadastro. Exemplo: Henrique Silva.
+- **Descrição:** Nome encurtado do convênio
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Not Null
+- **Exemplos:** `'UNIMED'`, `'Particular'`
 
-### sexo
+## COLABORADOR
 
-**Tipo:** `CHAR(1)`  
-**Descrição:** Sexo do paciente: 'M' para Masculino e 'F' para Feminino, conforme certidão de nascimento, RG e CPF.
-
-### data_nascimento
-
-**Tipo:** `DATE`  
-**Descrição:** Data de nascimento, conforme RG.
-
-### local_nascimento
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Cidade de nascimento. Exemplo: Anápolis-GO.
-
-### certidao_nascimento
-
-**Tipo:** `VARCHAR`  
-**Descrição:** Número da certidão de nascimento.
-
-### cpf
-
-**Tipo:** `VARCHAR(11)`  
-**Restrição:** `UNIQUE`  
-**Descrição:** CPF do paciente (apenas números). Exemplo: 12345678932.
-
-### numero_convenio
-
-**Tipo:** `VARCHAR(32)`  
-**Descrição:** Número da carteira ou registro do paciente no convênio.
-
-### observacoes
-
-**Tipo:** `TEXT`  
-**Descrição:** Observações sobre o paciente, se necessário.
-
-## PAGAMENTO
+Registra informações de profissionais associados à clínica, incluindo dados pessoais, profissionais e de endereço.
 
 ### pk
 
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
-
-### responsavel_id
-
-**Tipo:** `VARCHAR`  
-**Referência:** `RESPONSAVEL(id)`  
-**Descrição:** Chave estrangeira herdada da tabela **RESPONSAVEL**.
-
-### data_hora_criacao
-
-**Tipo:** `TIMESTAMPTZ`  
-**Descrição:** Preenchido automaticamente com a data e hora atuais do sistema no momento da criação do pagamento.
-
-### valor
-
-**Tipo:** `NUMERIC(10, 2)`  
-**Descrição:** Valor do pagamento, em formato numérico com duas casas decimais. Exemplo: 104.50.
-
-### tipo
-
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Tipo de pagamento. Exemplo: "Débito", "Crédito", "PIX", "Boleto".
-
-### descricao
-
-**Tipo:** `TEXT`  
-**Descrição:** Descrição do pagamento. Exemplo: "Mensalidade paciente XXXXX", "Consulta Dr. YYYYY".
-
-## RESPONSAVEL
-
-### pk
-
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
+- **Descrição:** Identificador único interno
+- **Tipo:** SERIAL
+- **Restrições:** PK
+- **Exemplos:** `1`, `2`, `3`
 
 ### id
 
-**Tipo:** `VARCHAR(32)`  
-**Restrição:** `UNIQUE`  
-**Descrição:** Chave secundária de identificação, é uma cópia da chave primária.
+- **Descrição:** Identificador público interno
+- **Tipo:** SERIAL
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `1`, `2`, `3`
+
+### empresa_unidade_prefixo
+
+- **Descrição:** Prefixo da unidade da empresa a qual o colaborador trabalha
+- **Tipo:** VARCHAR(4)
+- **Restrições:** Not Null, FK (`EMPRESA(unidade_prefixo)`)
+- **Exemplos:** `'ANA'`, `'NER'`
 
 ### ativo
 
-**Tipo:** `BOOLEAN`  
-**Descrição:** Indica se o responsável está ativo ou inativo.
+- **Descrição:** Define se o colaborador esta ativo
+- **Tipo:** BOOLEAN
+- **Restrições:** Not Null
+- **Exemplos:** `true`, `false`
 
 ### nome
 
-**Tipo:** `VARCHAR(128)`  
-**Descrição:** Nome completo do responsável. Exemplo: "Isaque Brenner de Lucas Mathias".
+- **Descrição:** Nome completo do colaborador
+- **Tipo:** VARCHAR(128)
+- **Restrições:** Not Null
+- **Exemplos:** `'Hugo Cauê José Caldeira'`, `'Rosângela Bianca Nina'`
+
+### sexo
+
+- **Descrição:** Sexo do colaborador
+- **Tipo:** CHAR(1)
+- **Restrições:** Not Null
+- **Exemplos:** `'M'`, `'F'`
+
+### data_nascimento
+
+- **Descrição:** Data de nascimento do colaborador
+- **Tipo:** DATE
+- **Restrições:** Not Null
+- **Exemplos:** `'1999-01-01'`, `'2000-02-02'`
 
 ### cpf
 
-**Tipo:** `VARCHAR(11)`  
-**Restrição:** `UNIQUE`  
-**Descrição:** CPF do responsável (apenas números). Exemplo: "12345678932".
+- **Descrição:** CPF do colaborador
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `'54224683091'`, `'78996751030'`
 
 ### rg
 
-**Tipo:** `VARCHAR(20)`  
-**Restrição:** `UNIQUE`  
-**Descrição:** RG do responsável (apenas números). Exemplo: "1234567890".
+- **Descrição:** RG do colaborador
+- **Tipo:** VARCHAR(32)
+- **Restrições:** Not Null
+- **Exemplos:** `'407118299'`, `'225037786'`
 
-### estado_civil
+### cnh
 
-**Tipo:** `VARCHAR(16)`  
-**Descrição:** Estado civil do responsável, podendo ser: "Solteiro(a)", "Casado(a)", "Divorciado(a)", "Viúvo(a)", "União Estável".
+- **Descrição:** CNH do colaborador
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Unique
+- **Exemplos:** `'04439693700'`, `'56341562200'`
 
-### profissao
+### numero_reservista
 
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Profissão do responsável. Exemplo: "Engenheiro civil".
+- **Descrição:** Número de reservista do colaborador
+- **Tipo:** VARCHAR(8)
+- **Restrições:** -
+- **Exemplos:** `'123456'`, `'654321'`
 
 ### celular
 
-**Tipo:** `VARCHAR(16)`  
-**Restrição:** `UNIQUE`  
-**Descrição:** Celular do responsável (apenas números). Exemplo: "64912344321".
+- **Descrição:** Número de celular do colaborador
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `'83998360600`, `'82982892190'`
 
 ### email
 
-**Tipo:** `VARCHAR(64)`  
-**Restrição:** `UNIQUE`  
-**Descrição:** E-mail do responsável.
+- **Descrição:** E-mail do colaborador
+- **Tipo:** VARCHAR(128)
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `'hugocaue@gmail.com'`, `'rosangelabiana@hotmail.com'`
 
-### contatos_extras
+### modo_trabalho
 
-**Tipo:** `TEXT`  
-**Descrição:** Outros contatos do responsável, se necessário.
+- **Descrição:** Modo de trabalho do colaborador
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'CLT'`, `'PJ'`
+
+### cep
+
+- **Descrição:** CEP de onde o colaborador mora
+- **Tipo:** VARCHAR(8)
+- **Restrições:** Not Null
+- **Exemplos:** `'49096252'`
+
+### uf
+
+- **Descrição:** Unidade Federativa onde o colaborador mora
+- **Tipo:** CHAR(2)
+- **Restrições:** Not Null
+- **Exemplos:** `'SP'`, `'RJ'`, `'MG'`
+
+### cidade
+
+- **Descrição:** Nome da cidade onde o colaborador mora
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'São Paulo'`, `'Rio de Janeiro'`
+
+### bairro
+
+- **Descrição:** Nome do bairro onde o colaborador mora
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'Centro'`, `'Copacabana'`
+
+### logradouro
+
+- **Descrição:** Nome da rua ou avenida onde o colaborador mora
+- **Tipo:** VARCHAR(128)
+- **Restrições:** Not Null
+- **Exemplos:** `'Avenida Paulista'`, `'Rua da Praia'`
+
+### numero
+
+- **Descrição:** Número do endereço do colaborador.
+- **Tipo:** VARCHAR(8)
+- **Restrições:** Not Null
+- **Exemplos:** `'100'`, `'2500'`
+
+### complemento
+
+- **Descrição:** Informações adicionais sobre o endereço (opcional).
+- **Tipo:** VARCHAR(256)
+- **Restrições:** Opcional
+- **Exemplos:** `'Sala 101'`, `'Bloco B'`
 
 ## USUARIO
 
+Armazena credenciais e perfis de acesso ao sistema para colaboradores.
+
 ### pk
 
-**Tipo:** `SERIAL PRIMARY KEY`  
-**Descrição:** Chave primária, gerada automaticamente pelo banco de dados.
+- **Descrição:** Identificador único interno
+- **Tipo:** SERIAL
+- **Restrições:** PK
+- **Exemplos:** `1`, `2`, `3`
 
 ### colaborador_id
 
-**Tipo:** `VARCHAR(32)` 
-**Referência:** `COLABORADOR(id)`   
-**Restrição:** `UNIQUE`  
-**Descrição:** Chave estrangeira herdada da tabela **COLABORADOR**. Refere-se ao colaborador ligado ao usuário.
-
-### colaborador_nome
-
-**Tipo:** `VARCHAR`  
-**Referência:** `COLABORADOR(nome)`  
-**Descrição:** Atributo derivado da tabela **COLABORADOR**.
+- **Descrição:** Identificador do colaborador associado ao usuário
+- **Tipo:** INTEGER
+- **Restrições:** FK (`COLABORADOR(id)`)
+- **Exemplos:** `1`, `2`, `3`
 
 ### ativo
 
-**Tipo:** `BOOLEAN`  
-**Descrição:** Campo para indicar se o usuário está ou não ativo, podendo ser TRUE (ativo) ou FALSE (inativo).
+- **Descrição:** Define se o usuário está ativo
+- **Tipo:** BOOLEAN
+- **Restrições:** Not Null
+- **Valores possíveis:** `true`, `false`
 
 ### online
 
-**Tipo:** `BOOLEAN`
-**Descrição:** Campo para indicar se o usuário esta ou nao online, podendo ser TRUE (online) ou FALSE (offline).
+- **Descrição:** Define se o usuário está online
+- **Tipo:** BOOLEAN
+- **Restrições:** Not Null
+- **Valores possíveis:** `true`, `false`
 
 ### nome
 
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Nome do usuário, utilizado para autenticação.
+- **Descrição:** Nome de acesso ao sistema
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'hugo'`, `'rosangela'`
 
 ### senha
 
-**Tipo:** `VARCHAR(128)`  
-**Descrição:** Senha do usuário, utilizado para autenticação.
+- **Descrição:** Senha de acesso ao sistema
+- **Tipo:** VARCHAR(128)
+- **Restrições:** Not Null
+- **Exemplos:** `'123456'`, `'654321'`
 
 ### nome_computador
 
-**Tipo:** `VARCHAR(64)`  
-**Descrição:** Nome do computador que o usuário utiliza na rede.
+- **Descrição:** Nome do computador utilizado pelo usuário
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'PC1'`, `'PC2'`
 
 ### perfil
 
-**Tipo:** `VARCHAR(16)`
-**Descrição:** Perfil do usuário a nivel de acesso ao sistema.
+- **Descrição:** Perfil de acesso ao sistema
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Not Null
+- **Valores possíveis:** {TODO}
+
+## PACIENTE
+
+Cadastro de pacientes com informações pessoais.
+
+### pk
+
+- **Descrição:** Identificador único interno
+- **Tipo:** SERIAL
+- **Restrições:** PK
+- **Exemplos:** `1`, `2`, `3`
+
+### id
+
+- **Descrição:** Identificador público interno
+- **Tipo:** SERIAL
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `1`, `2`, `3`
+
+### empresa_unidade_prefixo
+
+- **Descrição:** Prefixo da unidade da empresa
+- **Tipo:** VARCHAR
+- **Restrições:** Not Null
+- **Exemplos:** `'ANA'`, `'NER'`
+
+### convenio_pk
+
+- **Descrição:** Identificador do convênio associado ao paciente
+- **Tipo:** INTEGER
+- **Restrições:** Not Null
+- **Exemplos:** `1`, `2`, `3`
+
+### codigo
+
+- **Descrição:** Código de identificação único do paciente
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Unique, Not Null
+- **Exemplos:** ANA001, NER002 {TODO: Padronizar}
+
+### ativo
+
+- **Descrição:** Status de atividade do paciente
+- **Tipo:** BOOLEAN
+- **Restrições:** Not Null
+- **Exemplos:** `true`, `false`
+
+### nome
+
+- **Descrição:** Nome completo do paciente
+- **Tipo:** VARCHAR(128)
+- **Restrições:** Not Null
+- **Exemplos:** `'João da Silva'`, `'Maria da Silva'`
+
+### nome_curto
+
+- **Descrição:** Nome curto único do paciente para identificação
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'João'`, `'Maria'`
+
+### sexo
+
+- **Descrição:** Sexo do paciente
+- **Tipo:** CHAR(1)
+- **Restrições:** Not Null
+- **Exemplos:** `'M'`, `'F'`
+
+### data_nascimento
+
+- **Descrição:** Data de nascimento do paciente
+- **Tipo:** DATE
+- **Restrições:** Not Null
+- **Exemplos:** `'1990-01-01'`, `'2000-01-01'`
+
+### local_nascimento
+
+- **Descrição:** Local de nascimento do paciente
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'Rio de Janeiro'`, `'São Paulo'`
+
+### certidao_nascimento
+
+- **Descrição:** Certidão de nascimento do paciente
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'1480140155201012421405051234821'`, `'27359601552014171620020505822312'`
+
+### cpf
+
+- **Descrição:** CPF do paciente
+- **Tipo:** VARCHAR(11)
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `'12345678901'`, `'98765432100'`
+
+### numero_convenio
+
+- **Descrição:** Número de identificação do convênio do paciente
+- **Tipo:** VARCHAR(32)
+- **Restrições:** Not Null
+- **Exemplos:** `'552019'`, `'17832201'`
+
+## RESPONSAVEL
+
+Registra responsáveis de pacientes (pais, tutores, etc.).
+
+### pk
+
+- **Descrição:** Identificador único interno
+- **Tipo:** SERIAL
+- **Restrições:** PK
+- **Exemplos:** `1`, `2`, `3`
+
+### id
+
+- **Descrição:** Identificador público interno
+- **Tipo:** SERIAL
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `1`, `2`, `3`
+
+### ativo
+
+- **Descrição:** Status de atividade do responsável
+- **Tipo:** BOOLEAN
+- **Restrições:** Not Null
+- **Valores possíveis:** `true`, `false`
+
+### nome
+
+- **Descrição:** Nome completo do responsável
+- **Tipo:** VARCHAR(128)
+- **Restrições:** Not Null
+- **Exemplos:** `'João da Silva'`, `'Maria da Silva'`
+
+### estado_civil
+
+- **Descrição:** Estado civil do responsável
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Not Null
+- **Valores possíveis:** `'Solteiro'`, `'Casado'`, `'Divorciado'`, `'Viuvo'`
+
+### profissao
+
+- **Descrição:** Profissão do responsável
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'Médico'`, `'Engenheiro'`
+
+### cpf
+
+- **Descrição:** CPF do responsável
+- **Tipo:** VARCHAR(11)
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `'12345678901'`, `'98765432100'`
+
+### rg
+
+- **Descrição:** RG do responsável
+- **Tipo:** VARCHAR(32)
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `'365549320'`, `'320541605'`
+
+### celular
+
+- **Descrição:** Número de celular do responsável
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `'11999999999'`, `'11988888888'`
+
+### email
+
+- **Descrição:** E-mail do responsável
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `'joao@ex.com'`, `'maria@ex.com'`
+
+### contatos_extras
+
+- **Descrição:** Outros contatos do responsável
+- **Tipo:** TEXT
+- **Restrições:** -
+- **Exemplos:** `'Telefone fixo: 22999999999'`, `'Segundo e-mail: joao2@ex.com'`
+
+## LACO
+
+Define o vínculo entre um paciente e um responsável.
+
+### pk
+
+- **Descrição:** Identificador único interno
+- **Tipo:** SERIAL
+- **Restrições:** PK
+- **Exemplos:** `1`, `2`, `3`
+
+### paciente_id
+
+- **Descrição:** Identificador interno do paciente
+- **Tipo:** INTEGER
+- **Restrições:** Not Null, FK (`PACIENTE(id)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### responsavel_id
+
+- **Descrição:** Identificador interno do responsável
+- **Tipo:** INTEGER
+- **Restrições:** Not Null, FK (`RESPONSAVEL(id)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### data_hora_criacao
+
+- **Descrição:** Data e hora da criação do laço
+- **Tipo:** TIMESTAMPTZ
+- **Restrições:** Not Null
+- **Exemplos:** `'2020-01-01 00:00:00'`, `'2020-01-01 12:00:00'`
+
+### tipo
+
+- **Descrição:** Tipo de laço
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Not Null
+- **Valores possíveis:** `'Pai', 'Mãe'`, `'Guardião', 'Tutor'`, `'Autorizado'`
+
+## AGENDAMENTO
+
+Gerencia agendamentos de atendimentos, vinculando pacientes, responsáveis, colaboradores e unidades.
+
+### pk
+
+- **Descrição:** Identificador único interno
+- **Tipo:** SERIAL
+- **Restrições:** PK
+- **Exemplos:** `1`, `2`, `3`
+
+### especialista_colaborador_id
+
+- **Descrição:** Identificador do colaborador especialista
+- **Tipo:** INTEGER
+- **Restrições:** Not Null, FK (`COLABORADOR(id)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### paciente_id
+
+- **Descrição:** Identificador do paciente
+- **Tipo:** INTEGER
+- **Restrições:** Not Null, FK (`PACIENTE(id)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### recepcionista_colaborador_id
+
+- **Descrição:** Identificador do colaborador recepcionista
+- **Tipo:** INTEGER
+- **Restrições:** Not Null, FK (`COLABORADOR(id)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### responsavel_id
+
+- **Descrição:** Identificador do responsável
+- **Tipo:** INTEGER
+- **Restrições:** Not Null, FK (`RESPONSAVEL(id)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### unidade_prefixo
+
+- **Descrição:** Prefixo da unidade onde foi feito o agendamento
+- **Tipo:** VARCHAR
+- **Restrições:** Not Null, FK (`EMPRESA(unidade_prefixo)`)
+- **Exemplos:** `'ANA'`, `'NER'`
+
+### data_hora_criacao
+
+- **Descrição:** Data e hora da criação do agendamento
+- **Tipo:** TIMESTAMPTZ
+- **Restrições:** Not Null
+- **Exemplos:** `'2020-01-01 00:00:00'`, `'2020-01-01 12:00:00'`
+
+### data_hora
+
+- **Descrição:** Data e hora do agendamento
+- **Tipo:** TIMESTAMPTZ
+- **Restrições:** Not Null
+- **Exemplos:** `'2020-01-01 00:00:00'`, `'2020-01-01 12:00:00'`
+
+### sala
+
+- **Descrição:** Sala onde o agendamento foi realizado
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Not Null
+- **Exemplos:** `'Sala A', 'Sala B'`, `'Sala C'`
+
+### tipo
+
+- **Descrição:** Tipo de agendamento
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Not Null
+- **Valores possíveis:** `'Consulta', 'Avaliação'`
+
+### "status"
+
+- **Descrição:** Status do agendamento
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Not Null
+- **Valores possíveis:** `'Agendado', 'Cofnrimado'`, `'Em espera'`, `'Concluído'`, `'Cancelado'`
+
+### observacoes
+
+- **Descrição:** Observações sobre o agendamento
+- **Tipo:** TEXT
+- **Restrições:** Not Null
+- **Exemplos:** `'Segunda sessão avaliativa'`, `'Reavaliação'`
+
+## PAGAMENTO
+
+Registra transações financeiras associadas a responsáveis.
+
+### pk
+
+- **Descrição:** Identificador único interno
+- **Tipo:** SERIAL
+- **Restrições:** PK
+- **Exemplos:** `1`, `2`, `3`
+
+### responsavel_id
+
+- **Descrição:** Identificador do responsável
+- **Tipo:** INTEGER
+- **Restrições:** Not Null, FK (`RESPONSAVEL(id)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### valor
+
+- **Descrição:** Valor da transação
+- **Tipo:** NUMERIC(10,2)
+- **Restrições:** Not Null
+- **Exemplos:** `100.00`, `50.00`
+
+### tipo
+
+- **Descrição:** Tipo de transação
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Valores possíveis:** `'Avaliação'`, `'Consulta'`
+
+### descricao
+
+- **Descrição:** Descrição da transação
+- **Tipo:** TEXT
+- **Restrições:** Not Null
+- **Exemplos:** `'Pagamento da avaliação do paciente X'`, `'Pagamento da consulta do paciente Y'`
+
+## DOCUMENTO
+
+Armazena documentos digitais vinculados a pacientes por colaboradores.
+
+### pk
+
+- **Descrição:** Identificador único interno
+- **Tipo:** SERIAL
+- **Restrições:** PK
+- **Exemplos:** `1`, `2`, `3`
+
+### paciente_id
+
+- **Descrição:** Identificador do paciente
+- **Tipo:** INTEGER
+- **Restrições:** Not Null, FK (`PACIENTE(id)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### colaborador_id
+
+- **Descrição:** Identificador do colaborador
+- **Tipo:** INTEGER
+- **Restrições:** Not Null, FK (`COLABORADOR(id)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### ativo
+
+- **Descrição:** Define se o documento está ativo
+- **Tipo:** BOOLEAN
+- **Restrições:** Not Null
+- **Exemplos:** `true`, `false`
+
+### data_hora_criacao
+
+- **Descrição:** Data e hora da criação do documento
+- **Tipo:** TIMESTAMPTZ
+- **Restrições:** Not Null
+- **Exemplos:** `'2020-01-01 00:00:00'`, `'2020-01-01 12:00:00'`
+
+### tipo
+
+- **Descrição:** Tipo de documento
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Valores possíveis:** `'Laudo'`, `'Contrato'`, `'Indicação'`
+
+### caminho
+
+- **Descrição:** Caminho do arquivo no sistema
+- **Tipo:** VARCHAR(256)
+- **Restrições:** Not Null
+- **Exemplos:** `'Caminho/para/o/arquivo.pdf'`, `'Caminho/para/o/arquivo.docx'`
+
+## CONTRATO
+
+Registra contratos associados a responsáveis, pacientes e documentos.
+
+### pk
+
+- **Descrição:** Identificador único interno
+- **Tipo:** SERIAL
+- **Restrições:** PK
+- **Exemplos:** `1`, `2`, `3`
+
+### responsavel_id
+
+- **Descrição:** Identificador do responsável
+- **Tipo:** INTEGER
+- **Restrições:** Not Null, FK (`RESPONSAVEL(id)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### paciente_id
+
+- **Descrição:** Identificador do paciente
+- **Tipo:** INTEGER
+- **Restrições:** Not Null, FK (`PACIENTE(id)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### documento_pk
+
+- **Descrição:** Identificador do documento
+- **Tipo:** INTEGER
+- **Restrições:** Not Null, FK (`DOCUMENTO(pk)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### ativo
+
+- **Descrição:** Define se o contrato está ativo
+- **Tipo:** BOOLEAN
+- **Restrições:** Not Null
+- **Exemplos:** `true`, `false`
+
+### data_hora_criacao
+
+- **Descrição:** Data e hora da criação do contrato
+- **Tipo:** TIMESTAMPTZ
+- **Restrições:** Not Null
+- **Exemplos:** `'2020-01-01 00:00:00'`, `'2020-01-01 12:00:00'`
+
+### cep
+
+- **Descrição:** CEP do endereço do contratante
+- **Tipo:** VARCHAR(8)
+- **Restrições:** Not Null
+- **Exemplos:** `'12345678'`
+
+### uf
+
+- **Descrição:** UF do endereço do contratante
+- **Tipo:** CHAR(2)
+- **Restrições:** Not Null
+- **Exemplos:** `'SP'`, `'RJ'`, `'MG'`
+
+### cidade
+
+- **Descrição:** Cidade do endereço do contratante
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'São Paulo'`, `'Rio de Janeiro'`, `'Belo Horizonte'`
+
+### bairro
+
+- **Descrição:** Bairro do endereço do contratante
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'Centro'`, `'Vila Nova'`, `'Copacabana'`
+
+### logradouro
+
+- **Descrição:** Logradouro do endereço do contratante
+- **Tipo:** VARCHAR(128)
+- **Restrições:** Not Null
+- **Exemplos:** `'Avenida Brigadeiro Faria Lima'`, `'Rua das Laranjeiras'`, `'Avenida Paulista'`
+
+### numero
+
+- **Descrição:** Número do endereço do contratante
+- **Tipo:** VARCHAR(8)
+- **Restrições:** Not Null
+- **Exemplos:** `'123'`, `'456'`, `'789'`
+
+### complemento
+
+- **Descrição:** Complemento do endereço do contratante
+- **Tipo:** VARCHAR(256)
+- **Restrições:** -
+- **Exemplos:** `'Casa 1'`, `'Apartamento 2'`, `'Bloco A'`
