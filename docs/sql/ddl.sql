@@ -36,7 +36,7 @@ CREATE TABLE COLABORADOR (
     data_nascimento DATE NOT NULL,
     cpf VARCHAR(16) UNIQUE NOT NULL,
     rg VARCHAR(32) NOT NULL,
-    cnh VARCHAR(16) NOT NULL,
+    cnh VARCHAR(16) UNIQUE,
     numero_reservista VARCHAR(8),
     celular VARCHAR(16) UNIQUE NOT NULL,
     email VARCHAR(128) UNIQUE NOT NULL,
@@ -78,7 +78,7 @@ REFERENCES COLABORADOR(id);
 CREATE TABLE PACIENTE (
     pk SERIAL PRIMARY KEY,
     id SERIAL UNIQUE NOT NULL,
-    empresa_unidade_id VARCHAR NOT NULL REFERENCES EMPRESA(unidade_prefixo),
+    empresa_unidade_prefixo VARCHAR NOT NULL REFERENCES EMPRESA(unidade_prefixo),
     convenio_pk INTEGER NOT NULL REFERENCES CONVENIO(pk),
     codigo VARCHAR(64) UNIQUE NOT NULL,
     ativo BOOLEAN NOT NULL,
@@ -114,8 +114,6 @@ CREATE TABLE LACO (
     data_hora_criacao TIMESTAMPTZ NOT NULL,
     tipo VARCHAR(16) NOT NULL
 );
-
--- TODO: Criar tudo abaixo
 
 CREATE TABLE AGENDAMENTO (
     pk SERIAL PRIMARY KEY,
@@ -173,6 +171,6 @@ CREATE TABLE CONTRATO (
     cidade VARCHAR(64) NOT NULL,
     bairro VARCHAR(64) NOT NULL,
     logradouro VARCHAR(128) NOT NULL,
-    numero INTEGER NOT NULL,
+    numero VARCHAR(8) NOT NULL,
     complemento VARCHAR(256)
 );
