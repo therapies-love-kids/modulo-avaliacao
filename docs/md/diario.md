@@ -13,4 +13,5 @@
 
 ### Tarde
 
-- Isaque "terminou" de reescrever o 'dicionario.md' (ficou fanto algumas coisinhas)
+- Isaque "terminou" de reescrever o 'dicionario.md' (ficou faltando algumas coisinhas)
+- Isaque atualizou o 'ddl.sql' para corresponder às mudanças feitas em 'dicionario.md'
