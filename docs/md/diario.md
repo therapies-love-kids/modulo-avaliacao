@@ -30,3 +30,4 @@
 - Isaque atualizou o 'ddl.sql' para corresponder às mudanças feitas em 'dicionario.md'
 - Matheus realizou as anotações sobre evoluções diárias
 - Matheus realizou transcrições das evoluções diárias
+- Isaque atualizou 'dicionario.md' para incluir novos campos em 'COLABORADOR' e Matheus atualizou 'ddl.sql' para corresponder aos novos campos
