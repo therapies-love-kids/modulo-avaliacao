@@ -118,7 +118,7 @@ Registra informações de profissionais associados à clínica, incluindo dados 
 - **Descrição:** Define se o colaborador esta ativo
 - **Tipo:** BOOLEAN
 - **Restrições:** Not Null
-- **Exemplos:** `true`, `false`
+- **Valores possíveis:** `true`, `false`
 
 ### nome
 
@@ -276,7 +276,7 @@ Registra contratos associados a responsáveis, pacientes e documentos.
 - **Descrição:** Define se o contrato está ativo
 - **Tipo:** BOOLEAN
 - **Restrições:** Not Null
-- **Exemplos:** `true`, `false`
+- **Valores possíveis:** `true`, `false`
 
 ### data_hora_criacao
 
@@ -396,7 +396,7 @@ Armazena documentos digitais vinculados a pacientes por colaboradores.
 - **Descrição:** Define se o documento está ativo
 - **Tipo:** BOOLEAN
 - **Restrições:** Not Null
-- **Exemplos:** `true`, `false`
+- **Valores possíveis:** `true`, `false`
 
 ### data_hora_criacao
 
@@ -618,7 +618,7 @@ Cadastro de pacientes com informações pessoais.
 - **Descrição:** Status de atividade do paciente
 - **Tipo:** BOOLEAN
 - **Restrições:** Not Null
-- **Exemplos:** `true`, `false`
+- **Valores possíveis:** `true`, `false`
 
 ### nome
 
