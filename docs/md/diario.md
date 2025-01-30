@@ -1,5 +1,17 @@
 # Diário
 
+## 30/01/2025
+
+### Manhã
+
+- Matheus informou o Isaque sobre as necessidades do terapêutico
+- Isaque mostrou os commits do dia anterior para o Matheus
+- Isaque e Matheus começaram a experimentar possíveis usos de IAs para o terapêutico
+
+### Tarde
+
+- Após mais testes, Isaque e Matheus concluíram que a melhor IA para a leitura de imagens é o Gemini, enquanto que a melhor IA para correção de textos transcritos é o GPT-4o mini
+
 ## 29/01/2025
 
 ### Manhã
