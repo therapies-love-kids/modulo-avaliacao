@@ -141,6 +141,41 @@ Registra informações de profissionais associados à clínica, incluindo dados 
 - **Restrições:** Not Null
 - **Exemplos:** `'1999-01-01'`, `'2000-02-02'`
 
+### local_nascimento
+
+- **Descrição:** Local de nascimento do colaborador
+- **Tipo:** VARCHAR(128)
+- **Restrições:** Not Null
+- **Exemplos:** `'São Paulo, SP'`, `'Rio de Janeiro, RJ'`
+
+### nome_pai
+
+- **Descrição:** Nome do pai do colaborador
+- **Tipo:** VARCHAR(128)
+- **Restrições:** Not Null
+- **Exemplos:** `'Hugo Cauê José Caldeira'`, `'Pedro Augusto da Silva Almeida'`
+
+### nome_mae
+
+- **Descrição:** Nome da mãe do colaborador
+- **Tipo:** VARCHAR(128)
+- **Restrições:** Not Null
+- **Exemplos:** `'Rosângela Bianca Nina'`, `'Adriana Leticia Soares da Silva'`
+
+### estado_civil
+
+- **Descrição:** Estado civil do colaborador
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Not Null
+- **Valores possíveis:** `'Solteiro'`, `'Casado'`, `'Divorciado'`, `'Viuvo'`
+
+### certidao_casamento
+
+- **Descrição:** Certidão de casamento do colaborador
+- **Tipo:** VARCHAR(32)
+- **Restrições:** -
+- **Exemplos:** `'12345678901234567890123456789012'`, `'6543210987654321098765432109876'`
+
 ### cpf
 
 - **Descrição:** CPF do colaborador
@@ -238,6 +273,64 @@ Registra informações de profissionais associados à clínica, incluindo dados 
 - **Tipo:** VARCHAR(256)
 - **Restrições:** Opcional
 - **Exemplos:** `'Sala 101'`, `'Bloco B'`
+
+### titulo_profissional
+
+- **Descrição:** Titulo profissional do colaborador
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'Engenheiro'`, `'Médico'`
+
+### registro_profissional
+
+- **Descrição:** Registro profissional do colaborador
+- **Tipo:** VARCHAR(64)
+- **Restrições:** -
+- **Exemplos:** `'123456'`, `'654321'`
+
+### data_admissao
+
+- **Descrição:** Data de admissão do colaborador
+- **Tipo:** DATE
+- **Restrições:** Not Null
+- **Exemplos:** `'1999-01-01'`, `'2000-02-02'`
+
+### data_demissao
+
+- **Descrição:** Data de demissão do colaborador
+- **Tipo:** DATE
+- **Restrições:** -
+- **Exemplos:** `'1999-01-01'`, `'2000-02-02'`
+
+### pis
+
+- **Descrição:** PIS do colaborador
+- **Tipo:** VARCHAR(16)
+- **Restrições:** Unique
+- **Exemplos:** `'1234567890'`, `'9876543210'`
+
+{TODO: Atualizar os exemplos (ou valores possíveis?) dos campos abaixo}
+
+### setor
+
+- **Descrição:** Setor do colaborador
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'TI'`, `'RH'`
+
+### funcao
+
+- **Descrição:** Função do colaborador
+- **Tipo:** VARCHAR(64)
+- **Restrições:** Not Null
+- **Exemplos:** `'Engenheiro'`, `'Médico'`
+
+### especialidade
+
+- **Descrição:** Especialidade do colaborador
+- **Tipo:** VARCHAR(64)
+- **Restrições:** -
+- **Exemplos:** `'Engenheiro'`, `'Médico'`
 
 ## CONTRATO
 
