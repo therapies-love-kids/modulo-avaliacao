@@ -39,13 +39,6 @@ FROM CONTRATO ct
 JOIN DOCUMENTO d ON ct.documento_pk = d.pk 
 WHERE ct.ativo = true;
 
--- 8 Quantas avaliações em aberto existem por colaborador?
-SELECT c.nome, COUNT(*) AS avaliacoes_abertas 
-FROM AVALIACAO a
-JOIN COLABORADOR c ON a.colaborador_id = c.id 
-WHERE a.data_hora_fim IS NULL
-GROUP BY c.nome;
-
 -- 9 Qual a média de valor dos pagamentos por tipo?
 SELECT tipo, AVG(valor) AS media_valor 
 FROM PAGAMENTO 
@@ -97,11 +90,6 @@ SELECT funcao, COUNT(*) AS total
 FROM COLABORADOR 
 GROUP BY funcao;
 
--- 18 Quantas avaliações foram concluídas na última semana?
-SELECT COUNT(*) AS total_avaliacoes 
-FROM AVALIACAO 
-WHERE data_hora_fim >= CURRENT_DATE - INTERVAL '7 days';
-
 -- 19 Quais responsáveis não realizaram pagamentos?
 SELECT r.nome 
 FROM RESPONSAVEL r
@@ -125,11 +113,6 @@ SELECT c.nome, a.data_hora
 FROM AGENDAMENTO a
 JOIN COLABORADOR c ON a.especialista_colaborador_id = c.id 
 ORDER BY c.nome, a.data_hora;
-
--- 23 Qual a duração média das avaliações?
-SELECT AVG(data_hora_fim - data_hora_inicio) AS media_duracao 
-FROM AVALIACAO 
-WHERE data_hora_fim IS NOT NULL;
 
 -- 24 Quais colaboradores foram demitidos em determinado ano?
 SELECT nome, data_demissao 
@@ -190,10 +173,6 @@ SELECT c.nome
 FROM CONVENIO c
 LEFT JOIN PACIENTE p ON c.pk = p.convenio_pk 
 WHERE p.pk IS NULL;
-
--- 35 Quais avaliações duraram mais de 2 horas?
-SELECT * FROM AVALIACAO 
-WHERE (data_hora_fim - data_hora_inicio) > INTERVAL '2 hours';
 
 -- 36 Quais pagamentos em dinheiro foram acima de determinado valor?
 SELECT * FROM PAGAMENTO 
@@ -290,9 +269,6 @@ JOIN
 WHERE 
     l.paciente_id = <id_do_paciente>; 
 
---53 Como acessar as avaliações de um paciente específico?
-SELECT * FROM avaliacao WHERE paciente_id = '<id_do_paciente>';
-
 --54 Qual o nome curto do convênio utilizado por um paciente com base em seu código?
 select c.nome_curto from convenio c where c.pk = (SELECT convenio_pk FROM paciente WHERE id = '<id_do_paciente>');
 
@@ -305,23 +281,11 @@ SELECT r.* FROM laco l
 JOIN responsavel r ON l.responsavel_id = r.id
 WHERE l.paciente_id = '<id_do_paciente>';
 
---57 Quais colaboradores participaram de agendamentos com um paciente específico?
-SELECT c.* FROM colaborador c
-JOIN avaliacao a ON c.id = a.colaborador_id
-WHERE a.paciente_id = '<id_do_paciente>';
 
 --58 Como obter todos os pagamentos associados a um determinado paciente, considerando os responsáveis vinculados?
 SELECT p.* FROM pagamento p
 JOIN laco l  ON p.responsavel_id = l.responsavel_id
 WHERE l.paciente_id = '<id_do_paciente>';
-
---59 Quem foi o colaborador especialista em um determinado agendamento?
-SELECT c.* FROM colaborador c
-JOIN avaliacao a ON c.id = a.colaborador_id 
-WHERE a.pk = '<pk_da_avaliacao>';
-
---60 Quantas avaliações já foram realizadas para um paciente específico?
-SELECT COUNT(*) FROM avaliacao WHERE paciente_id = '<id_do_paciente>';
 
 --61 Qual o status atual de um agendamento baseado no paciente e no colaborador?
 SELECT a.* FROM agendamento a
