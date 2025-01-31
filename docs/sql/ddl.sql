@@ -144,16 +144,6 @@ CREATE TABLE PAGAMENTO (
     descricao TEXT
 );
 
--- CREATE TABLE AVALIACAO (
---     pk SERIAL PRIMARY KEY,
---     paciente_id INTEGER NOT NULL REFERENCES PACIENTE(id),
---     colaborador_id INTEGER NOT NULL REFERENCES COLABORADOR(id),
---     data_hora_inicio TIMESTAMPTZ NOT NULL,
---     data_hora_fim TIMESTAMPTZ,
---     "status" VARCHAR(32) NOT NULL,
---     anotacoes TEXT
--- );
-
 CREATE TABLE DOCUMENTO (
     pk SERIAL PRIMARY KEY,
     paciente_id INTEGER NOT NULL REFERENCES PACIENTE(id),
