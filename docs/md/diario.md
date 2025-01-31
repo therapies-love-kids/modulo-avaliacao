@@ -1,5 +1,20 @@
 # Diário
 
+## 31/01/2025
+
+### Manhã
+
+- Isaque e Matheus foram à unidade do Jundiaí
+- Matheus ensinou como usar o Gemini para leitura de imagens
+- Matheus mostrou a unidade ao Isaque
+- O uso do Gemini para leitura de imagens foi aprovado
+- Isaque e Matheus voltaram para a unidade do centro
+- Matheus registrou o sucesso do "experimento" com o Gemini, bem como o prompt criado pelo Isaque, em uma anotação própria
+
+### Tarde
+
+- 
+
 ## 30/01/2025
 
 ### Manhã
@@ -11,6 +26,8 @@
 ### Tarde
 
 - Após mais testes, Isaque e Matheus concluíram que a melhor IA para a leitura de imagens é o Gemini, enquanto que a melhor IA para correção de textos transcritos é o GPT-4o mini
+- Isaque criou um prompt para facilitar a leitura de imagens via Gemini
+- Isaque e Matheus atualizaram o 'dicionario.md' e o 'ddl.sql', respectivamente
 
 ## 29/01/2025
 
