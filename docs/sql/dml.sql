@@ -182,13 +182,6 @@ VALUES
 (9, '2024-08-24 13:15:00-03', 120.00, 'Avaliação Terapêutica', 'Pagamento da avaliação terapêutica de Ana'),
 (12, '2024-08-24 14:15:00-03', 120.00, 'Avaliação Terapêutica', 'Pagamento da avaliação terapêutica de DAVI');
 
-INSERT INTO AVALIACAO (paciente_id, colaborador_id, data_hora_inicio, data_hora_fim, status, anotacoes)
-VALUES
-(2, 7, '2024-08-23 11:00:00-03', '2024-08-23 12:00:00-03', 'Concluída', NULL),
-(3, 5, '2024-08-23 13:00:00-03', '2024-08-23 14:00:00-03', 'Concluída', NULL),
-(5, 8, '2024-08-24 12:00:00-03', '2024-08-24 13:00:00-03', 'Concluída', NULL),
-(6, 6, '2024-08-24 14:00:00-03', '2024-08-24 15:00:00-03', 'Concluída', NULL);
-
 -- Inserir DOCUMENTOS
 INSERT INTO DOCUMENTO (paciente_id, colaborador_id, ativo, data_hora_criacao, tipo, caminho)
 VALUES
