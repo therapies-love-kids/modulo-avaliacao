@@ -35,7 +35,7 @@ CREATE TABLE COLABORADOR (
     sexo CHAR(1) NOT NULL,
     data_nascimento DATE NOT NULL,
     local_nascimento VARCHAR(128) NOT NULL,
-    nome_pai VARCHAR(128) NOT NULL,
+    nome_pai VARCHAR(128) NOT NULL, 
     nome_mae VARCHAR(128) NOT NULL,
     estado_civil VARCHAR(16) NOT NULL,
     certidao_casamento VARCHAR(32) NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE COLABORADOR (
     registro_profissional VARCHAR(64),
     data_admissao DATE NOT NULL,
     data_demissao DATE,
-    pis VARCHAR(16), UNIQUE,
+    pis VARCHAR(16) UNIQUE,
     setor VARCHAR(64) NOT NULL,
     funcao VARCHAR(64) NOT NULL,
     especialidade VARCHAR(64)
