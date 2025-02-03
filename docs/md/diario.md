@@ -1,5 +1,25 @@
 # Diário
 
+## 03/02/2025
+
+### Manhã
+
+- Matheus começou o teste e padronização em todos os arquivos '.sql'
+- Matheus corrigiu erro em 'ddl.sql' que impedia a criação da tabela 'COLABORADOR'
+- Matheus realizou testes em 'ddl.sql'
+- Testes realizados com sucesso
+- Matheus realizou testes em 'dml.sql'
+- Arquivo foi realizado uma atualização na tabela 'COLABORADOR' e corrigido atribudo empresa_unidade_prefixo na tabela 'PACIENTE'
+- Matheus realizou testes em 'dql.sql'
+- Testes realizados com sucesso
+- Matheus atualizou o arquivo 'der.drawio' adicionando a entidade 'CAMINHO' com relacionamento com 'USUARIO' e apagando a entidade 'AVALIACAO'
+- Matheus pensou em criar um vinculo entre 'USUARIO' e 'CAMINHO' a fim de evitar redundâncias, porém depois de uma conversa com seu José, ele decidiu que para o universo problema a entidade de 'ACESSO' não seria tão útil.
+- Matheus atualizou o arquivo 'ddl.sql' adicionando a tabela 'CAMINHO'logo após realizou o mesmo em 'dml.sql'
+- Matheus realizou testes em 'ddl.sql' e 'dml.sql'
+- Testes realizados com sucesso
+
+### Tarde
+
 ## 31/01/2025
 
 ### Manhã
