@@ -33,7 +33,8 @@
 
 ### Tarde
 
-- 
+- Isaque e Matheus instalaram o AnyDesk em dois computadores (um do RH e um da recepção)
+- Seu José sugeriu a criação de uma lista de softwares para uso interno na clínica
 
 ## 30/01/2025
 
