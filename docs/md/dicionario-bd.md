@@ -79,7 +79,7 @@ Gerencia agendamentos de atendimentos, vinculando pacientes, responsáveis, cola
 - **Descrição:** Status do agendamento
 - **Tipo:** VARCHAR(16)
 - **Restrições:** Not Null
-- **Valores possíveis:** `'Agendado', 'Cofnrimado'`, `'Em espera'`, `'Concluído'`, `'Cancelado'`
+- **Valores possíveis:** `'Agendado', 'Confirmado'`, `'Em espera'`, `'Concluído'`, `'Cancelado'`
 
 ### observacoes
 
