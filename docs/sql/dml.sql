@@ -202,3 +202,10 @@ VALUES
 (6, 3, (SELECT pk FROM DOCUMENTO WHERE paciente_id = 3 AND tipo = 'Contrato'), TRUE, '2024-08-23 13:30:00-03', '12345678', 'SP', 'São Paulo', 'Centro', 'Rua Exemplo', 123, 'Apto 101'),
 (9, 5, (SELECT pk FROM DOCUMENTO WHERE paciente_id = 5 AND tipo = 'Contrato'), TRUE, '2024-08-24 13:30:00-03', '12345678', 'SP', 'São Paulo', 'Centro', 'Rua Exemplo', 123, 'Apto 101'),
 (12, 6, (SELECT pk FROM DOCUMENTO WHERE paciente_id = 6 AND tipo = 'Contrato'), TRUE, '2024-08-24 14:30:00-03', '12345678', 'SP', 'São Paulo', 'Centro', 'Rua Exemplo', 123, 'Apto 101');
+
+INSERT INTO CAMINHO (usuario_id, data_hora_criacao, ativo, caminho, editavel, leitura)
+VALUES
+(3, '2024-08-23 13:30:00-03', TRUE, 'AnaCentro_Faturamento', TRUE, TRUE),
+(4, '2024-08-24 13:30:00-03', TRUE, 'AnaCentro_Consultas', TRUE, TRUE),
+(4, '2024-08-24 14:30:00-03', TRUE, 'AnaCentro_Administrativo', TRUE, TRUE);
+(3, '2024-08-23 12:30:00-03', TRUE, 'AnaCentro_Terapias', TRUE, TRUE),
