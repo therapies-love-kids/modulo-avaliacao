@@ -195,7 +195,7 @@ VALUES
 (5, 4, TRUE, '2024-08-24 13:30:00-03', 'Contrato', '/contratos/contrato_paciente_5.pdf'),
 (6, 4, TRUE, '2024-08-24 14:30:00-03', 'Contrato', '/contratos/contrato_paciente_6.pdf');
 
--- Inserir CONTRATOS (assuming we know the documento_pk, you might need to query this value)
+-- Inserir CONTRATOS 
 INSERT INTO CONTRATO (responsavel_id, paciente_id, documento_pk, ativo, data_hora_criacao, cep, uf, cidade, bairro, logradouro, numero, complemento)
 VALUES
 (3, 2, (SELECT pk FROM DOCUMENTO WHERE paciente_id = 2 AND tipo = 'Contrato'), TRUE, '2024-08-23 12:30:00-03', '12345678', 'SP', 'São Paulo', 'Centro', 'Rua Exemplo', 123, 'Apto 101'),
