@@ -955,3 +955,42 @@ Armazena credenciais e perfis de acesso ao sistema para colaboradores.
 - **Tipo:** VARCHAR(16)
 - **Restrições:** Not Null
 - **Valores possíveis:** {TODO}
+
+## CAMINHO
+
+Endereços que podem ser acessados pelo usuário.
+
+### pk
+
+- **Descrição:** Identificador único interno
+- **Tipo:** SERIAL  
+- **Restrições:** PK
+- **Exemplos:** `1`, `2`, `3`
+
+### usuario_id
+
+- **Descrição:** Identificador do usuário associado ao caminho
+- **Tipo:** INTEGER
+- **Restrições:** ID (`USUARIO(id)`)
+- **Exemplos:** `1`, `2`, `3`
+
+### caminho
+
+- **Descrição:** Caminho completo
+- **Tipo:** VARCHAR(256)
+- **Restrições:** Not Null
+- **Exemplos:** `'AnaCentro_Agendamento'`, `'AnaCentro_Consulta'`
+
+### editavel
+
+- **Descrição:** Define se o caminho pode ser editado pelo usuário
+- **Tipo:** BOOLEAN
+- **Restrições:** Not Null
+- **Valores possíveis:** `true`, `false`
+
+### leitura
+
+- **Descrição:** Define se o caminho pode ser lido pelo usuário
+- **Tipo:** BOOLEAN
+- **Restrições:** Not Null
+- **Valores possíveis:** `true`, `false`
