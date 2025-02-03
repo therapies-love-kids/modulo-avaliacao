@@ -169,3 +169,13 @@ CREATE TABLE CONTRATO (
     numero VARCHAR(8) NOT NULL,
     complemento VARCHAR(256)
 );
+
+CREATE TABLE CAMINHO (
+    pk SERIAL PRIMARY KEY,
+    usuario_id INTEGER NOT NULL REFERENCES USUARIO(id),
+    data_hora_criacao TIMESTAMPTZ NOT NULL,
+    ativo BOOLEAN NOT NULL,
+    caminho VARCHAR(256) NOT NULL,  
+    editavel BOOLEAN NOT NULL,
+    leitura BOOLEAN NOT NULL
+);
