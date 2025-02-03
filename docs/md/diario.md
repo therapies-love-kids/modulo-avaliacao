@@ -20,6 +20,10 @@
 
 ### Tarde
 
+- Matheus conseguiu despregar um imã que o Isaque havia pregado ao lado do computador
+- Isaque e Matheus criaram um pseudo-código com o fluxo do sistema de agendamento/guichê
+- Isaque e Matheus criaram um diagrama de casos de uso para o sistema de guichê
+
 ## 31/01/2025
 
 ### Manhã
