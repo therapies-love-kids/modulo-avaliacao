@@ -900,6 +900,13 @@ Armazena credenciais e perfis de acesso ao sistema para colaboradores.
 - **Restrições:** PK
 - **Exemplos:** `1`, `2`, `3`
 
+### id
+
+- **Descrição:** Identificador público interno
+- **Tipo:** SERIAL
+- **Restrições:** Unique, Not Null
+- **Exemplos:** `1`, `2`, `3`
+
 ### colaborador_id
 
 - **Descrição:** Identificador do colaborador associado ao usuário
