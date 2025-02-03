@@ -974,6 +974,20 @@ Endereços que podem ser acessados pelo usuário.
 - **Restrições:** ID (`USUARIO(id)`)
 - **Exemplos:** `1`, `2`, `3`
 
+### data_hora_criacao
+
+- **Descrição:** Data e hora da criação do acesso ao caminho
+- **Tipo:** TIMESTAMPTZ
+- **Restrições:** Not Null
+- **Exemplos:** `'2020-01-01 00:00:00'`, `'2020-01-01 12:00:00'`
+
+### ativo
+
+- **Descrição:** Define se o acesso ao caminho esta ativo
+- **Tipo:** BOOLEAN
+- **Restrições:** Not Null
+- **Valores possíveis:** `true`, `false`
+
 ### caminho
 
 - **Descrição:** Caminho completo
