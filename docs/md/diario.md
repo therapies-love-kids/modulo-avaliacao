@@ -9,7 +9,7 @@
 - Matheus realizou testes em 'ddl.sql'
 - Testes realizados com sucesso
 - Matheus realizou testes em 'dml.sql'
-- Arquivo foi realizado uma atualização na tabela 'COLABORADOR' e corrigido atribudo empresa_unidade_prefixo na tabela 'PACIENTE'
+- Matheus realizou uma atualização no arquivo 'dml.sql', foi realizado uma atualização na tabela 'COLABORADOR' e corrigido atribudo 'empresa_unidade_prefixo' na tabela 'PACIENTE'
 - Matheus realizou testes em 'dql.sql'
 - Testes realizados com sucesso
 - Matheus atualizou o arquivo 'der.drawio' adicionando a entidade 'CAMINHO' com relacionamento com 'USUARIO' e apagando a entidade 'AVALIACAO'
@@ -20,6 +20,7 @@
 
 ### Tarde
 
+- Matheus apresentou todos os commits e atualizações da manhã para o Isaque
 - Matheus conseguiu despregar um imã que o Isaque havia pregado ao lado do computador
 - Isaque e Matheus criaram um pseudo-código com o fluxo do sistema de agendamento/guichê
 - Isaque e Matheus criaram um diagrama de casos de uso para o sistema de guichê
