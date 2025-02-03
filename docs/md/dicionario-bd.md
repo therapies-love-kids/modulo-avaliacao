@@ -88,6 +88,8 @@ Gerencia agendamentos de atendimentos, vinculando pacientes, responsáveis, cola
 - **Restrições:** Not Null
 - **Exemplos:** `'Segunda sessão avaliativa'`, `'Reavaliação'`
 
+[TODO: ADICIONAR A SENHA!!!!!!!!!!!!!!!!!]
+
 ## COLABORADOR
 
 Registra informações de profissionais associados à clínica, incluindo dados pessoais, profissionais e de endereço.
