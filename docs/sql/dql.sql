@@ -334,3 +334,9 @@ ON
 WHERE
     l.paciente_id = '<id_do_paciente>'
     AND c.ativo = TRUE;
+
+-- 59 Quais pastas estão atribuidas a um determinado usuário?
+SELECT * FROM caminho WHERE responsavel_id = '<id_do_responsavel>';
+
+-- 60 Listagem de todas as pastas sem repetições
+SELECT DISTINCT caminho FROM caminho;
