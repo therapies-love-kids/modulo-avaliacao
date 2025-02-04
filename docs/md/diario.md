@@ -10,6 +10,9 @@
 
 ### Tarde
 
+- Isaque e Matheus começaram a criar protótipos com o React
+- Isaque ensinou algumas coisas de TailwindCSS para o Matheus
+
 ## 03/02/2025
 
 ### Manhã
