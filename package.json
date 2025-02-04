@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "cally": "^0.7.2",
+    "pikaday": "^1.8.2",
     "react": "^18.3.1",
+    "react-calendar": "^5.1.0",
+    "react-day-picker": "^9.5.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
