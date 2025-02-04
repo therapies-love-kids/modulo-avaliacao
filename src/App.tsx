@@ -4,7 +4,7 @@ function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     // Aqui você pode adicionar a lógica de autenticação
     console.log("Usuário:", username);
@@ -12,13 +12,13 @@ function App() {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div className="hero h-screen bg-base-200">
+      <div className="hero-content w-1/2 flex-col flex-row-reverse">
+        <div className="card flex-shrink-0 w-2/3  shadow-2xl bg-base-100">
           <div className="card-body">
-            <h2 className="text-5xl font-bold">Elysium-Gichê</h2>
+            <h2 className="text-5xl font-bold">Elysium-Guichê</h2>
             <br />
-            <div className="form-control">
+            <div className="form-control gap-2">
               <label className="input input-bordered flex items-center gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
