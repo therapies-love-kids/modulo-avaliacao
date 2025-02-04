@@ -72,8 +72,7 @@ function App() {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row">
+      <div className="hero-content h-screen w-screen">
         <div>
             <div className="flex items-center justify-center space-x-3 h-full">
               <h2 className="text-5xl font-bold">{pacienteAtual}</h2>
@@ -115,7 +114,6 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 
