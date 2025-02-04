@@ -1,5 +1,15 @@
 # Diário
 
+## 04/02/2025
+
+### Manhã
+
+- Matheus Realizou a instalação do tailwind e daisyUI no projeto
+- A instalação de Matheus não funcionou, pois a versão do tailwind era incompativel com o daisyUI
+- Matheus excluiu toda a branch e refez a intalação, agora na versão certa
+
+### Tarde
+
 ## 03/02/2025
 
 ### Manhã
