@@ -7,9 +7,12 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
+    <div>
     <h1 className="text-3xl font-bold underline">
     Hello world!
+    <button className="btn w-64 rounded-full">Button</button>
   </h1>
+  </div>
   )
 }
 
