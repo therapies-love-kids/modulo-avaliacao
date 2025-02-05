@@ -1,5 +1,15 @@
 # Diário
 
+## 05/02/2025
+
+### Manhã
+
+- Matheus conseguiu concertar a página do menu.
+- Matheus demontou o computador do consultório ao lado do gabiatti
+- Matheus retirou alguns patch cords do administrativo
+
+### Tarde
+
 ## 04/02/2025
 
 ### Manhã
