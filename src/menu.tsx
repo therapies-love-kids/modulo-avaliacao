@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { ImAndroid } from 'react-icons/im';
 
 //TODO Fazer um drawer para navegação nos diferentes menus, reformular a página.
 
@@ -77,7 +78,7 @@ function App() {
       <div className="flex items-center justify-center h-screen">
         <div>
             <div className="flex items-center justify-center space-x-3 h-full">
-              <h2 className="text-5xl font-bold">{pacienteAtual}</h2>
+              <h2 className="text-5xl font-bold">{pacienteAtual} <ImAndroid className='text-xl text-red-400' /> </h2>
               <button className="btn btn-primary" onClick={proximoPaciente}>
               Proximo ->
             </button>
