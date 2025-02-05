@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
+//TODO Fazer um drawer para navegação nos diferentes menus, reformular a página.
+
 function App() {
   const [pacienteAtual, setPacienteAtual] = useState('Fulano da silva sauro');
   const [filaPacientes, setFilaPacientes] = useState([
