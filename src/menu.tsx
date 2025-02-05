@@ -72,7 +72,7 @@ function App() {
   };
 
   return (
-      <div className="hero-content h-screen w-screen">
+      <div className="hero-content h-screen w-full">
         <div>
             <div className="flex items-center justify-center space-x-3 h-full">
               <h2 className="text-5xl font-bold">{pacienteAtual}</h2>
@@ -81,8 +81,6 @@ function App() {
             </button>
               <button className="btn btn-primary">Gerar Documento</button>
             </div>
-          <div className="mt-4">
-          </div>
           <div className="mt-8">
             <h3 className="text-2xl font-bold">Fila de Espera</h3>
             <div className="overflow-y-auto max-h-96">
@@ -91,7 +89,7 @@ function App() {
                   {filaPacientes.map((paciente, index) => (
                     <tr key={index}>
                       <td>
-                        <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-8">
                           <div>
                             {paciente}
                           </div>
@@ -104,7 +102,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="card w-96 bg-base-100 shadow-xl ml-8">
+        <div className="card w-max bg-base-100 shadow-xl ml-8">
           <div className="card-body">
             <h2 className="card-title">Calendário</h2>
             <Calendar
