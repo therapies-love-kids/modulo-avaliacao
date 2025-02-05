@@ -74,7 +74,7 @@ function App() {
   };
 
   return (
-      <div className="hero-content h-screen w-full">
+      <div className="flex items-center justify-center h-screen">
         <div>
             <div className="flex items-center justify-center space-x-3 h-full">
               <h2 className="text-5xl font-bold">{pacienteAtual}</h2>
