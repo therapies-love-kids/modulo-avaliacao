@@ -10,6 +10,10 @@
 
 ### Tarde
 
+- Isaque ensinou o Matheus a usar as divs e o tailwind
+- Matheus fez o primeiro protótipo da tela de guiche
+- Matheus fez o commit do protótipo
+
 ## 04/02/2025
 
 ### Manhã
