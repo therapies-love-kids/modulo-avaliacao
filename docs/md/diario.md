@@ -1,5 +1,18 @@
 # Diário
 
+## 06/02/2025
+
+### Manhã
+
+- Matheus realizou um refinamento nos protótipos dele
+- Matheus commitou os prototipos
+- Matheus realizou a instalação e avaliação do vivaldi
+- A unidade do centro sofreu uma queda de energia
+
+### Tarde
+
+- Matheus foi para a unidade do Jundiaí para dar suporte a parte de redes junto ao seu José
+
 ## 05/02/2025
 
 ### Manhã
