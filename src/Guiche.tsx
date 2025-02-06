@@ -46,7 +46,7 @@ export default function Guiche() {
                                         return response.json();
                                     })
                                     .then(nominatimData => {
-                                        const cidade = nominatimData.address.city || nominatimData.address.town || nominatimData.address.village || "Local desconhecido";
+                                        const cidade = nominatimData.address.city || nominatimData.address.town || nominatimData.address.village || "Anápolis";
                                         const temperatura = Math.round(data.current.temperature_2m);
 
                                         setLocalInfo({
