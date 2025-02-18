@@ -1,6 +1,16 @@
 import * as React from "react";
 import Calendar from "react-calendar";
 
+/**
+ * Tela principal do sistema
+ *
+ * Essa tela é responsável por renderizar o layout principal do sistema, contendo:
+ * - Um cabeçalho com um campo de pesquisa
+ * - Um painel lateral para navegação
+ * - Um painel central com uma tabela de dados e um calendário
+ *
+ * @returns JSX.Element
+ */
 export default function TelaPrincipal() {
   return (
     <div className="drawer h-screen">
