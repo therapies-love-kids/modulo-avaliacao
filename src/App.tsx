@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function App() {
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,7 +12,7 @@ function App() {
     console.log("Senha:", password);
   };
 
-  
+  const navigate = useNavigate();
 
   return (
     <div className="hero h-screen bg-base-200">
@@ -49,7 +50,7 @@ function App() {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary" onClick={handleSubmit}>
+              <button onClick={() => navigate("/telaPrincipal")} className="btn btn-primary">
                 Entrar
               </button>
             </div>
@@ -81,4 +82,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
