@@ -11,6 +11,8 @@ function App() {
     console.log("Senha:", password);
   };
 
+  
+
   return (
     <div className="hero h-screen bg-base-200">
       <div className="hero-content w-1/2 flex-col flex-row-reverse">

@@ -8663,6 +8663,95 @@
       "originalText": "PROTOCOLO INTERNO DE RECOMENDAÇÕES",
       "lineHeight": 1.25,
       "baseline": 17
+    },
+    {
+      "id": "lVu_l4HFM-V3opMZiAABk",
+      "type": "text",
+      "x": 1945.1615546083212,
+      "y": 670.0251961853888,
+      "width": 231.44395446777344,
+      "height": 45,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "seed": 85441234,
+      "version": 19,
+      "versionNonce": 1804512398,
+      "isDeleted": false,
+      "boundElements": [
+        {
+          "id": "z8_bC5SAIPVaE-kIHm_Tm",
+          "type": "arrow"
+        }
+      ],
+      "updated": 1739897593816,
+      "link": null,
+      "locked": false,
+      "text": "NÂO EXISTE",
+      "fontSize": 36,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "baseline": 31,
+      "containerId": null,
+      "originalText": "NÂO EXISTE",
+      "lineHeight": 1.25
+    },
+    {
+      "id": "z8_bC5SAIPVaE-kIHm_Tm",
+      "type": "arrow",
+      "x": 1942.2815497255087,
+      "y": 687.7052193787482,
+      "width": 360.88494873046875,
+      "height": 104.7449951171875,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 4,
+      "strokeStyle": "solid",
+      "roughness": 2,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "seed": 1492819282,
+      "version": 91,
+      "versionNonce": 1495650062,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1739897578670,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -360.88494873046875,
+          104.7449951171875
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startBinding": {
+        "elementId": "lVu_l4HFM-V3opMZiAABk",
+        "focus": 0.7803544947699901,
+        "gap": 2.8800048828125
+      },
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
     }
   ],
   "appState": {
