@@ -1,6 +1,6 @@
 import * as React from "react";
 import Calendar from "react-calendar";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 /**
  * Tela principal do sistema
@@ -89,10 +89,10 @@ export default function TelaPrincipal() {
         ></label>
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
           <li>
-            <a>Sidebar Item 1</a>
+            <Link to="/Telaatendimento">Atendimento</Link>
           </li>
           <li>
-            <a>Sidebar Item 2</a>
+            <Link to="/">Sair</Link>
           </li>
         </ul>
       </div>

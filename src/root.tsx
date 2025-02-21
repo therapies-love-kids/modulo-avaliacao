@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./App";
 import Telaprincipal from "./telaprincipal";
 import Guiche from "./Guiche";
+import Telaatendimento from "./telaatendimento";
 export default function Root() {
   const App: React.FC = () => {
     return (
@@ -14,6 +15,7 @@ export default function Root() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/Telaprincipal" element={<Telaprincipal />} />
+        <Route path="/Telaatendimento" element={<Telaatendimento />} />
         <Route path="/Guiche" element={<Guiche />} />
       </Routes>
     </Router>
