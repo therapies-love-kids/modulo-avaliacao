@@ -62,7 +62,7 @@ function Login() {
           </div>
         </div>
         <div className="fixed bottom-0 right-0 mb-4 mr-4">
-          <button className="btn btn-primary btn-circle">
+          <button onClick={() => navigate("/Guiche") } className="btn btn-primary btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
